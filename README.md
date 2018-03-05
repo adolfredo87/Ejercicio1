@@ -41,9 +41,9 @@ Sistemas Adicionales 	- Visual Studio 2010 y SQL Server 2008
 2. Información adicional
 ---------------------------------------
 
-Sistema de Ventas:
+Sistema Alquiler de Bicicleta:
 
-Sistema de Ventas desarrollado en Vb.Net con SQL Server 2008: 
+Sistema Alquiler de Bicicleta desarrollado en C# con SQL Server 2008: 
 
 BD: Diagrama ER, Creación de Tablas, Creación de Store Procedure, Creación Vistas SQL, Programacion SQL.
 
@@ -53,4 +53,4 @@ Back-End: C# (ASP.Net MVC), C# Linq, Expresiones Lambda C#, .Net Entity Framewor
 
 Fron-End: HTML, CCS, JavaScript, JQuery, XML, JSON, etc. 
 
-Software (c) 2018 Adolfredo Belizario. Este Software fue creado por Adolfredo Belizario bajo licencia GNU-GPL con el propósito de mostrar mi trabajo a Reclutadores en Desarrollo en .Net y C#
+Software (c) 2018 Adolfredo Belizario. Este Software fue creado por Adolfredo Belizario bajo licencia GPL v3.0 con el propósito de mostrar mi trabajo a Reclutadores en Desarrollo en .Net y C#
