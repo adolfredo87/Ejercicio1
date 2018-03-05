@@ -51,6 +51,6 @@ Metodología: Desarrollo en C# ASP.Net MVC (Modelo-Vista-Controlador).
 
 Back-End: C# (ASP.Net MVC), C# Linq, Expresiones Lambda C#, .Net Entity Framework,  Colecciones Lsit<Entidad>, Delegados, etc.
 
-Fron-End: HTML, CCS, JavaScript, JQuery, XML, JSON, etc. 
+Fron-End: HTML, CSS, JavaScript, JQuery, XML, JSON, etc. 
 
 Software (c) 2018 Adolfredo Belizario. Este Software fue creado por Adolfredo Belizario bajo licencia GPL v3.0 con el propósito de mostrar mi trabajo a Reclutadores en Desarrollo en .Net y C#
