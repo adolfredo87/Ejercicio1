@@ -1,0 +1,519 @@
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 21:04:03
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 21:07:25
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 21:12:16
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 21:12:41
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 21:15:37
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 21:15:49
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 21:20:51
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 21:48:53
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 102
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 21:58:53
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 105
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 105
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 22:00:06
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 105
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 105
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 22:03:26
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 107
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 107
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 22:07:34
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 108
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 108
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 22:28:21
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 111
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 111
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 22:32:49
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Unchanged. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 112
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 112
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 22:40:35
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Modified. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Modified. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 113
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 113
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 02/03/2018 22:45:04
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Modified. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Modified. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 113
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 113
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Edit
+FECHA          : 03/03/2018 01:03:18
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Modified. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Modified. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 131
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToClienteSet(Cliente cliente) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 238
+   en AlquileresMVC.Controllers.ClienteController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 131
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Delete.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Delete
+FECHA          : 03/03/2018 01:24:16
+FUENTE         : System.Data.Entity
+MESAJE         : Se produjo un error mientras se actualizaban las entradas. Vea la excepción interna para obtener detalles.
+TIPO EXCEPCION : System.Data.UpdateException: Se produjo un error mientras se actualizaban las entradas. Vea la excepción interna para obtener detalles. ---> System.Data.SqlClient.SqlException: El cliente que esta intentando eliminar ya se encuentra en uso en otra tabla.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   en System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en System.Data.Mapping.Update.Internal.FunctionUpdateCommand.Execute(UpdateTranslator translator, EntityConnection connection, Dictionary`2 identifierValues, List`1 generatedValues)
+   en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+   en System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 167
+-----------------------------------------------------------
+STACK          :    en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+   en System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 167
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Delete.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Delete
+FECHA          : 03/03/2018 01:26:52
+FUENTE         : System.Data.Entity
+MESAJE         : Se produjo un error mientras se actualizaban las entradas. Vea la excepción interna para obtener detalles.
+TIPO EXCEPCION : System.Data.UpdateException: Se produjo un error mientras se actualizaban las entradas. Vea la excepción interna para obtener detalles. ---> System.Data.SqlClient.SqlException: El cliente que esta intentando eliminar ya se encuentra en uso en otra tabla.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   en System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en System.Data.Mapping.Update.Internal.FunctionUpdateCommand.Execute(UpdateTranslator translator, EntityConnection connection, Dictionary`2 identifierValues, List`1 generatedValues)
+   en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+   en System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 167
+-----------------------------------------------------------
+STACK          :    en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+   en System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 167
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Delete.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Delete
+FECHA          : 03/03/2018 01:27:10
+FUENTE         : System.Data.Entity
+MESAJE         : Se produjo un error mientras se actualizaban las entradas. Vea la excepción interna para obtener detalles.
+TIPO EXCEPCION : System.Data.UpdateException: Se produjo un error mientras se actualizaban las entradas. Vea la excepción interna para obtener detalles. ---> System.Data.SqlClient.SqlException: El cliente que esta intentando eliminar ya se encuentra en uso en otra tabla.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   en System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en System.Data.Mapping.Update.Internal.FunctionUpdateCommand.Execute(UpdateTranslator translator, EntityConnection connection, Dictionary`2 identifierValues, List`1 generatedValues)
+   en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+   en System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 167
+-----------------------------------------------------------
+STACK          :    en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+   en System.Data.EntityClient.EntityAdapter.Update(IEntityStateManager entityCache)
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 167
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Delete.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Delete
+FECHA          : 03/03/2018 01:31:18
+FUENTE         : System.Data.Entity
+MESAJE         : Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+TIPO EXCEPCION : System.InvalidOperationException: Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Delete.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Delete
+FECHA          : 03/03/2018 01:32:32
+FUENTE         : System.Data.Entity
+MESAJE         : Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+TIPO EXCEPCION : System.InvalidOperationException: Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Delete.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Delete
+FECHA          : 03/03/2018 01:33:20
+FUENTE         : System.Data.Entity
+MESAJE         : Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+TIPO EXCEPCION : System.InvalidOperationException: Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Delete.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Delete
+FECHA          : 03/03/2018 01:34:06
+FUENTE         : System.Data.Entity
+MESAJE         : Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+TIPO EXCEPCION : System.InvalidOperationException: Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Delete.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Delete
+FECHA          : 03/03/2018 01:43:38
+FUENTE         : System.Data.Entity
+MESAJE         : Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+TIPO EXCEPCION : System.InvalidOperationException: Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.ClienteController.Delete.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.ClienteController.Delete
+FECHA          : 03/03/2018 01:44:36
+FUENTE         : System.Data.Entity
+MESAJE         : Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+TIPO EXCEPCION : System.InvalidOperationException: Error en la operación: no se pudo cambiar la relación porque una o varias de las propiedades de clave externa no aceptan valores NULL. Cuando se realiza un cambio en una relación, la propiedad de clave externa relacionada se establece en un valor NULL. Si la clave externa no admite valores NULL, se debe definir una nueva relación, asignar otro valor NULL a la propiedad de clave externa o eliminar el objeto no relacionado.
+   en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   en System.Data.Objects.ObjectContext.SaveChanges()
+   en AlquileresMVC.Controllers.ClienteController.Delete(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\ClienteController.cs:línea 173
+-----------------------------------------------------------
+
+
+Error en AlquileresMVC.Controllers.AlquilerController.Edit.
+EXCEPTION OCURRIDA EN: AlquileresMVC.Controllers.AlquilerController.Edit
+FECHA          : 04/03/2018 02:26:57
+FUENTE         : System.Data.Entity
+MESAJE         : Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Modified. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+TIPO EXCEPCION : System.InvalidOperationException: Ya existe un objeto con la misma clave en ObjectStateManager. El objeto existente se encuentra en un estado Modified. Sólo es posible agregar un objeto a ObjectStateManager de nuevo si se encuentra en un estado agregado.
+   en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToAlquilerSet(Alquiler alquiler) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 214
+   en AlquileresMVC.Controllers.AlquilerController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\AlquilerController.cs:línea 216
+-----------------------------------------------------------
+STACK          :    en System.Data.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet& entitySet, Boolean& isNoOperation)
+   en System.Data.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   en AlquileresMVC.Models.DemoAlquileresMVCEntities.AddToAlquilerSet(Alquiler alquiler) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Models\DemoAlquileresMVC.Designer.cs:línea 214
+   en AlquileresMVC.Controllers.AlquilerController.Edit(Int32 id, FormCollection form) en C:\Documents and Settings\Adolfredo\Mis documentos\Visual Studio 2010\Projects\AlquileresMVC\AlquileresMVC\Controllers\AlquilerController.cs:línea 216
+-----------------------------------------------------------
+
+

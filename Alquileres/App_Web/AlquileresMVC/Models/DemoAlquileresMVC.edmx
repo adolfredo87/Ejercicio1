@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DemoAlquileresMVCModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DemoAlquileresMVCModelStoreContainer">
+          <EntitySet Name="alquiler" EntityType="DemoAlquileresMVCModel.Store.alquiler" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bicicleta" EntityType="DemoAlquileresMVCModel.Store.bicicleta" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="categoriaBici" EntityType="DemoAlquileresMVCModel.Store.categoriaBici" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="cliente" EntityType="DemoAlquileresMVCModel.Store.cliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="descuento" EntityType="DemoAlquileresMVCModel.Store.descuento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="pagoCab" EntityType="DemoAlquileresMVCModel.Store.pagoCab" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="pagoDet" EntityType="DemoAlquileresMVCModel.Store.pagoDet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="precio" EntityType="DemoAlquileresMVCModel.Store.precio" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Alquiler_Bicileta" Association="DemoAlquileresMVCModel.Store.FK_Alquiler_Bicileta">
+            <End Role="bicicleta" EntitySet="bicicleta" />
+            <End Role="alquiler" EntitySet="alquiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alquiler_Cliente" Association="DemoAlquileresMVCModel.Store.FK_Alquiler_Cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="alquiler" EntitySet="alquiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bicileta_CategoriaBici" Association="DemoAlquileresMVCModel.Store.FK_Bicileta_CategoriaBici">
+            <End Role="categoriaBici" EntitySet="categoriaBici" />
+            <End Role="bicicleta" EntitySet="bicicleta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagoCab_Cliente" Association="DemoAlquileresMVCModel.Store.FK_PagoCab_Cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="pagoCab" EntitySet="pagoCab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagoDet_Alquiler" Association="DemoAlquileresMVCModel.Store.FK_PagoDet_Alquiler">
+            <End Role="alquiler" EntitySet="alquiler" />
+            <End Role="pagoDet" EntitySet="pagoDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagoDet_PagoCab" Association="DemoAlquileresMVCModel.Store.FK_PagoDet_PagoCab">
+            <End Role="pagoCab" EntitySet="pagoCab" />
+            <End Role="pagoDet" EntitySet="pagoDet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="alquiler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDCliente" Type="int" Nullable="false" />
+          <Property Name="IDBicileta" Type="int" Nullable="false" />
+          <Property Name="FechaDesde" Type="datetime" Nullable="false" />
+          <Property Name="FechaHasta" Type="datetime" Nullable="false" />
+          <Property Name="TiempoHora" Type="varchar" MaxLength="255" />
+          <Property Name="TiempoDia" Type="varchar" MaxLength="255" />
+          <Property Name="TiempoSemana" Type="varchar" MaxLength="255" />
+          <Property Name="PrecioEstimado" Type="float" />
+          <Property Name="Estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bicicleta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Modelo" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="IDCategoriaBici" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoriaBici">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="varchar" MaxLength="255" />
+          <Property Name="Categoria" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Correo" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="descuento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="varchar" MaxLength="255" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="PorcentajeDescuento" Type="float" />
+          <Property Name="Estatus" Type="int" />
+        </EntityType>
+        <EntityType Name="pagoCab">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDCliente" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="MontoExento" Type="float" />
+          <Property Name="Descuento" Type="float" />
+          <Property Name="MontoTotal" Type="float" />
+          <Property Name="Estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pagoDet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDPagoCab" Type="int" Nullable="false" />
+          <Property Name="IDAlquiler" Type="int" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="float" />
+          <Property Name="Descuento" Type="float" />
+          <Property Name="PrecioTotal" Type="float" />
+        </EntityType>
+        <EntityType Name="precio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="varchar" MaxLength="255" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="PrecioUnitario" Type="float" />
+        </EntityType>
+        <Association Name="FK_Alquiler_Bicileta">
+          <End Role="bicicleta" Type="DemoAlquileresMVCModel.Store.bicicleta" Multiplicity="1" />
+          <End Role="alquiler" Type="DemoAlquileresMVCModel.Store.alquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bicicleta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="alquiler">
+              <PropertyRef Name="IDBicileta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alquiler_Cliente">
+          <End Role="cliente" Type="DemoAlquileresMVCModel.Store.cliente" Multiplicity="1" />
+          <End Role="alquiler" Type="DemoAlquileresMVCModel.Store.alquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="alquiler">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bicileta_CategoriaBici">
+          <End Role="categoriaBici" Type="DemoAlquileresMVCModel.Store.categoriaBici" Multiplicity="1" />
+          <End Role="bicicleta" Type="DemoAlquileresMVCModel.Store.bicicleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoriaBici">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="bicicleta">
+              <PropertyRef Name="IDCategoriaBici" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagoCab_Cliente">
+          <End Role="cliente" Type="DemoAlquileresMVCModel.Store.cliente" Multiplicity="1" />
+          <End Role="pagoCab" Type="DemoAlquileresMVCModel.Store.pagoCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="pagoCab">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagoDet_Alquiler">
+          <End Role="alquiler" Type="DemoAlquileresMVCModel.Store.alquiler" Multiplicity="1" />
+          <End Role="pagoDet" Type="DemoAlquileresMVCModel.Store.pagoDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alquiler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="pagoDet">
+              <PropertyRef Name="IDAlquiler" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagoDet_PagoCab">
+          <End Role="pagoCab" Type="DemoAlquileresMVCModel.Store.pagoCab" Multiplicity="1" />
+          <End Role="pagoDet" Type="DemoAlquileresMVCModel.Store.pagoDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pagoCab">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="pagoDet">
+              <PropertyRef Name="IDPagoCab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="USP_ELIBICICLETA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VMARCA" Type="varchar" Mode="In" />
+          <Parameter Name="VMODELO" Type="varchar" Mode="In" />
+          <Parameter Name="ICATEGORIA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_ELICATEGORIABICI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VCATEGORIA" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_ELICLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ICLIENTE" Type="int" Mode="In" />
+          <Parameter Name="VNOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="VTELEFONO" Type="varchar" Mode="In" />
+          <Parameter Name="VCORREO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_ELIDESCUENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VDESCRIPCION" Type="varchar" Mode="In" />
+          <Parameter Name="FPORCENTAJEDESCUENTO" Type="float" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_ELIPRECIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VDESCRIPCION" Type="varchar" Mode="In" />
+          <Parameter Name="FPRECIO" Type="float" Mode="In" />
+        </Function>
+        <Function Name="USP_INCALQUILER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ICLIENTE" Type="int" Mode="In" />
+          <Parameter Name="IBICICLETA" Type="int" Mode="In" />
+          <Parameter Name="DFECHADESDE" Type="datetime" Mode="In" />
+          <Parameter Name="DFECHAHASTA" Type="datetime" Mode="In" />
+          <Parameter Name="VTIEMPOHOR" Type="varchar" Mode="In" />
+          <Parameter Name="VTIEMPODIA" Type="varchar" Mode="In" />
+          <Parameter Name="VTIEMPOSEM" Type="varchar" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_INCBICICLETA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VMARCA" Type="varchar" Mode="In" />
+          <Parameter Name="VMODELO" Type="varchar" Mode="In" />
+          <Parameter Name="ICATEGORIA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_INCCATEGORIABICI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VCATEGORIA" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_INCCLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VNOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="VTELEFONO" Type="varchar" Mode="In" />
+          <Parameter Name="VCORREO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_INCDESCUENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VDESCRIPCION" Type="varchar" Mode="In" />
+          <Parameter Name="FPORCENTAJEDESCUENTO" Type="float" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_INCPAGOCAB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ICLIENTE" Type="int" Mode="In" />
+          <Parameter Name="DFECHA" Type="datetime" Mode="In" />
+          <Parameter Name="FMONTOEXTO" Type="float" Mode="In" />
+          <Parameter Name="FMONTODESC" Type="float" Mode="In" />
+          <Parameter Name="FMONTOTAL" Type="float" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_INCPAGODET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IPAGO" Type="int" Mode="In" />
+          <Parameter Name="IALQUILER" Type="int" Mode="In" />
+          <Parameter Name="FPRECIOUNIT" Type="float" Mode="In" />
+          <Parameter Name="FPRECIODESC" Type="float" Mode="In" />
+          <Parameter Name="FPRECIOTOTAL" Type="float" Mode="In" />
+        </Function>
+        <Function Name="USP_INCPRECIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VDESCRIPCION" Type="varchar" Mode="In" />
+          <Parameter Name="FPRECIO" Type="float" Mode="In" />
+        </Function>
+        <Function Name="USP_MODALQUILER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="ICLIENTE" Type="int" Mode="In" />
+          <Parameter Name="IBICICLETA" Type="int" Mode="In" />
+          <Parameter Name="DFECHADESDE" Type="datetime" Mode="In" />
+          <Parameter Name="DFECHAHASTA" Type="datetime" Mode="In" />
+          <Parameter Name="VTIEMPOHOR" Type="varchar" Mode="In" />
+          <Parameter Name="VTIEMPODIA" Type="varchar" Mode="In" />
+          <Parameter Name="VTIEMPOSEM" Type="varchar" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_MODBICICLETA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VMARCA" Type="varchar" Mode="In" />
+          <Parameter Name="VMODELO" Type="varchar" Mode="In" />
+          <Parameter Name="ICATEGORIA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_MODCATEGORIABICI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VCATEGORIA" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_MODCLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ICLIENTE" Type="int" Mode="In" />
+          <Parameter Name="VNOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="VTELEFONO" Type="varchar" Mode="In" />
+          <Parameter Name="VCORREO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_MODDESCUENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VDESCRIPCION" Type="varchar" Mode="In" />
+          <Parameter Name="FPORCENTAJEDESCUENTO" Type="float" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_MODPAGOCAB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="ICLIENTE" Type="int" Mode="In" />
+          <Parameter Name="DFECHA" Type="datetime" Mode="In" />
+          <Parameter Name="FMONTOEXTO" Type="float" Mode="In" />
+          <Parameter Name="FMONTODESC" Type="float" Mode="In" />
+          <Parameter Name="FMONTOTAL" Type="float" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_MODPAGODET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="IPAGO" Type="int" Mode="In" />
+          <Parameter Name="IALQUILER" Type="int" Mode="In" />
+          <Parameter Name="FPRECIOUNIT" Type="float" Mode="In" />
+          <Parameter Name="FPRECIODESC" Type="float" Mode="In" />
+          <Parameter Name="FPRECIOTOTAL" Type="float" Mode="In" />
+        </Function>
+        <Function Name="USP_MODPRECIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="VCODIGO" Type="varchar" Mode="In" />
+          <Parameter Name="VDESCRIPCION" Type="varchar" Mode="In" />
+          <Parameter Name="FPRECIO" Type="float" Mode="In" />
+        </Function>
+        <Function Name="USP_PAGOCAB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ICLIENTE" Type="int" Mode="In" />
+          <Parameter Name="DFECHA" Type="datetime" Mode="In" />
+          <Parameter Name="FMONTOEXTO" Type="float" Mode="In" />
+          <Parameter Name="FMONTODESC" Type="float" Mode="In" />
+          <Parameter Name="FMONTOTAL" Type="float" Mode="In" />
+          <Parameter Name="IESTATUS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_XMLPAGODET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ALQUILERES" Type="xml" Mode="In" />
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="ITIPO" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DemoAlquileresMVCModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DemoAlquileresMVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AlquilerSet" EntityType="DemoAlquileresMVCModel.Alquiler" />
+          <EntitySet Name="BicicletaSet" EntityType="DemoAlquileresMVCModel.Bicicleta" />
+          <EntitySet Name="CategoriaBicicletaSet" EntityType="DemoAlquileresMVCModel.CategoriaBicicleta" />
+          <EntitySet Name="ClienteSet" EntityType="DemoAlquileresMVCModel.Cliente" />
+          <EntitySet Name="DescuentoSet" EntityType="DemoAlquileresMVCModel.Descuento" />
+          <EntitySet Name="PagoCabeceraSet" EntityType="DemoAlquileresMVCModel.PagoCabecera" />
+          <EntitySet Name="PagoDetalleSet" EntityType="DemoAlquileresMVCModel.PagoDetalle" />
+          <EntitySet Name="PrecioSet" EntityType="DemoAlquileresMVCModel.Precio" />
+          <AssociationSet Name="FK_Alquiler_Bicileta" Association="DemoAlquileresMVCModel.FK_Alquiler_Bicileta">
+            <End Role="bicicleta" EntitySet="BicicletaSet" />
+            <End Role="alquiler" EntitySet="AlquilerSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alquiler_Cliente" Association="DemoAlquileresMVCModel.FK_Alquiler_Cliente">
+            <End Role="cliente" EntitySet="ClienteSet" />
+            <End Role="alquiler" EntitySet="AlquilerSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagoDet_Alquiler" Association="DemoAlquileresMVCModel.FK_PagoDet_Alquiler">
+            <End Role="alquiler" EntitySet="AlquilerSet" />
+            <End Role="pagoDet" EntitySet="PagoDetalleSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bicileta_CategoriaBici" Association="DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici">
+            <End Role="categoriaBici" EntitySet="CategoriaBicicletaSet" />
+            <End Role="bicicleta" EntitySet="BicicletaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagoCab_Cliente" Association="DemoAlquileresMVCModel.FK_PagoCab_Cliente">
+            <End Role="cliente" EntitySet="ClienteSet" />
+            <End Role="pagoCab" EntitySet="PagoCabeceraSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagoDet_PagoCab" Association="DemoAlquileresMVCModel.FK_PagoDet_PagoCab">
+            <End Role="pagoCab" EntitySet="PagoCabeceraSet" />
+            <End Role="pagoDet" EntitySet="PagoDetalleSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Alquiler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="IDBicileta" Type="Int32" Nullable="false" />
+          <Property Name="FechaDesde" Type="DateTime" Nullable="false" />
+          <Property Name="FechaHasta" Type="DateTime" Nullable="false" />
+          <Property Name="TiempoHora" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TiempoDia" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TiempoSemana" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PrecioEstimado" Type="Double" />
+          <Property Name="Estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bicicleta" Relationship="DemoAlquileresMVCModel.FK_Alquiler_Bicileta" FromRole="alquiler" ToRole="bicicleta" />
+          <NavigationProperty Name="Cliente" Relationship="DemoAlquileresMVCModel.FK_Alquiler_Cliente" FromRole="alquiler" ToRole="cliente" />
+          <NavigationProperty Name="PagosDetalle" Relationship="DemoAlquileresMVCModel.FK_PagoDet_Alquiler" FromRole="alquiler" ToRole="pagoDet" />
+        </EntityType>
+        <EntityType Name="Bicicleta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Modelo" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="IDCategoriaBici" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alquileres" Relationship="DemoAlquileresMVCModel.FK_Alquiler_Bicileta" FromRole="bicicleta" ToRole="alquiler" />
+          <NavigationProperty Name="CategoriaBici" Relationship="DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici" FromRole="bicicleta" ToRole="categoriaBici" />
+        </EntityType>
+        <EntityType Name="CategoriaBicicleta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Categoria" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Bicicletas" Relationship="DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici" FromRole="categoriaBici" ToRole="bicicleta" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Correo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Alquileres" Relationship="DemoAlquileresMVCModel.FK_Alquiler_Cliente" FromRole="cliente" ToRole="alquiler" />
+          <NavigationProperty Name="PagosCabecera" Relationship="DemoAlquileresMVCModel.FK_PagoCab_Cliente" FromRole="cliente" ToRole="pagoCab" />
+        </EntityType>
+        <EntityType Name="Descuento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PorcentajeDescuento" Type="Double" />
+          <Property Name="Estatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PagoCabecera">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="MontoExento" Type="Double" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="MontoTotal" Type="Double" />
+          <Property Name="Estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="DemoAlquileresMVCModel.FK_PagoCab_Cliente" FromRole="pagoCab" ToRole="cliente" />
+          <NavigationProperty Name="PagosDetalle" Relationship="DemoAlquileresMVCModel.FK_PagoDet_PagoCab" FromRole="pagoCab" ToRole="pagoDet" />
+        </EntityType>
+        <EntityType Name="PagoDetalle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPagoCab" Type="Int32" Nullable="false" />
+          <Property Name="IDAlquiler" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Double" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="PrecioTotal" Type="Double" />
+          <NavigationProperty Name="Alquiler" Relationship="DemoAlquileresMVCModel.FK_PagoDet_Alquiler" FromRole="pagoDet" ToRole="alquiler" />
+          <NavigationProperty Name="PagoCabecera" Relationship="DemoAlquileresMVCModel.FK_PagoDet_PagoCab" FromRole="pagoDet" ToRole="pagoCab" />
+        </EntityType>
+        <EntityType Name="Precio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PrecioUnitario" Type="Double" />
+        </EntityType>
+        <Association Name="FK_Alquiler_Bicileta">
+          <End Role="bicicleta" Type="DemoAlquileresMVCModel.Bicicleta" Multiplicity="1" />
+          <End Role="alquiler" Type="DemoAlquileresMVCModel.Alquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bicicleta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="alquiler">
+              <PropertyRef Name="IDBicileta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alquiler_Cliente">
+          <End Role="cliente" Type="DemoAlquileresMVCModel.Cliente" Multiplicity="1" />
+          <End Role="alquiler" Type="DemoAlquileresMVCModel.Alquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="alquiler">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagoDet_Alquiler">
+          <End Role="alquiler" Type="DemoAlquileresMVCModel.Alquiler" Multiplicity="1" />
+          <End Role="pagoDet" Type="DemoAlquileresMVCModel.PagoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alquiler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="pagoDet">
+              <PropertyRef Name="IDAlquiler" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bicileta_CategoriaBici">
+          <End Role="categoriaBici" Type="DemoAlquileresMVCModel.CategoriaBicicleta" Multiplicity="1" />
+          <End Role="bicicleta" Type="DemoAlquileresMVCModel.Bicicleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoriaBici">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="bicicleta">
+              <PropertyRef Name="IDCategoriaBici" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagoCab_Cliente">
+          <End Role="cliente" Type="DemoAlquileresMVCModel.Cliente" Multiplicity="1" />
+          <End Role="pagoCab" Type="DemoAlquileresMVCModel.PagoCabecera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="pagoCab">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagoDet_PagoCab">
+          <End Role="pagoCab" Type="DemoAlquileresMVCModel.PagoCabecera" Multiplicity="1" />
+          <End Role="pagoDet" Type="DemoAlquileresMVCModel.PagoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pagoCab">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="pagoDet">
+              <PropertyRef Name="IDPagoCab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DemoAlquileresMVCModelStoreContainer" CdmEntityContainer="DemoAlquileresMVCEntities">
+          <EntitySetMapping Name="AlquilerSet"><EntityTypeMapping TypeName="DemoAlquileresMVCModel.Alquiler"><MappingFragment StoreEntitySet="alquiler">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+            <ScalarProperty Name="IDBicileta" ColumnName="IDBicileta" />
+            <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
+            <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
+            <ScalarProperty Name="TiempoHora" ColumnName="TiempoHora" />
+            <ScalarProperty Name="TiempoDia" ColumnName="TiempoDia" />
+            <ScalarProperty Name="TiempoSemana" ColumnName="TiempoSemana" />
+            <ScalarProperty Name="PrecioEstimado" ColumnName="PrecioEstimado" />
+            <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="DemoAlquileresMVCModel.Alquiler">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="DemoAlquileresMVCModel.Store.USP_INCALQUILER" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+                  <ScalarProperty Name="TiempoSemana" ParameterName="VTIEMPOSEM" />
+                  <ScalarProperty Name="TiempoDia" ParameterName="VTIEMPODIA" />
+                  <ScalarProperty Name="TiempoHora" ParameterName="VTIEMPOHOR" />
+                  <ScalarProperty Name="FechaHasta" ParameterName="DFECHAHASTA" />
+                  <ScalarProperty Name="FechaDesde" ParameterName="DFECHADESDE" />
+                  <ScalarProperty Name="IDBicileta" ParameterName="IBICICLETA" />
+                  <ScalarProperty Name="IDCliente" ParameterName="ICLIENTE" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="DemoAlquileresMVCModel.Store.USP_MODALQUILER" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" Version="Original" />
+                  <ScalarProperty Name="TiempoSemana" ParameterName="VTIEMPOSEM" Version="Original" />
+                  <ScalarProperty Name="TiempoDia" ParameterName="VTIEMPODIA" Version="Original" />
+                  <ScalarProperty Name="TiempoHora" ParameterName="VTIEMPOHOR" Version="Original" />
+                  <ScalarProperty Name="FechaHasta" ParameterName="DFECHAHASTA" Version="Current" />
+                  <ScalarProperty Name="FechaDesde" ParameterName="DFECHADESDE" Version="Current" />
+                  <ScalarProperty Name="IDBicileta" ParameterName="IBICICLETA" Version="Current" />
+                  <ScalarProperty Name="IDCliente" ParameterName="ICLIENTE" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="BicicletaSet"><EntityTypeMapping TypeName="DemoAlquileresMVCModel.Bicicleta"><MappingFragment StoreEntitySet="bicicleta">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Marca" ColumnName="Marca" />
+            <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+            <ScalarProperty Name="IDCategoriaBici" ColumnName="IDCategoriaBici" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="DemoAlquileresMVCModel.Bicicleta">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="DemoAlquileresMVCModel.Store.USP_INCBICICLETA" >
+                  <ScalarProperty Name="IDCategoriaBici" ParameterName="ICATEGORIA" />
+                  <ScalarProperty Name="Modelo" ParameterName="VMODELO" />
+                  <ScalarProperty Name="Marca" ParameterName="VMARCA" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="DemoAlquileresMVCModel.Store.USP_MODBICICLETA" >
+                <ScalarProperty Name="IDCategoriaBici" ParameterName="ICATEGORIA" Version="Current" />
+                  <ScalarProperty Name="Modelo" ParameterName="VMODELO" Version="Current" />
+                  <ScalarProperty Name="Marca" ParameterName="VMARCA" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="DemoAlquileresMVCModel.Store.USP_ELIBICICLETA" >
+                  <ScalarProperty Name="IDCategoriaBici" ParameterName="ICATEGORIA" />
+                  <ScalarProperty Name="Modelo" ParameterName="VMODELO" />
+                  <ScalarProperty Name="Marca" ParameterName="VMARCA" />
+                  <ScalarProperty Name="ID" ParameterName="IID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CategoriaBicicletaSet"><EntityTypeMapping TypeName="DemoAlquileresMVCModel.CategoriaBicicleta"><MappingFragment StoreEntitySet="categoriaBici">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+            <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="DemoAlquileresMVCModel.CategoriaBicicleta">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="DemoAlquileresMVCModel.Store.USP_INCCATEGORIABICI" >
+                  <ScalarProperty Name="Categoria" ParameterName="VCATEGORIA" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="DemoAlquileresMVCModel.Store.USP_MODCATEGORIABICI" >
+                  <ScalarProperty Name="Categoria" ParameterName="VCATEGORIA" Version="Current" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="DemoAlquileresMVCModel.Store.USP_ELICATEGORIABICI" >
+                  <ScalarProperty Name="Categoria" ParameterName="VCATEGORIA" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+                  <ScalarProperty Name="ID" ParameterName="IID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ClienteSet"><EntityTypeMapping TypeName="DemoAlquileresMVCModel.Cliente"><MappingFragment StoreEntitySet="cliente">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+            <ScalarProperty Name="Correo" ColumnName="Correo" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="DemoAlquileresMVCModel.Cliente">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="DemoAlquileresMVCModel.Store.USP_INCCLIENTE" >
+                  <ScalarProperty Name="Correo" ParameterName="VCORREO" />
+                  <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" />
+                  <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="DemoAlquileresMVCModel.Store.USP_MODCLIENTE" >
+                  <ScalarProperty Name="Correo" ParameterName="VCORREO" Version="Current" />
+                  <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" Version="Current" />
+                  <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="ICLIENTE" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="DemoAlquileresMVCModel.Store.USP_ELICLIENTE" >
+                  <ScalarProperty Name="Correo" ParameterName="VCORREO" />
+                  <ScalarProperty Name="Telefono" ParameterName="VTELEFONO" />
+                  <ScalarProperty Name="Nombre" ParameterName="VNOMBRE" />
+                  <ScalarProperty Name="ID" ParameterName="ICLIENTE" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DescuentoSet"><EntityTypeMapping TypeName="DemoAlquileresMVCModel.Descuento"><MappingFragment StoreEntitySet="descuento">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+            <ScalarProperty Name="PorcentajeDescuento" ColumnName="PorcentajeDescuento" />
+            <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="DemoAlquileresMVCModel.Descuento">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="DemoAlquileresMVCModel.Store.USP_INCDESCUENTO" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+                  <ScalarProperty Name="PorcentajeDescuento" ParameterName="FPORCENTAJEDESCUENTO" />
+                  <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="DemoAlquileresMVCModel.Store.USP_MODDESCUENTO" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" Version="Current" />
+                  <ScalarProperty Name="PorcentajeDescuento" ParameterName="FPORCENTAJEDESCUENTO" Version="Current" />
+                  <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" Version="Current" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="DemoAlquileresMVCModel.Store.USP_ELIDESCUENTO" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+                  <ScalarProperty Name="PorcentajeDescuento" ParameterName="FPORCENTAJEDESCUENTO" />
+                  <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+                  <ScalarProperty Name="ID" ParameterName="IID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+            </EntitySetMapping>
+          <EntitySetMapping Name="PagoCabeceraSet"><EntityTypeMapping TypeName="DemoAlquileresMVCModel.PagoCabecera"><MappingFragment StoreEntitySet="pagoCab">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+            <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+            <ScalarProperty Name="MontoExento" ColumnName="MontoExento" />
+            <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+            <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+            <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="DemoAlquileresMVCModel.PagoCabecera">
+              <ModificationFunctionMapping>
+                <UpdateFunction FunctionName="DemoAlquileresMVCModel.Store.USP_MODPAGOCAB" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" Version="Original" />
+                  <ScalarProperty Name="MontoTotal" ParameterName="FMONTOTAL" Version="Original" />
+                  <ScalarProperty Name="Descuento" ParameterName="FMONTODESC" Version="Original" />
+                  <ScalarProperty Name="MontoExento" ParameterName="FMONTOEXTO" Version="Original" />
+                  <ScalarProperty Name="Fecha" ParameterName="DFECHA" Version="Current" />
+                  <ScalarProperty Name="IDCliente" ParameterName="ICLIENTE" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="DemoAlquileresMVCModel.Store.USP_PAGOCAB" >
+                  <ScalarProperty Name="Estatus" ParameterName="IESTATUS" />
+                  <ScalarProperty Name="MontoTotal" ParameterName="FMONTOTAL" />
+                  <ScalarProperty Name="Descuento" ParameterName="FMONTODESC" />
+                  <ScalarProperty Name="MontoExento" ParameterName="FMONTOEXTO" />
+                  <ScalarProperty Name="Fecha" ParameterName="DFECHA" />
+                  <ScalarProperty Name="IDCliente" ParameterName="ICLIENTE" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PagoDetalleSet"><EntityTypeMapping TypeName="DemoAlquileresMVCModel.PagoDetalle"><MappingFragment StoreEntitySet="pagoDet">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="IDPagoCab" ColumnName="IDPagoCab" />
+            <ScalarProperty Name="IDAlquiler" ColumnName="IDAlquiler" />
+            <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+            <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+            <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PrecioSet"><EntityTypeMapping TypeName="DemoAlquileresMVCModel.Precio"><MappingFragment StoreEntitySet="precio">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+            <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="DemoAlquileresMVCModel.Precio">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="DemoAlquileresMVCModel.Store.USP_INCPRECIO" >
+                  <ScalarProperty Name="PrecioUnitario" ParameterName="FPRECIO" />
+                  <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="DemoAlquileresMVCModel.Store.USP_MODPRECIO" >
+                  <ScalarProperty Name="PrecioUnitario" ParameterName="FPRECIO" Version="Current" />
+                  <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" Version="Current" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" Version="Current" />
+                  <ScalarProperty Name="ID" ParameterName="IID" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="DemoAlquileresMVCModel.Store.USP_ELIPRECIO" >
+                  <ScalarProperty Name="PrecioUnitario" ParameterName="FPRECIO" />
+                  <ScalarProperty Name="Descripcion" ParameterName="VDESCRIPCION" />
+                  <ScalarProperty Name="Codigo" ParameterName="VCODIGO" />
+                  <ScalarProperty Name="ID" ParameterName="IID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+            </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DemoAlquileresMVC" ZoomLevel="86">
+        <EntityTypeShape EntityType="DemoAlquileresMVCModel.Alquiler" Width="1.5" PointX="0.5" PointY="1.125" Height="3.0714322916666661" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVCModel.Bicicleta" Width="1.5" PointX="2.625" PointY="0.5" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVCModel.CategoriaBicicleta" Width="1.5" PointX="2.5" PointY="3.875" Height="1.5923063151041674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVCModel.Cliente" Width="1.5" PointX="4.75" PointY="0.75" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVCModel.Descuento" Width="1.5" PointX="8.75" PointY="0.5" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVCModel.PagoCabecera" Width="1.5" PointX="6.75" PointY="1.25" Height="2.4140429687500005" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVCModel.PagoDetalle" Width="1.5" PointX="4.5" PointY="3.25" Height="2.2496956380208317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVCModel.Precio" Width="1.5" PointX="8.75" PointY="2.875" Height="1.5923063151041674" IsExpanded="true" />
+        <AssociationConnector Association="DemoAlquileresMVCModel.FK_Alquiler_Bicileta" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.625" PointY="1.7730004882812498" />
+          <ConnectorPoint PointX="2" PointY="1.7730004882812498" />
+        </AssociationConnector>
+        <AssociationConnector Association="DemoAlquileresMVCModel.FK_Alquiler_Cliente" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.75" PointY="2.5772509765624996" />
+          <ConnectorPoint PointX="3.3958333333333335" PointY="2.5772509765624991" />
+          <ConnectorPoint PointX="3.2291666666666665" PointY="2.5772509765624996" />
+          <ConnectorPoint PointX="2" PointY="2.5772509765624996" />
+        </AssociationConnector>
+        <AssociationConnector Association="DemoAlquileresMVCModel.FK_PagoDet_Alquiler" ManuallyRouted="false">
+          <ConnectorPoint PointX="2" PointY="3.53125" />
+          <ConnectorPoint PointX="3.2291666666666665" PointY="3.5312499999999996" />
+          <ConnectorPoint PointX="3.3958333333333335" PointY="3.53125" />
+          <ConnectorPoint PointX="4.5" PointY="3.53125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.3125" PointY="3.875" />
+          <ConnectorPoint PointX="3.3125" PointY="2.4210009765624996" />
+        </AssociationConnector>
+        <AssociationConnector Association="DemoAlquileresMVCModel.FK_PagoCab_Cliente" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.25" PointY="1.9605004882812498" />
+          <ConnectorPoint PointX="6.75" PointY="1.9605004882812498" />
+        </AssociationConnector>
+        <AssociationConnector Association="DemoAlquileresMVCModel.FK_PagoDet_PagoCab" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="3.4570214843750002" />
+          <ConnectorPoint PointX="6" PointY="3.4570214843750002" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

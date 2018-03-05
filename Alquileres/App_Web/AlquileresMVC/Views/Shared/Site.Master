@@ -1,0 +1,166 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<%@ Register src="Menu.ascx" tagname="Menu" tagprefix="uc1" %>
+
+<%@ Register src="LogOnUserControl.ascx" tagname="LogOnUserControl" tagprefix="uc2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    
+    <% String jqueryPath = "http://localhost:1091/Content/jquery-ui-1.10.3/";  %>
+    
+    <link href="" type="text/css" />
+    <!-- JQUERY CSS -->
+    
+    <link href="<%=jqueryPath + "themes/redmond/jquery-ui.css" %>" rel="stylesheet" type="text/css" />
+    <link href="<%=jqueryPath + "themes/redmond/jquery.ui.theme.css" %>" rel="stylesheet" type="text/css" />
+    <link href="../../Content/jquery.jqGrid-4.4.4/css/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+    
+    <!-- JQUERY JAVASCRIPT -->
+
+    <script src="../../Content/Scripts/jquery.validate.textbox.js" type="text/javascript"></script>
+
+    <script src="<%=jqueryPath + "jquery-1.9.1.js" %>" type="text/javascript"></script>
+
+    <script src="<%=jqueryPath + "ui/jquery-ui.js" %>" type="text/javascript"></script>
+    
+    <%--<script src="../../Content/Scripts/jquery-1.4.1.js" type="text/javascript"></script>--%>
+    <%--<script src="../../Content/Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>--%>
+    <%--<script src="../../Content/Scripts/jquery.validate.js" type="text/javascript"></script>--%>    
+    
+    <script src="../../Content/Scripts/MicrosoftAjax.js" type="text/javascript"></script>
+    
+    <script src="../../Content/Scripts/MicrosoftMvcValidation.js" type="text/javascript"></script>
+    <%--<script src="../../Content/Scripts/MicrosoftMvcValidation.debug.js" type="text/javascript"></script>--%>    
+   
+    <script src="../../Content/Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
+    <%--<script src="../../Content/Scripts/MicrosoftMvcAjax.debug.js" type="text/javascript"></script>--%>
+
+    <%--<script src="../../Content/MicrosoftMvcJQueryValidation.js" type="text/javascript"></script>--%>
+
+    <!-- JQUERY JAVASCRIPT DIALOG-->
+
+    <script src="<%=jqueryPath + "ui/jquery.ui.core.js" %>" type="text/javascript"></script>
+
+    <script src="<%=jqueryPath + "ui/jquery.ui.dialog.js" %>" type="text/javascript"></script>
+
+    <script src="<%=jqueryPath + "ui/jquery.ui.tabs.js" %>" type="text/javascript"></script>
+
+    <!-- JQUERY JAVASCRIPT JQGRID -->
+
+    <script src="../../Content/jquery.jqGrid-4.4.4/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script src="../../Content/jquery.jqGrid-4.4.4/js/i18n/grid.locale-es.js" type="text/javascript"></script>
+
+    <script src="<%=jqueryPath + "ui/jquery.ui.button.js" %>" type="text/javascript"></script>
+
+    <!-- JQUERY UI Datepicker (Fechas) - Localize calendar -->
+    
+    <script src="<%=jqueryPath + "ui/i18n/jquery.ui.datepicker-es.js" %>" type="text/javascript"></script>
+    
+    <script src="../../Content/mvcUI/local.js" type="text/javascript"> </script>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+   
+   <link href="../../Content/SitePrincipal.css" rel="stylesheet" type="text/css" />
+   <link href="../../Content/MVCSection.css" rel="stylesheet" type="text/css" />
+   
+    <%-- jQuery UI Datepicker (Fechas) - Localize calendar --%>
+    <script type="text/javascript">
+        $(function() {
+            $.datepicker.setDefaults($.datepicker.regional['es']);
+            $("#datepicker").datepicker($.datepicker.regional['es']);
+            $("#locale").change(function() {
+                $("#datepicker").datepicker("option", $.datepicker.regional['es']);
+            });
+        });
+    </script>
+
+    <%-- jQuery UI Button (Boton de acciones) - Default functionality --%>
+    <script type="text/javascript">
+        $(function() {
+            $("a[type=MvcButton]").button();
+            $(document).tooltip();
+        });
+        
+    </script>
+
+    <%-- jQuery UI Dialog (Formularios modales) - Modal form --%>
+    <script type="text/javascript">
+        $(function() {
+            $("#dialog-form-details").dialog
+            ({
+                autoOpen: false,
+                height: 400,
+                width: 600,
+                modal: true,
+                show: "scale",
+                hide: "scale",
+                buttons:
+                {
+                    Regresar: function() {
+                        $(this).dialog("close");
+                    }
+                },
+                close: function() {
+                    $(this).dialog("close");
+                }
+            });
+        });
+    </script>    
+
+    <script id="Site.Master.Default" type="text/javascript">
+        /* 
+        *   comandos por defectos a ejecutarse al finalizar la carga de la pagina.
+        *   jbordo
+        */
+        $(document).tooltip();
+    </script>
+    
+</head>
+<body>
+    <% Html.EnableClientValidation(); %>
+    <table id="main" align="center" cellpadding="2" cellspacing="0">
+        <tr>
+            <td colspan="2" width="100%" align="right">
+
+            </td>
+        </tr>
+        <tr>
+            <td class="headerLogo" colspan="2" align="left">
+                <img src="../../Content/images/hheinz/banner_bicicleta.jpeg" 
+                    alt="Aliquiler MVC" style="height: 102px; width: 234px"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="userName">
+                <% Html.RenderPartial("LogOnUserControl"); %>
+            </td>
+            <td class="systemDate">
+                Buenos Aires,<span>
+                    <%= Html.Label(DateTime.Now.ToLongDateString().Substring(0,1).ToUpper() + DateTime.Now.ToLongDateString().Replace(",", " ").Substring(1))%>
+                </span>
+            </td>
+        </tr>
+        <tr><form id="formMenu" runat="server">                
+            <td id="tdmenu">
+                <uc1:Menu ID="Menu1" runat="server" />
+            </td>
+            </form>
+            <td id='ContentBox' class="ContentBox">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </td>
+        </tr>
+        <tr>
+            <td class="footer" colspan="2" align="center">
+                Demostracion para Reclutadores en CSharp ASP.NET MVC - Sistema Alquiler de Bicicletas | Versión 1.0 |
+                Último acceso:
+                <%= Html.Label(DateTime.Now.ToLongDateString().Substring(0,1).ToUpper() + DateTime.Now.ToLongDateString().Replace(",", " ").Substring(1))%>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

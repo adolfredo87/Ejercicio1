@@ -1,0 +1,324 @@
+﻿.MVCSection
+{
+    padding: 6px 10px 4px;
+}
+
+.MVCSection .Activo
+{
+    color:Blue;
+}
+
+.MVCSection .Inactivo
+{
+    color:Red;
+}
+
+.MVCSection .validation-summary-errors ul
+{
+    margin: 0;
+}
+
+.MVCSection .text-box
+{
+    width: 262px;
+    height: 16px;
+    background-color: #FFFFFF;
+}
+
+.MVCSection .text-box:focus
+{
+   background-color: #FFFFCC;
+   
+}
+
+.MVCSection .text-box.multi-line
+{
+    height: 3em;
+    width: 260px;
+}
+
+.MVCSection .custom-combobox
+{
+    position: relative;
+    display: inline-block;
+}
+.MVCSection .custom-combobox-toggle
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0; /* support: IE7 */ *height:1.7em;
+    *top:0.1em;
+}
+.MVCSection .custom-combobox-input
+{
+    margin: 0;
+    padding: 0.3em;
+    width: 225px;
+    height: 13px;
+}
+
+.MVCSection .editor-field .ui-spinner
+{
+    margin-top: -1px;
+}
+.MVCSection .editor-field .ui-spinner .text-box
+{
+    margin-top: -2px;
+    margin-bottom: 0px;
+    padding-top: 2px;
+    width: 237px;
+    border: 0px;
+    height: 19px;
+}
+
+.MVCSection .Hidden
+{
+    display: none;
+    visibility: hidden;
+}
+
+.MVCSection .Header
+{
+    opacity: 0.85;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(33, 72, 108);
+    background-color: rgb(27, 118, 188);
+    background-image: -moz-linear-gradient(center bottom , rgb(27, 118, 188) 0%, rgb(18, 75, 128) 100%);
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.MVCSection .Header > img
+{
+    padding: 0px 10px 0px 0px;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    border-top-left-radius: 5px;
+}
+
+.MVCSection .Border
+{
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: rgb(33, 72, 108);
+}
+
+.MVCSection .noBorder
+{
+    border-width: 0px;
+}
+
+.MVCSection .Body
+{
+    margin: 0em 2.7em;
+    padding: 1.5em 0 0 1em;
+    overflow: auto;
+}
+
+.MVCSection .Body .ui-widget .ui-state-error
+{
+    padding: 6px 0.7em;
+}
+.MVCSection .Body .ui-widget .ui-state-error .ui-icon
+{
+    float: left;
+    margin-right: 0.3em;
+}
+
+.MVCSection .Buttons
+{
+    margin: 2em;
+    text-align: center;
+}
+
+.MVCSection .Buttons > *
+{
+    margin: 0em 2em 0em 0em;
+}
+
+.MVCSection .ActionsButtons
+{
+    text-align: center;
+}
+.MVCSection .ActionsButtons *
+{
+    margin: 0 2px;
+}
+
+.MVCSection .Item
+{
+    padding: 6px 1px 4px 0px;
+    min-height: 25px;
+}
+
+.MVCSection .Item .editor-label
+{
+    display: table-cell;
+    vertical-align: top;
+    width: 25em;
+    vertical-align: middle;
+}
+.MVCSection .Item .editor-field
+{
+    display: table-cell;
+    width: 24em;
+    vertical-align: middle;
+}
+.MVCSection .Item .editor-validation
+{
+    display: table-cell;
+    width: 24em;
+    vertical-align: middle;
+}
+
+.MVCSection .Item .display-label
+{
+    vertical-align: top;
+    width: 20em;
+}
+.MVCSection .Item .display-field
+{
+    height: 100%;
+    max-height: 30px;
+    min-height: 15px;
+    width: 20em;
+    padding: 5px;
+    border: 1px solid #CCCCCC;
+    overflow: auto;
+    background-color: #F8F8F8;
+}
+.MVCSection .Item .display-validation
+{
+    width: 24em;
+}
+
+
+.MVCSection .Item.Horizontal
+{
+    /*padding: 6px 1px 4px 0px;*/
+}
+
+.MVCSection .Item.Horizontal .editor-label
+{
+    display: table;
+    margin: 0.5em 0em 0.2em;
+    width: 24em;
+    padding-bottom: 0.4em;
+}
+.MVCSection .Item.Horizontal .editor-label.title
+{
+    width: 98%;
+    height: 0.8em;
+    display: table-caption;
+    padding-top: 0.1em;
+    padding-left: 1em;
+}
+
+.MVCSection .Item.Horizontal .editor-label.title + .editor-field
+{
+    padding-top: 1em;
+    padding-left: 1.8em;
+}
+
+.MVCSection .ItemGrid
+{
+    
+}
+
+
+
+.MVCSection .DataRow
+{
+    width: 98%;
+}
+
+.MVCSection .DataCell
+{
+    display: table-cell;
+    margin: 1em 1em 1em 1em;
+    padding-right: 1em;
+}
+
+.MVCSection .DataCell .editor-label
+{
+    margin: 1em 0em 0.5em 0em;
+}
+
+.MVCSection .DataCell .editor-label span
+{
+    margin: 1em 0em 0.5em 0em;
+    padding: 0 0 0 0.6em;
+}
+
+.MVCSection .DataCell .editor-label .field-validation-error
+{
+    margin: 1em 1em 0 0;
+}
+
+.MVCSection .DataCell .editor-field
+{
+    margin: 0em 1em 1.2em 0;
+}
+
+.MVCSection .DataCell .display-label
+{
+    margin: 0 0 0.2em;
+}
+
+.MVCSection .DataCell .display-label .field-validation-error
+{
+    margin: 1em 1em 0 0;
+}
+
+.MVCSection .DataCell .display-field
+{
+    margin: 0 0.5em 0.7em 0;
+    width: 250px;
+}
+
+.MVCSection .DataCell.TwoCells .editor-field .text-box.multi-line, .MVCSection.Item.Horizontal .MVCSectionDataCell.TwoCells .editor-label
+{
+    width: 539px;
+}
+
+
+.MVCSection .DataCell.TwoCells .display-field, .MVCSectionDataCell.TwoCells .display-label
+{
+    width: 471px;
+}
+
+.MVCSection .DataCell.ThreeCells .display-field, .MVCSectionDataCell.ThreeCells .display-label
+{
+    width: 810px;
+}
+
+.MVCSection .DataCell.ThreeCells .editor-field .text-box.multi-line, .MVCSection.Item.Horizontal .MVCSectionDataCell.ThreeCells .editor-label
+{
+    width: 820px;
+}
+
+
+
+.MVCSection .peso .editor-field
+{
+    width: 20px;
+    display: inline;
+}
+
+.MVCSection .peso .editor-field .text-box 
+{
+    width: 10em;
+    margin-right:1em;
+}
+
+.MVCSection .Test.A
+{
+    
+}

@@ -1,0 +1,67 @@
+a 	
+{   /*color: #97020A;*/
+    color:#55A8A9;
+    background: inherit; 
+    text-decoration: none; }
+    
+a:hover  
+{   /*color: #97020A; */
+    color: #55A8A9;
+    background: inherit; 
+    text-decoration: underline; }
+
+input.searchbutton 
+{   /*background: #97020A; */
+    background: #55A8A9;
+    border: 0; 
+    padding: 6px; 
+    color: #fff;  
+    font-size: 1.1em;  }
+    
+div.title 
+{   font-size: 1.1em; 
+    /*color: #97020A; */
+    color: #55A8A9;
+    font-weight: normal; 
+    text-transform: uppercase; }
+
+.invertedshiftdown
+{   padding: 0;
+    width: 100%;
+    /*border-top: 5px solid #97020A; color theme*/
+    /*border-top: 5px solid #55A8A9; color theme*/
+    background: transparent;
+    voice-family: "\"}\"";
+    voice-family: inherit;}
+
+.invertedshiftdown .current a
+{ /** currently selected menu item **/
+    /*background-color: #97020A; color theme*/
+    background-color: #55A8A9; /*color theme*/
+    padding-top: 9px; /*Flip default padding-top value with padding-bottom */
+    padding-bottom: 5px; /*Flip default padding-bottom value with padding-top*/
+    color: white;
+}
+
+/* color del botón al colocar mouse encima*/
+.invertedshiftdown a:hover
+{   /*background-color: #97020A; color theme*/
+    /* background-color: #55A8A9; color theme*/
+    padding-top: 9px; /*Flip default padding-top value with padding-bottom */
+    padding-bottom: 5px; /*Flip default padding-bottom value with padding-top*/
+    /*color: white;*/
+}
+
+.menu_titulo {
+	color:#FFFFFF;
+	background-image: url("images/hpage/bg-portlet-head-blue-med.gif");
+    font-weight:bold; 
+    font-size:smaller; 
+    padding: 0px 0px 0px 0px;
+}
+
+.li_titulo 
+{   padding: 0px 0px 0px 0px;
+    /*background:#97020A;*/
+    background:#55A8A9;
+    }

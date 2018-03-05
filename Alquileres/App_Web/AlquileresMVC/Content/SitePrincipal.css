@@ -1,0 +1,326 @@
+﻿body
+{
+    font-size: .70em;
+    font-family: Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: #696969;/*background-image: url('images/hheinz/img-apple.png');*/
+}
+
+a:link
+{
+    color: #034af3;
+    text-decoration: underline;
+}
+a:visited
+{
+    color: #505abc;
+}
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+a:active
+{
+    color: #12eb87;
+}
+
+p, ul
+{
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1
+{
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+h2
+{
+    padding: 0 0 10px 0;
+}
+h3
+{
+    font-size: 1.2em;
+}
+h4
+{
+    font-size: 1.1em;
+}
+h5, h6
+{
+    font-size: 1em;
+}
+
+/* this rule styles <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0;
+}
+
+#main
+{
+   width:1200px;
+   border:0; 
+}
+
+td#tdmenu
+{
+    width: 220px; 
+    vertical-align: top;
+    background-color:#356BA2
+}
+.ContentBox
+{
+    width: 800px; 
+    height:580px;
+    vertical-align: top;    
+    background-color:white;
+    border-style: solid; 
+    border-width: thin; 
+    border-color: #FFFFFF #356BA2 #356BA2 #356BA2;
+   
+}
+
+.headerLogo
+{
+    height:40px;
+    background-color:white;
+}
+
+fieldset .Details
+{
+
+}
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset 
+{
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid #CCC;
+}
+
+fieldset p 
+{
+    margin: 2px 12px 10px 10px;
+}
+
+legend 
+{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+}
+
+input[type="text"] 
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+input[type="password"] 
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+table 
+{
+
+}
+
+table td 
+{
+  padding: 5px;   
+}
+
+table th
+{
+  padding: 6px 5px;
+  text-align: left;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear
+{
+    clear: both;
+}
+
+.error
+{
+    color:Red;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label,
+.editor-label,
+.display-field,
+.editor-field
+{
+    margin: 0.5em 0;
+}
+
+.text-box
+{
+    width: 30em;
+}
+
+.text-box.multi-line
+{
+    height: 6.5em;
+}
+
+.tri-state
+{
+    width: 6em;
+}
+
+
+.itemMenu{
+    
+}
+
+.itemMenu img{
+    
+}
+
+.itemMenu a
+{
+    
+}
+
+.userName{
+    text-align:left;
+    background-color:white;
+    border-style: solid; 
+    border-width: thin;
+    border-color: #356BA2 #FFFFFF #356BA2 #356BA2;
+}
+.userName span{
+    font-weight: bold;
+}
+
+.systemDate {
+    text-align:right;
+    background-color:white;
+    
+    border-bottom-color: #356BA2;
+    border-bottom-style: solid; 
+    border-bottom-width: thin;
+    
+    border-top-color: #356BA2; 
+    border-top-style: solid; 
+    border-top-width: thin; 
+    
+    border-right-color: #356BA2;
+    border-right-style: solid; 
+    border-right-width: thin;
+}
+
+.systemDate span {
+    font-weight: bold;
+}
+
+.logo
+{
+    height:50px;
+}
+
+.footer{
+    font-size:1;
+    background-color: #999999;
+    font-family: Arial;
+    height:10px;
+    color: #FFFFFF; 
+    font-weight: bold;
+}
+
+.dialog-datail input
+{
+    margin-bottom:12px; 
+    /*width:95%;*/ 
+    padding: .4em;
+    display:block;
+}
+
+.dialog-datail label
+{
+    display:block;
+}
+
+.button
+{
+}
+
+/*Prueba de formulario modales validados*/
+
+.boton 
+{
+    padding: 0.4em 1em;
+}
+
+
+#prt-page
+{
+    page-break-after: auto;
+}
+
+#prt-page .ui-th-ltr, #prt-page ui-jqgrid #prt-page ui-jqgrid-htable #prt-page th.ui-th-ltr
+{
+    border: 0 none;
+}
+
+#prt-page .ui-th-column, #prt-page .ui-jqgrid #prt-page .ui-jqgrid-htable #prt-page th.ui-th-column
+{
+    text-align: left;
+}
