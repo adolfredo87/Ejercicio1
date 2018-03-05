@@ -2255,7 +2255,6 @@
     <Content Include="Content\style_darkred.css" />
     <Content Include="Content\style_default.css" />
     <Content Include="Content\_SitePrincipal.css" />
-    <Content Include="favicon.png" />
     <Content Include="Global.asax" />
     <Content Include="Views\Alquiler\Create.aspx" />
     <Content Include="Views\Alquiler\Details.aspx" />
