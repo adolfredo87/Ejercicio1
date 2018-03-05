@@ -49,7 +49,7 @@ BD: Diagrama ER, Creación de Tablas, Creación de Store Procedure, Creación Vi
 
 Metodología: Desarrollo en C# ASP.Net MVC (Modelo-Vista-Controlador).
 
-Back-End: C# (ASP.Net MVC), C# Linq, Expresiones Lambda C#, .Net Entity Framework,  Colecciones Lsit<Entidad>, Delegados, etc.
+Back-End: C# (ASP.Net MVC), Linq C#, Expresiones Lambda C#, .Net Entity Framework, Colecciones Lsit<Entidad>, Delegados, etc.
 
 Fron-End: HTML, CSS, JavaScript, JQuery, XML, JSON, etc. 
 
