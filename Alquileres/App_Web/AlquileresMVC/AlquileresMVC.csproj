@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AlquilerController.cs" />
+    <Compile Include="Controllers\AlquilerPagoController.cs" />
     <Compile Include="Controllers\BicicletaController.cs" />
     <Compile Include="Controllers\CategoriaBicicletaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
@@ -2256,6 +2257,7 @@
     <Content Include="Content\style_default.css" />
     <Content Include="Content\_SitePrincipal.css" />
     <Content Include="Global.asax" />
+    <Content Include="Views\AlquilerPago\List.aspx" />
     <Content Include="Views\Alquiler\Create.aspx" />
     <Content Include="Views\Alquiler\Details.aspx" />
     <Content Include="Views\Alquiler\Edit.aspx" />
