@@ -290,6 +290,24 @@ GROUP BY dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.c
 HAVING      (COUNT(dbo.alquiler.IDCliente) >= 1)
 GO
 
+/****** Object:  View [dbo].[vw_cantidad_alquiler_pagado]    Script Date: 03/06/2018 01:18:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[vw_cantidad_alquiler_pagado]
+AS
+SELECT     dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, COUNT(*) AS NumAlquiler, dbo.pagoCab.Fecha, 
+                      dbo.pagoCab.MontoExento, dbo.pagoCab.Descuento, dbo.pagoCab.MontoTotal, dbo.pagoCab.Estatus
+FROM         dbo.alquiler INNER JOIN
+                      dbo.cliente ON dbo.alquiler.IDCliente = dbo.cliente.ID INNER JOIN
+                      dbo.pagoCab ON dbo.cliente.ID = dbo.pagoCab.IDCliente
+WHERE     (dbo.alquiler.Estatus = 2)
+GROUP BY dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.pagoCab.Fecha, dbo.pagoCab.MontoExento, 
+                      dbo.pagoCab.Descuento, dbo.pagoCab.MontoTotal, dbo.pagoCab.Estatus
+HAVING      (COUNT(dbo.alquiler.IDCliente) >= 1)
+GO
+
 /****** Object:  View [dbo].[vw_alquiler_por_pagar]    Script Date: 03/04/2018 19:01:12 ******/
 SET ANSI_NULLS ON
 GO
@@ -315,10 +333,11 @@ CREATE VIEW [dbo].[vw_alquiler_pagado]
 AS
 SELECT     dbo.alquiler.ID, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.bicicleta.Marca, dbo.bicicleta.Modelo, dbo.alquiler.FechaDesde, 
                       dbo.alquiler.FechaHasta, dbo.alquiler.TiempoHora, dbo.alquiler.TiempoDia, dbo.alquiler.TiempoSemana, dbo.alquiler.PrecioEstimado, 
-                      dbo.alquiler.Estatus
+                      dbo.pagoCab.MontoExento, dbo.pagoCab.Descuento, dbo.pagoCab.MontoTotal, dbo.alquiler.Estatus
 FROM         dbo.alquiler INNER JOIN
                       dbo.bicicleta ON dbo.alquiler.IDBicileta = dbo.bicicleta.ID INNER JOIN
-                      dbo.cliente ON dbo.alquiler.IDCliente = dbo.cliente.ID
+                      dbo.cliente ON dbo.alquiler.IDCliente = dbo.cliente.ID INNER JOIN
+                      dbo.pagoCab ON dbo.cliente.ID = dbo.pagoCab.IDCliente
 WHERE     (dbo.alquiler.Estatus = 2)
 GO
 

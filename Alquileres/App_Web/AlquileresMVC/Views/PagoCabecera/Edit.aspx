@@ -2,12 +2,12 @@
 <%@ Import Namespace="AlquileresMVC.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	<%= Html.DisplayNameFor() %>
+	<%= "Pagos Pendientes".ToString()%>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <% using (Html.BeginForm()) { %>
-		<%= Html.BeginSection("../../Content/images/hpantalla/bicycle.png", Html.DisplayNameEditFor().ToHtmlString().ToUpper())%>
+		<%= Html.BeginSection("../../Content/images/hpantalla/bicycle.png", "Editar Pagos Pendientes".ToString().ToUpper())%>
 		<%= Html.BeginSectionBody()%>
 		<%= Html.ValidationSummaryWidget()%>
             
