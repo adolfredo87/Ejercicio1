@@ -5,6 +5,7 @@
    <%= Html.BeginMenuItem("Procesos")%>
         <%= Html.MenuItemLink("../../Content/images/hbotons/tasks.png", " Alquileres", "List", "Alquiler")%>
         <%= Html.MenuItemLink("../../Content/images/hbotons/payment.png", " Alquileres Por Pagar", "List", "PagoCabecera")%>
+        <%= Html.MenuItemLink("../../Content/images/hbotons/payment.png", " Alquileres Pagos", "List", "AlquilerPago")%>
     <%= Html.EndMenuItem()%>
     
     <%= Html.BeginMenuItem("Maestros")%>
