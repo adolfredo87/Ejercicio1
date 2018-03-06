@@ -140,7 +140,7 @@
                 <% Html.RenderPartial("LogOnUserControl"); %>
             </td>
             <td class="systemDate">
-                Buenos Aires,<span>
+                Caracas,<span>
                     <%= Html.Label(DateTime.Now.ToLongDateString().Substring(0,1).ToUpper() + DateTime.Now.ToLongDateString().Replace(",", " ").Substring(1))%>
                 </span>
             </td>
