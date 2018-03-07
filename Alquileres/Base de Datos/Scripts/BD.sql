@@ -2016,9 +2016,11 @@ ERROR:
 GO
 
 INSERT INTO [DemoAlquileresMVC].[dbo].[cliente] ([Nombre],[Telefono],[Correo])
-VALUES	('Pedro Gonzalez','0234-2313098','pedrogonz@gmail.com'), 
-		('Wilmer Pacheco','0424-5308590','wilpac@hotmail.com'), 
-		('Rafael Briceño','0254-8004554','rafael_brice54@gmail.com')
+VALUES	('Tyrion Lannister','0234-2313098','tyrion@gmail.com'), 
+		('Arya Stark','0424-5308590','aryagot@hotmail.com'), 
+		('Jon Snow','0254-8004554','jonsnow@gmail.com'),
+		('Jaime Lannister','0409-8902368','jaime@gmail.com'),
+		('Sansa Stark','090-2368450','sansagot@gmail.com')
 GO
 
 INSERT INTO [DemoAlquileresMVC].[dbo].[categoriaBici] ([Codigo],[Categoria])
