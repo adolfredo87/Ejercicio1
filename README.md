@@ -53,4 +53,4 @@ Back-End: C# (ASP.Net MVC), Linq C#, Expresiones Lambda C#, .Net Entity Framewor
 
 Front-End: HTML, CSS, JavaScript, JQuery, XML, JSON, etc. 
 
-Software (c) 2018 Adolfredo Belizario. Este Software fue creado por Adolfredo Belizario bajo licencia GPL v3.0 con el propósito de mostrar mi trabajo a Reclutadores en Desarrollo en .Net y C#
+Software (c) 2018 Adolfredo Belizario. Este Software fue creado por Adolfredo Belizario bajo licencia MPL v2.0 con el propósito de mostrar mi trabajo a Reclutadores en Desarrollo en .Net y C#
