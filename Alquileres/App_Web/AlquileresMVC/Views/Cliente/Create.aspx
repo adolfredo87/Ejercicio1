@@ -17,6 +17,8 @@
         <%= Html.LabelEditorValidationItemFor(model => model.Nombre) %>
 		<%= Html.LabelEditorValidationItemFor(model => model.Telefono) %>
 		<%= Html.LabelEditorValidationItemFor(model => model.Correo) %>
+        <%= Html.LabelEditorValidationItemFor(model => model.Direccion) %>
+        <%= Html.LabelSpinnerValidationItemFor(model => model.Estatus)%>
         <%= Html.EndSectionItemDataRow()%>
 
         <%= Html.EndSectionBody()%>

@@ -12,7 +12,7 @@ using System.Data.Common;
 namespace AlquileresMVC.Controllers
 {
     [HandleError()]
-    public class CategoriaBicicletaController : Controller
+    public class CategoriaController : Controller
     {
         private AlquileresMVC.Models.DemoAlquileresMVCEntities db = new AlquileresMVC.Models.DemoAlquileresMVCEntities();
 
@@ -28,23 +28,23 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            CategoriaBicicleta categoriaBicicletaDetail = db.CategoriaBicicletaSet.First(cb => cb.ID == id);
-            return View(categoriaBicicletaDetail);
+            AlquileresMVC.Models.Categoria categoriaDetail = db.CategoriaSet.First(cb => cb.ID == id);
+            return View(categoriaDetail);
         }
 
         public ActionResult Create()
         {
-            CategoriaBicicleta categoriabicicleta = new CategoriaBicicleta();
-            CategoriaBicicleta categoriabicicletaToIDAdd = db.CategoriaBicicletaSet.ToList().LastOrDefault();
-            Int32 _id = categoriabicicletaToIDAdd.ID + 1;
-            categoriabicicleta.ID = _id;
-            return View(categoriabicicleta);
+            AlquileresMVC.Models.Categoria categoria = new AlquileresMVC.Models.Categoria();
+            Categoria CategoriaToIDAdd = db.CategoriaSet.ToList().LastOrDefault();
+            Int32 _id = CategoriaToIDAdd.ID + 1;
+            categoria.ID = _id;
+            return View(categoria);
         }
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            CategoriaBicicleta categoriaBicicletaToAdd = new CategoriaBicicleta();
+            AlquileresMVC.Models.Categoria categoriaToAdd = new AlquileresMVC.Models.Categoria();
 
             string[] arreglo = new string[collection.AllKeys.ToList().Count];
             Int32 i = 0;
@@ -56,15 +56,18 @@ namespace AlquileresMVC.Controllers
                 i++;
             }
 
-            categoriaBicicletaToAdd.Codigo = arreglo[0];
-            categoriaBicicletaToAdd.Categoria = arreglo[1];
+            categoriaToAdd.Codigo = arreglo[0];
+            categoriaToAdd.Descripcion = arreglo[1];
+            String estatus = arreglo[2];
+            Int32 iEstatus = Int32.Parse(estatus);
+            categoriaToAdd.Estatus = iEstatus;
 
-            TryUpdateModel(categoriaBicicletaToAdd, "CategoriaBicicleta");
-            TryUpdateModel(categoriaBicicletaToAdd, "CategoriaBicicleta", collection.ToValueProvider());
+            TryUpdateModel(categoriaToAdd, "Categoria");
+            TryUpdateModel(categoriaToAdd, "Categoria", collection.ToValueProvider());
 
 
             //valido claves primaria
-            if (db.BicicletaSet.FirstOrDefault(b => b.ID == categoriaBicicletaToAdd.ID) != null)
+            if (db.ProductoSet.FirstOrDefault(b => b.ID == categoriaToAdd.ID) != null)
             {
                 ModelState.AddModelError("ID", String.Format("Violacion Clave primaria", "ID"));
             }
@@ -78,12 +81,12 @@ namespace AlquileresMVC.Controllers
                     try
                     {
                         // Guardar y confirmar.
-                        db.AddToCategoriaBicicletaSet(categoriaBicicletaToAdd);
+                        db.AddToCategoriaSet(categoriaToAdd);
                         db.SaveChanges();
                         dbTransaction.Commit();
                         /// Si la transaccion es exitosa nos redirigimos a la pagina de detalles como 
                         /// cofirmación de que la operacion resulto exitosa
-                        CategoriaBicicleta _entidadToIDAdd = db.CategoriaBicicletaSet.ToList().LastOrDefault();
+                        Categoria _entidadToIDAdd = db.CategoriaSet.ToList().LastOrDefault();
                         Int32 _id = _entidadToIDAdd.ID;
                         _entidadToIDAdd.ID = _id;
                         return RedirectToAction("Details/" + _entidadToIDAdd.ID);
@@ -99,20 +102,20 @@ namespace AlquileresMVC.Controllers
                 }
             }
 
-            return View(categoriaBicicletaToAdd);
+            return View(categoriaToAdd);
         }
 
         public ActionResult Edit(Int32 id)
         {
-            var categoriaBicicletaToUpdate = db.CategoriaBicicletaSet.First(cb => cb.ID == id);
-            ViewData.Model = categoriaBicicletaToUpdate;
+            AlquileresMVC.Models.Categoria categoriaToUpdate = db.CategoriaSet.First(cb => cb.ID == id);
+            ViewData.Model = categoriaToUpdate;
             return View();
         }
 
         [HttpPost]
         public ActionResult Edit(Int32 id, FormCollection form)
         {
-            CategoriaBicicleta categoriaBicicletaToUpdate = db.CategoriaBicicletaSet.First(cb => cb.ID == id);
+            AlquileresMVC.Models.Categoria categoriaToUpdate = db.CategoriaSet.First(cb => cb.ID == id);
 
             string[] arreglo = new string[form.AllKeys.ToList().Count];
             Int32 i = 0;
@@ -124,11 +127,14 @@ namespace AlquileresMVC.Controllers
                 i++;
             }
 
-            categoriaBicicletaToUpdate.Codigo = arreglo[0];
-            categoriaBicicletaToUpdate.Categoria = arreglo[1];
+            categoriaToUpdate.Codigo = arreglo[0];
+            categoriaToUpdate.Descripcion = arreglo[1];
+            String estatus = arreglo[2];
+            Int32 iEstatus = Int32.Parse(estatus);
+            categoriaToUpdate.Estatus = iEstatus;
 
-            TryUpdateModel(categoriaBicicletaToUpdate, "CategoriaBicicleta");
-            TryUpdateModel(categoriaBicicletaToUpdate, "CategoriaBicicleta", form.ToValueProvider());
+            TryUpdateModel(categoriaToUpdate, "Categoria");
+            TryUpdateModel(categoriaToUpdate, "Categoria", form.ToValueProvider());
 
             // Si el modelo es valido, guardo en la BD
             if (ModelState.IsValid)
@@ -142,7 +148,7 @@ namespace AlquileresMVC.Controllers
                     dbTransaction.Commit();
                     /// Si la transaccion es exitosa nos redirigimos a la pagina de detalles como 
                     /// cofirmación de que la operacion resulto exitosa
-                    return RedirectToAction("Details/" + categoriaBicicletaToUpdate.ID);
+                    return RedirectToAction("Details/" + categoriaToUpdate.ID);
                 }
                 catch (Exception ex)
                 {
@@ -154,32 +160,32 @@ namespace AlquileresMVC.Controllers
                 }
             }
 
-            return View(categoriaBicicletaToUpdate);
+            return View(categoriaToUpdate);
         }
 
         public ActionResult Delete(int id)
         {
-            var categoriaBicicletaToDelete = db.CategoriaBicicletaSet.First(cb => cb.ID == id);
-            ViewData.Model = categoriaBicicletaToDelete;
+            AlquileresMVC.Models.Categoria categoriaToDelete = db.CategoriaSet.First(cb => cb.ID == id);
+            ViewData.Model = categoriaToDelete;
             return View();
         }
 
         [HttpPost]
         public ActionResult Delete(Int32 id, FormCollection form)
         {
-            var categoriaBicicletaToDelete = db.CategoriaBicicletaSet.First(cb => cb.ID == id);
+            AlquileresMVC.Models.Categoria categoriaToDelete = db.CategoriaSet.First(cb => cb.ID == id);
 
             //valido cliente tiene alquiler
-            if (db.BicicletaSet.FirstOrDefault(b => b.IDCategoriaBici == id) != null)
+            if (db.ProductoSet.FirstOrDefault(b => b.IDCategoria == id) != null)
             {
-                ModelState.AddModelError("ID", String.Format("Esta intentando Borrar una categoria que tiene una bicicleta"));
+                ModelState.AddModelError("ID", String.Format("Esta intentando Borrar una categoria que tiene un Producto"));
             }
             else
             {
                 try
                 {
                     // Delete 
-                    db.DeleteObject(categoriaBicicletaToDelete);
+                    db.DeleteObject(categoriaToDelete);
                     db.SaveChanges();
                     // Retorno a la vista del listar
                     return RedirectToAction("List");
@@ -193,7 +199,7 @@ namespace AlquileresMVC.Controllers
                 }
             }
 
-            return View(categoriaBicicletaToDelete);
+            return View(categoriaToDelete);
         }
 
         private System.String ObtenerMetodoEnEjecucion(bool nombreCorto)
@@ -213,47 +219,48 @@ namespace AlquileresMVC.Controllers
         [JsonHandleError()]
         public JsonResult GetJsonDetails(int id)
         {
-            var categoriaBicicletaDetail = db.CategoriaBicicletaSet.First(cb => cb.ID == id);
+            var CategoriaDetail = db.CategoriaSet.First(cb => cb.ID == id);
 
-            return Json(categoriaBicicletaDetail, JsonRequestBehavior.AllowGet);
+            return Json(CategoriaDetail, JsonRequestBehavior.AllowGet);
         }
 
         [JsonHandleError()]
         public JsonResult GetJsonDetailsEdit(int id)
         {
-            var categoriaBicicletaDetail = db.CategoriaBicicletaSet.First(cb => cb.ID == id);
+            var CategoriaDetail = db.CategoriaSet.First(cb => cb.ID == id);
 
-            return Json(categoriaBicicletaDetail, JsonRequestBehavior.AllowGet);
+            return Json(CategoriaDetail, JsonRequestBehavior.AllowGet);
         }
 
         [JsonHandleError()]
         public JsonResult GetListData(string sidx, string sord, int page, int rows,
                bool _search, string searchField, string searchOper, string searchString)
         {
-            var categoriaBicicleta = db.CategoriaBicicletaSet.ToList().AsQueryable();
+            var Categoria = db.CategoriaSet.ToList().AsQueryable();
 
             // Filter the list
-            var filteredcategoriaBicicleta = categoriaBicicleta;
+            var filteredCategoria = Categoria;
 
-            filteredcategoriaBicicleta = Utility.Filter<CategoriaBicicleta>(categoriaBicicleta, _search, searchField, searchOper, searchString);
+            filteredCategoria = Utility.Filter<Categoria>(Categoria, _search, searchField, searchOper, searchString);
 
             // Sort the list
-            var sortedcategoriaBicicleta = Utility.Sort<CategoriaBicicleta>(filteredcategoriaBicicleta, sidx, sord);
+            var sortedCategoria = Utility.Sort<Categoria>(filteredCategoria, sidx, sord);
 
-            sortedcategoriaBicicleta = sortedcategoriaBicicleta.Skip((page - 1) * rows).Take(rows);
+            sortedCategoria = sortedCategoria.Skip((page - 1) * rows).Take(rows);
 
-            var totalRecords = filteredcategoriaBicicleta.Count();
+            var totalRecords = filteredCategoria.Count();
             var totalPages = (int)Math.Ceiling((double)totalRecords / (double)rows);
 
             // Prepare the data to fit the requirement of jQGrid
-            var data = (from s in sortedcategoriaBicicleta
+            var data = (from s in sortedCategoria
                         select new
                         {
                             id = s.ID,
                             cell = new object[] { 
                                 s.ID, 
                                 s.Codigo, 
-                                s.Categoria, 
+                                s.Descripcion, 
+                                s.Estatus, 
                             }
                         });
             // Send the data to the jQGrid

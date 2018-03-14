@@ -18,12 +18,18 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
 
-[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Alquiler_Bicileta", "bicicleta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Bicicleta), "alquiler", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Alquiler), true)]
 [assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Alquiler_Cliente", "cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Cliente), "alquiler", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Alquiler), true)]
+[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Alquiler_Producto", "producto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Producto), "alquiler", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Alquiler), true)]
 [assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_PagoDet_Alquiler", "alquiler", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Alquiler), "pagoDet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.PagoDetalle), true)]
-[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Bicileta_CategoriaBici", "categoriaBici", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.CategoriaBicicleta), "bicicleta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Bicicleta), true)]
+[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Categoria_Tipo", "tipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Tipo), "categoria", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Categoria), true)]
+[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Producto_Categoria", "categoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Categoria), "producto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Producto), true)]
 [assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_PagoCab_Cliente", "cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Cliente), "pagoCab", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.PagoCabecera), true)]
+[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Marca_Tipo", "tipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Tipo), "marca", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Marca), true)]
+[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Producto_Marca", "marca", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Marca), "producto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Producto), true)]
+[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Modelo_Tipo", "tipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Tipo), "modelo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Modelo), true)]
+[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Producto_Modelo", "modelo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Modelo), "producto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Producto), true)]
 [assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_PagoDet_PagoCab", "pagoCab", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.PagoCabecera), "pagoDet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.PagoDetalle), true)]
+[assembly: EdmRelationshipAttribute("DemoAlquileresMVCModel", "FK_Producto_Tipo", "tipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AlquileresMVC.Models.Tipo), "producto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AlquileresMVC.Models.Producto), true)]
 
 #endregion
 
@@ -39,7 +45,7 @@ namespace AlquileresMVC.Models
         #region Constructores
     
         /// <summary>
-        /// Inicializa un nuevo objeto DemoAlquileresMVCEntities usando la cadena de conexión encontrada en la sección 'DemoAlquileresMVCEntities' del archivo de configuración de la aplicación.
+        /// Inicializa un nuevo objeto DemoAlquilerGameBD usando la cadena de conexión encontrada en la sección 'DemoAlquilerGameBD' del archivo de configuración de la aplicación.
         /// </summary>
         public DemoAlquileresMVCEntities() : base("name=DemoAlquileresMVCEntities", "DemoAlquileresMVCEntities")
         {
@@ -48,7 +54,7 @@ namespace AlquileresMVC.Models
         }
     
         /// <summary>
-        /// Inicializar un nuevo objeto DemoAlquileresMVCEntities.
+        /// Inicializar un nuevo objeto DemoAlquilerGameBD.
         /// </summary>
         public DemoAlquileresMVCEntities(string connectionString) : base(connectionString, "DemoAlquileresMVCEntities")
         {
@@ -57,7 +63,7 @@ namespace AlquileresMVC.Models
         }
     
         /// <summary>
-        /// Inicializar un nuevo objeto DemoAlquileresMVCEntities.
+        /// Inicializar un nuevo objeto DemoAlquilerGameBD.
         /// </summary>
         public DemoAlquileresMVCEntities(EntityConnection connection) : base(connection, "DemoAlquileresMVCEntities")
         {
@@ -94,34 +100,18 @@ namespace AlquileresMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<Bicicleta> BicicletaSet
+        public ObjectSet<Categoria> CategoriaSet
         {
             get
             {
-                if ((_BicicletaSet == null))
+                if ((_CategoriaSet == null))
                 {
-                    _BicicletaSet = base.CreateObjectSet<Bicicleta>("BicicletaSet");
+                    _CategoriaSet = base.CreateObjectSet<Categoria>("CategoriaSet");
                 }
-                return _BicicletaSet;
+                return _CategoriaSet;
             }
         }
-        private ObjectSet<Bicicleta> _BicicletaSet;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<CategoriaBicicleta> CategoriaBicicletaSet
-        {
-            get
-            {
-                if ((_CategoriaBicicletaSet == null))
-                {
-                    _CategoriaBicicletaSet = base.CreateObjectSet<CategoriaBicicleta>("CategoriaBicicletaSet");
-                }
-                return _CategoriaBicicletaSet;
-            }
-        }
-        private ObjectSet<CategoriaBicicleta> _CategoriaBicicletaSet;
+        private ObjectSet<Categoria> _CategoriaSet;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -154,6 +144,38 @@ namespace AlquileresMVC.Models
             }
         }
         private ObjectSet<Descuento> _DescuentoSet;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Marca> MarcaSet
+        {
+            get
+            {
+                if ((_MarcaSet == null))
+                {
+                    _MarcaSet = base.CreateObjectSet<Marca>("MarcaSet");
+                }
+                return _MarcaSet;
+            }
+        }
+        private ObjectSet<Marca> _MarcaSet;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Modelo> ModeloSet
+        {
+            get
+            {
+                if ((_ModeloSet == null))
+                {
+                    _ModeloSet = base.CreateObjectSet<Modelo>("ModeloSet");
+                }
+                return _ModeloSet;
+            }
+        }
+        private ObjectSet<Modelo> _ModeloSet;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -202,6 +224,38 @@ namespace AlquileresMVC.Models
             }
         }
         private ObjectSet<Precio> _PrecioSet;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Tipo> TipoSet
+        {
+            get
+            {
+                if ((_TipoSet == null))
+                {
+                    _TipoSet = base.CreateObjectSet<Tipo>("TipoSet");
+                }
+                return _TipoSet;
+            }
+        }
+        private ObjectSet<Tipo> _TipoSet;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Producto> ProductoSet
+        {
+            get
+            {
+                if ((_ProductoSet == null))
+                {
+                    _ProductoSet = base.CreateObjectSet<Producto>("ProductoSet");
+                }
+                return _ProductoSet;
+            }
+        }
+        private ObjectSet<Producto> _ProductoSet;
 
         #endregion
         #region Métodos AddTo
@@ -215,19 +269,11 @@ namespace AlquileresMVC.Models
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet BicicletaSet. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet CategoriaSet. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToBicicletaSet(Bicicleta bicicleta)
+        public void AddToCategoriaSet(Categoria categoria)
         {
-            base.AddObject("BicicletaSet", bicicleta);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet CategoriaBicicletaSet. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToCategoriaBicicletaSet(CategoriaBicicleta categoriaBicicleta)
-        {
-            base.AddObject("CategoriaBicicletaSet", categoriaBicicleta);
+            base.AddObject("CategoriaSet", categoria);
         }
     
         /// <summary>
@@ -244,6 +290,22 @@ namespace AlquileresMVC.Models
         public void AddToDescuentoSet(Descuento descuento)
         {
             base.AddObject("DescuentoSet", descuento);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet MarcaSet. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToMarcaSet(Marca marca)
+        {
+            base.AddObject("MarcaSet", marca);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet ModeloSet. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToModeloSet(Modelo modelo)
+        {
+            base.AddObject("ModeloSet", modelo);
         }
     
         /// <summary>
@@ -269,6 +331,22 @@ namespace AlquileresMVC.Models
         {
             base.AddObject("PrecioSet", precio);
         }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TipoSet. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTipoSet(Tipo tipo)
+        {
+            base.AddObject("TipoSet", tipo);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet ProductoSet. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToProductoSet(Producto producto)
+        {
+            base.AddObject("ProductoSet", producto);
+        }
 
         #endregion
     }
@@ -293,16 +371,16 @@ namespace AlquileresMVC.Models
         /// </summary>
         /// <param name="id">Valor inicial de la propiedad ID.</param>
         /// <param name="iDCliente">Valor inicial de la propiedad IDCliente.</param>
-        /// <param name="iDBicileta">Valor inicial de la propiedad IDBicileta.</param>
+        /// <param name="iDProducto">Valor inicial de la propiedad IDProducto.</param>
         /// <param name="fechaDesde">Valor inicial de la propiedad FechaDesde.</param>
         /// <param name="fechaHasta">Valor inicial de la propiedad FechaHasta.</param>
         /// <param name="estatus">Valor inicial de la propiedad Estatus.</param>
-        public static Alquiler CreateAlquiler(global::System.Int32 id, global::System.Int32 iDCliente, global::System.Int32 iDBicileta, global::System.DateTime fechaDesde, global::System.DateTime fechaHasta, global::System.Int32 estatus)
+        public static Alquiler CreateAlquiler(global::System.Int32 id, global::System.Int32 iDCliente, global::System.Int32 iDProducto, global::System.DateTime fechaDesde, global::System.DateTime fechaHasta, global::System.Int32 estatus)
         {
             Alquiler alquiler = new Alquiler();
             alquiler.ID = id;
             alquiler.IDCliente = iDCliente;
-            alquiler.IDBicileta = iDBicileta;
+            alquiler.IDProducto = iDProducto;
             alquiler.FechaDesde = fechaDesde;
             alquiler.FechaHasta = fechaHasta;
             alquiler.Estatus = estatus;
@@ -368,24 +446,24 @@ namespace AlquileresMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 IDBicileta
+        public global::System.Int32 IDProducto
         {
             get
             {
-                return _IDBicileta;
+                return _IDProducto;
             }
             set
             {
-                OnIDBiciletaChanging(value);
-                ReportPropertyChanging("IDBicileta");
-                _IDBicileta = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IDBicileta");
-                OnIDBiciletaChanged();
+                OnIDProductoChanging(value);
+                ReportPropertyChanging("IDProducto");
+                _IDProducto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDProducto");
+                OnIDProductoChanged();
             }
         }
-        private global::System.Int32 _IDBicileta;
-        partial void OnIDBiciletaChanging(global::System.Int32 value);
-        partial void OnIDBiciletaChanged();
+        private global::System.Int32 _IDProducto;
+        partial void OnIDProductoChanging(global::System.Int32 value);
+        partial void OnIDProductoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -565,44 +643,6 @@ namespace AlquileresMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Alquiler_Bicileta", "bicicleta")]
-        public Bicicleta Bicicleta
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Bicicleta>("DemoAlquileresMVCModel.FK_Alquiler_Bicileta", "bicicleta").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Bicicleta>("DemoAlquileresMVCModel.FK_Alquiler_Bicileta", "bicicleta").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Bicicleta> BicicletaReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Bicicleta>("DemoAlquileresMVCModel.FK_Alquiler_Bicileta", "bicicleta");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Bicicleta>("DemoAlquileresMVCModel.FK_Alquiler_Bicileta", "bicicleta", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Alquiler_Cliente", "cliente")]
         public Cliente Cliente
         {
@@ -641,6 +681,44 @@ namespace AlquileresMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Alquiler_Producto", "producto")]
+        public Producto Producto
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Producto>("DemoAlquileresMVCModel.FK_Alquiler_Producto", "producto").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Producto>("DemoAlquileresMVCModel.FK_Alquiler_Producto", "producto").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Producto> ProductoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Producto>("DemoAlquileresMVCModel.FK_Alquiler_Producto", "producto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Producto>("DemoAlquileresMVCModel.FK_Alquiler_Producto", "producto", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_PagoDet_Alquiler", "pagoDet")]
         public EntityCollection<PagoDetalle> PagosDetalle
         {
@@ -663,218 +741,26 @@ namespace AlquileresMVC.Models
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DemoAlquileresMVCModel", Name="Bicicleta")]
+    [EdmEntityTypeAttribute(NamespaceName="DemoAlquileresMVCModel", Name="Categoria")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Bicicleta : EntityObject
+    public partial class Categoria : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto Bicicleta.
+        /// Crear un nuevo objeto Categoria.
         /// </summary>
         /// <param name="id">Valor inicial de la propiedad ID.</param>
-        /// <param name="marca">Valor inicial de la propiedad Marca.</param>
-        /// <param name="modelo">Valor inicial de la propiedad Modelo.</param>
-        /// <param name="iDCategoriaBici">Valor inicial de la propiedad IDCategoriaBici.</param>
-        public static Bicicleta CreateBicicleta(global::System.Int32 id, global::System.String marca, global::System.String modelo, global::System.Int32 iDCategoriaBici)
+        /// <param name="estatus">Valor inicial de la propiedad Estatus.</param>
+        /// <param name="iDTipo">Valor inicial de la propiedad IDTipo.</param>
+        public static Categoria CreateCategoria(global::System.Int32 id, global::System.Int32 estatus, global::System.Int32 iDTipo)
         {
-            Bicicleta bicicleta = new Bicicleta();
-            bicicleta.ID = id;
-            bicicleta.Marca = marca;
-            bicicleta.Modelo = modelo;
-            bicicleta.IDCategoriaBici = iDCategoriaBici;
-            return bicicleta;
-        }
-
-        #endregion
-        #region Propiedades primitivas
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Marca
-        {
-            get
-            {
-                return _Marca;
-            }
-            set
-            {
-                OnMarcaChanging(value);
-                ReportPropertyChanging("Marca");
-                _Marca = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Marca");
-                OnMarcaChanged();
-            }
-        }
-        private global::System.String _Marca;
-        partial void OnMarcaChanging(global::System.String value);
-        partial void OnMarcaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Modelo
-        {
-            get
-            {
-                return _Modelo;
-            }
-            set
-            {
-                OnModeloChanging(value);
-                ReportPropertyChanging("Modelo");
-                _Modelo = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Modelo");
-                OnModeloChanged();
-            }
-        }
-        private global::System.String _Modelo;
-        partial void OnModeloChanging(global::System.String value);
-        partial void OnModeloChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IDCategoriaBici
-        {
-            get
-            {
-                return _IDCategoriaBici;
-            }
-            set
-            {
-                OnIDCategoriaBiciChanging(value);
-                ReportPropertyChanging("IDCategoriaBici");
-                _IDCategoriaBici = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IDCategoriaBici");
-                OnIDCategoriaBiciChanged();
-            }
-        }
-        private global::System.Int32 _IDCategoriaBici;
-        partial void OnIDCategoriaBiciChanging(global::System.Int32 value);
-        partial void OnIDCategoriaBiciChanged();
-
-        #endregion
-    
-        #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Alquiler_Bicileta", "alquiler")]
-        public EntityCollection<Alquiler> Alquileres
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Alquiler>("DemoAlquileresMVCModel.FK_Alquiler_Bicileta", "alquiler");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Alquiler>("DemoAlquileresMVCModel.FK_Alquiler_Bicileta", "alquiler", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Bicileta_CategoriaBici", "categoriaBici")]
-        public CategoriaBicicleta CategoriaBici
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CategoriaBicicleta>("DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici", "categoriaBici").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CategoriaBicicleta>("DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici", "categoriaBici").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<CategoriaBicicleta> CategoriaBiciReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CategoriaBicicleta>("DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici", "categoriaBici");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CategoriaBicicleta>("DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici", "categoriaBici", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DemoAlquileresMVCModel", Name="CategoriaBicicleta")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class CategoriaBicicleta : EntityObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto CategoriaBicicleta.
-        /// </summary>
-        /// <param name="id">Valor inicial de la propiedad ID.</param>
-        public static CategoriaBicicleta CreateCategoriaBicicleta(global::System.Int32 id)
-        {
-            CategoriaBicicleta categoriaBicicleta = new CategoriaBicicleta();
-            categoriaBicicleta.ID = id;
-            return categoriaBicicleta;
+            Categoria categoria = new Categoria();
+            categoria.ID = id;
+            categoria.Estatus = estatus;
+            categoria.IDTipo = iDTipo;
+            return categoria;
         }
 
         #endregion
@@ -936,24 +822,72 @@ namespace AlquileresMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Categoria
+        public global::System.String Descripcion
         {
             get
             {
-                return _Categoria;
+                return _Descripcion;
             }
             set
             {
-                OnCategoriaChanging(value);
-                ReportPropertyChanging("Categoria");
-                _Categoria = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Categoria");
-                OnCategoriaChanged();
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
             }
         }
-        private global::System.String _Categoria;
-        partial void OnCategoriaChanging(global::System.String value);
-        partial void OnCategoriaChanged();
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Estatus
+        {
+            get
+            {
+                return _Estatus;
+            }
+            set
+            {
+                OnEstatusChanging(value);
+                ReportPropertyChanging("Estatus");
+                _Estatus = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estatus");
+                OnEstatusChanged();
+            }
+        }
+        private global::System.Int32 _Estatus;
+        partial void OnEstatusChanging(global::System.Int32 value);
+        partial void OnEstatusChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDTipo
+        {
+            get
+            {
+                return _IDTipo;
+            }
+            set
+            {
+                OnIDTipoChanging(value);
+                ReportPropertyChanging("IDTipo");
+                _IDTipo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDTipo");
+                OnIDTipoChanged();
+            }
+        }
+        private global::System.Int32 _IDTipo;
+        partial void OnIDTipoChanging(global::System.Int32 value);
+        partial void OnIDTipoChanged();
 
         #endregion
     
@@ -965,18 +899,56 @@ namespace AlquileresMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Bicileta_CategoriaBici", "bicicleta")]
-        public EntityCollection<Bicicleta> Bicicletas
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Categoria_Tipo", "tipo")]
+        public Tipo Tipo
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Bicicleta>("DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici", "bicicleta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Categoria_Tipo", "tipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Categoria_Tipo", "tipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Tipo> TipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Categoria_Tipo", "tipo");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Bicicleta>("DemoAlquileresMVCModel.FK_Bicileta_CategoriaBici", "bicicleta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Categoria_Tipo", "tipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Producto_Categoria", "producto")]
+        public EntityCollection<Producto> Productos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Producto>("DemoAlquileresMVCModel.FK_Producto_Categoria", "producto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Producto>("DemoAlquileresMVCModel.FK_Producto_Categoria", "producto", value);
                 }
             }
         }
@@ -999,11 +971,13 @@ namespace AlquileresMVC.Models
         /// </summary>
         /// <param name="id">Valor inicial de la propiedad ID.</param>
         /// <param name="nombre">Valor inicial de la propiedad Nombre.</param>
-        public static Cliente CreateCliente(global::System.Int32 id, global::System.String nombre)
+        /// <param name="estatus">Valor inicial de la propiedad Estatus.</param>
+        public static Cliente CreateCliente(global::System.Int32 id, global::System.String nombre, global::System.Int32 estatus)
         {
             Cliente cliente = new Cliente();
             cliente.ID = id;
             cliente.Nombre = nombre;
+            cliente.Estatus = estatus;
             return cliente;
         }
 
@@ -1108,6 +1082,54 @@ namespace AlquileresMVC.Models
         private global::System.String _Correo;
         partial void OnCorreoChanging(global::System.String value);
         partial void OnCorreoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Direccion
+        {
+            get
+            {
+                return _Direccion;
+            }
+            set
+            {
+                OnDireccionChanging(value);
+                ReportPropertyChanging("Direccion");
+                _Direccion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Direccion");
+                OnDireccionChanged();
+            }
+        }
+        private global::System.String _Direccion;
+        partial void OnDireccionChanging(global::System.String value);
+        partial void OnDireccionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Estatus
+        {
+            get
+            {
+                return _Estatus;
+            }
+            set
+            {
+                OnEstatusChanging(value);
+                ReportPropertyChanging("Estatus");
+                _Estatus = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estatus");
+                OnEstatusChanged();
+            }
+        }
+        private global::System.Int32 _Estatus;
+        partial void OnEstatusChanging(global::System.Int32 value);
+        partial void OnEstatusChanged();
 
         #endregion
     
@@ -1309,6 +1331,442 @@ namespace AlquileresMVC.Models
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DemoAlquileresMVCModel", Name="Marca")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Marca : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Marca.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad ID.</param>
+        /// <param name="estatus">Valor inicial de la propiedad Estatus.</param>
+        /// <param name="iDTipo">Valor inicial de la propiedad IDTipo.</param>
+        public static Marca CreateMarca(global::System.Int32 id, global::System.Int32 estatus, global::System.Int32 iDTipo)
+        {
+            Marca marca = new Marca();
+            marca.ID = id;
+            marca.Estatus = estatus;
+            marca.IDTipo = iDTipo;
+            return marca;
+        }
+
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Codigo
+        {
+            get
+            {
+                return _Codigo;
+            }
+            set
+            {
+                OnCodigoChanging(value);
+                ReportPropertyChanging("Codigo");
+                _Codigo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Codigo");
+                OnCodigoChanged();
+            }
+        }
+        private global::System.String _Codigo;
+        partial void OnCodigoChanging(global::System.String value);
+        partial void OnCodigoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Estatus
+        {
+            get
+            {
+                return _Estatus;
+            }
+            set
+            {
+                OnEstatusChanging(value);
+                ReportPropertyChanging("Estatus");
+                _Estatus = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estatus");
+                OnEstatusChanged();
+            }
+        }
+        private global::System.Int32 _Estatus;
+        partial void OnEstatusChanging(global::System.Int32 value);
+        partial void OnEstatusChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDTipo
+        {
+            get
+            {
+                return _IDTipo;
+            }
+            set
+            {
+                OnIDTipoChanging(value);
+                ReportPropertyChanging("IDTipo");
+                _IDTipo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDTipo");
+                OnIDTipoChanged();
+            }
+        }
+        private global::System.Int32 _IDTipo;
+        partial void OnIDTipoChanging(global::System.Int32 value);
+        partial void OnIDTipoChanged();
+
+        #endregion
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Marca_Tipo", "tipo")]
+        public Tipo Tipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Marca_Tipo", "tipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Marca_Tipo", "tipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Tipo> TipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Marca_Tipo", "tipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Marca_Tipo", "tipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Producto_Marca", "producto")]
+        public EntityCollection<Producto> Productos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Producto>("DemoAlquileresMVCModel.FK_Producto_Marca", "producto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Producto>("DemoAlquileresMVCModel.FK_Producto_Marca", "producto", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DemoAlquileresMVCModel", Name="Modelo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Modelo : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Modelo.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad ID.</param>
+        /// <param name="estatus">Valor inicial de la propiedad Estatus.</param>
+        /// <param name="iDTipo">Valor inicial de la propiedad IDTipo.</param>
+        public static Modelo CreateModelo(global::System.Int32 id, global::System.Int32 estatus, global::System.Int32 iDTipo)
+        {
+            Modelo modelo = new Modelo();
+            modelo.ID = id;
+            modelo.Estatus = estatus;
+            modelo.IDTipo = iDTipo;
+            return modelo;
+        }
+
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Codigo
+        {
+            get
+            {
+                return _Codigo;
+            }
+            set
+            {
+                OnCodigoChanging(value);
+                ReportPropertyChanging("Codigo");
+                _Codigo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Codigo");
+                OnCodigoChanged();
+            }
+        }
+        private global::System.String _Codigo;
+        partial void OnCodigoChanging(global::System.String value);
+        partial void OnCodigoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Estatus
+        {
+            get
+            {
+                return _Estatus;
+            }
+            set
+            {
+                OnEstatusChanging(value);
+                ReportPropertyChanging("Estatus");
+                _Estatus = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estatus");
+                OnEstatusChanged();
+            }
+        }
+        private global::System.Int32 _Estatus;
+        partial void OnEstatusChanging(global::System.Int32 value);
+        partial void OnEstatusChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDTipo
+        {
+            get
+            {
+                return _IDTipo;
+            }
+            set
+            {
+                OnIDTipoChanging(value);
+                ReportPropertyChanging("IDTipo");
+                _IDTipo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDTipo");
+                OnIDTipoChanged();
+            }
+        }
+        private global::System.Int32 _IDTipo;
+        partial void OnIDTipoChanging(global::System.Int32 value);
+        partial void OnIDTipoChanged();
+
+        #endregion
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Modelo_Tipo", "tipo")]
+        public Tipo Tipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Modelo_Tipo", "tipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Modelo_Tipo", "tipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Tipo> TipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Modelo_Tipo", "tipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Modelo_Tipo", "tipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Producto_Modelo", "producto")]
+        public EntityCollection<Producto> Productos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Producto>("DemoAlquileresMVCModel.FK_Producto_Modelo", "producto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Producto>("DemoAlquileresMVCModel.FK_Producto_Modelo", "producto", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -1851,10 +2309,12 @@ namespace AlquileresMVC.Models
         /// Crear un nuevo objeto Precio.
         /// </summary>
         /// <param name="id">Valor inicial de la propiedad ID.</param>
-        public static Precio CreatePrecio(global::System.Int32 id)
+        /// <param name="estatus">Valor inicial de la propiedad Estatus.</param>
+        public static Precio CreatePrecio(global::System.Int32 id, global::System.Int32 estatus)
         {
             Precio precio = new Precio();
             precio.ID = id;
+            precio.Estatus = estatus;
             return precio;
         }
 
@@ -1959,9 +2419,667 @@ namespace AlquileresMVC.Models
         private Nullable<global::System.Double> _PrecioUnitario;
         partial void OnPrecioUnitarioChanging(Nullable<global::System.Double> value);
         partial void OnPrecioUnitarioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Estatus
+        {
+            get
+            {
+                return _Estatus;
+            }
+            set
+            {
+                OnEstatusChanging(value);
+                ReportPropertyChanging("Estatus");
+                _Estatus = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estatus");
+                OnEstatusChanged();
+            }
+        }
+        private global::System.Int32 _Estatus;
+        partial void OnEstatusChanging(global::System.Int32 value);
+        partial void OnEstatusChanged();
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DemoAlquileresMVCModel", Name="Producto")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Producto : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Producto.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad ID.</param>
+        /// <param name="iDTipo">Valor inicial de la propiedad IDTipo.</param>
+        /// <param name="codigo">Valor inicial de la propiedad Codigo.</param>
+        /// <param name="descripcion">Valor inicial de la propiedad Descripcion.</param>
+        /// <param name="estatus">Valor inicial de la propiedad Estatus.</param>
+        /// <param name="iDMarca">Valor inicial de la propiedad IDMarca.</param>
+        /// <param name="iDModelo">Valor inicial de la propiedad IDModelo.</param>
+        /// <param name="iDCategoria">Valor inicial de la propiedad IDCategoria.</param>
+        public static Producto CreateProducto(global::System.Int32 id, global::System.Int32 iDTipo, global::System.String codigo, global::System.String descripcion, global::System.Int32 estatus, global::System.Int32 iDMarca, global::System.Int32 iDModelo, global::System.Int32 iDCategoria)
+        {
+            Producto producto = new Producto();
+            producto.ID = id;
+            producto.IDTipo = iDTipo;
+            producto.Codigo = codigo;
+            producto.Descripcion = descripcion;
+            producto.Estatus = estatus;
+            producto.IDMarca = iDMarca;
+            producto.IDModelo = iDModelo;
+            producto.IDCategoria = iDCategoria;
+            return producto;
+        }
+
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDTipo
+        {
+            get
+            {
+                return _IDTipo;
+            }
+            set
+            {
+                OnIDTipoChanging(value);
+                ReportPropertyChanging("IDTipo");
+                _IDTipo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDTipo");
+                OnIDTipoChanged();
+            }
+        }
+        private global::System.Int32 _IDTipo;
+        partial void OnIDTipoChanging(global::System.Int32 value);
+        partial void OnIDTipoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Codigo
+        {
+            get
+            {
+                return _Codigo;
+            }
+            set
+            {
+                OnCodigoChanging(value);
+                ReportPropertyChanging("Codigo");
+                _Codigo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Codigo");
+                OnCodigoChanged();
+            }
+        }
+        private global::System.String _Codigo;
+        partial void OnCodigoChanging(global::System.String value);
+        partial void OnCodigoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Estatus
+        {
+            get
+            {
+                return _Estatus;
+            }
+            set
+            {
+                OnEstatusChanging(value);
+                ReportPropertyChanging("Estatus");
+                _Estatus = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estatus");
+                OnEstatusChanged();
+            }
+        }
+        private global::System.Int32 _Estatus;
+        partial void OnEstatusChanging(global::System.Int32 value);
+        partial void OnEstatusChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDMarca
+        {
+            get
+            {
+                return _IDMarca;
+            }
+            set
+            {
+                OnIDMarcaChanging(value);
+                ReportPropertyChanging("IDMarca");
+                _IDMarca = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDMarca");
+                OnIDMarcaChanged();
+            }
+        }
+        private global::System.Int32 _IDMarca;
+        partial void OnIDMarcaChanging(global::System.Int32 value);
+        partial void OnIDMarcaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDModelo
+        {
+            get
+            {
+                return _IDModelo;
+            }
+            set
+            {
+                OnIDModeloChanging(value);
+                ReportPropertyChanging("IDModelo");
+                _IDModelo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDModelo");
+                OnIDModeloChanged();
+            }
+        }
+        private global::System.Int32 _IDModelo;
+        partial void OnIDModeloChanging(global::System.Int32 value);
+        partial void OnIDModeloChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IDCategoria
+        {
+            get
+            {
+                return _IDCategoria;
+            }
+            set
+            {
+                OnIDCategoriaChanging(value);
+                ReportPropertyChanging("IDCategoria");
+                _IDCategoria = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IDCategoria");
+                OnIDCategoriaChanged();
+            }
+        }
+        private global::System.Int32 _IDCategoria;
+        partial void OnIDCategoriaChanging(global::System.Int32 value);
+        partial void OnIDCategoriaChanged();
+
+        #endregion
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Alquiler_Producto", "alquiler")]
+        public EntityCollection<Alquiler> Alquileres
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Alquiler>("DemoAlquileresMVCModel.FK_Alquiler_Producto", "alquiler");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Alquiler>("DemoAlquileresMVCModel.FK_Alquiler_Producto", "alquiler", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Producto_Categoria", "categoria")]
+        public Categoria Categoria
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Categoria>("DemoAlquileresMVCModel.FK_Producto_Categoria", "categoria").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Categoria>("DemoAlquileresMVCModel.FK_Producto_Categoria", "categoria").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Categoria> CategoriaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Categoria>("DemoAlquileresMVCModel.FK_Producto_Categoria", "categoria");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Categoria>("DemoAlquileresMVCModel.FK_Producto_Categoria", "categoria", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Producto_Marca", "marca")]
+        public Marca Marca
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Marca>("DemoAlquileresMVCModel.FK_Producto_Marca", "marca").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Marca>("DemoAlquileresMVCModel.FK_Producto_Marca", "marca").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Marca> MarcaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Marca>("DemoAlquileresMVCModel.FK_Producto_Marca", "marca");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Marca>("DemoAlquileresMVCModel.FK_Producto_Marca", "marca", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Producto_Modelo", "modelo")]
+        public Modelo Modelo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Modelo>("DemoAlquileresMVCModel.FK_Producto_Modelo", "modelo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Modelo>("DemoAlquileresMVCModel.FK_Producto_Modelo", "modelo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Modelo> ModeloReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Modelo>("DemoAlquileresMVCModel.FK_Producto_Modelo", "modelo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Modelo>("DemoAlquileresMVCModel.FK_Producto_Modelo", "modelo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Producto_Tipo", "tipo")]
+        public Tipo Tipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Producto_Tipo", "tipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Producto_Tipo", "tipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Tipo> TipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Producto_Tipo", "tipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tipo>("DemoAlquileresMVCModel.FK_Producto_Tipo", "tipo", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DemoAlquileresMVCModel", Name="Tipo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Tipo : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Tipo.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad ID.</param>
+        /// <param name="estatus">Valor inicial de la propiedad Estatus.</param>
+        public static Tipo CreateTipo(global::System.Int32 id, global::System.Int32 estatus)
+        {
+            Tipo tipo = new Tipo();
+            tipo.ID = id;
+            tipo.Estatus = estatus;
+            return tipo;
+        }
+
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Codigo
+        {
+            get
+            {
+                return _Codigo;
+            }
+            set
+            {
+                OnCodigoChanging(value);
+                ReportPropertyChanging("Codigo");
+                _Codigo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Codigo");
+                OnCodigoChanged();
+            }
+        }
+        private global::System.String _Codigo;
+        partial void OnCodigoChanging(global::System.String value);
+        partial void OnCodigoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Estatus
+        {
+            get
+            {
+                return _Estatus;
+            }
+            set
+            {
+                OnEstatusChanging(value);
+                ReportPropertyChanging("Estatus");
+                _Estatus = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estatus");
+                OnEstatusChanged();
+            }
+        }
+        private global::System.Int32 _Estatus;
+        partial void OnEstatusChanging(global::System.Int32 value);
+        partial void OnEstatusChanged();
+
+        #endregion
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Categoria_Tipo", "categoria")]
+        public EntityCollection<Categoria> Categorias
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Categoria>("DemoAlquileresMVCModel.FK_Categoria_Tipo", "categoria");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Categoria>("DemoAlquileresMVCModel.FK_Categoria_Tipo", "categoria", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Marca_Tipo", "marca")]
+        public EntityCollection<Marca> Marcas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Marca>("DemoAlquileresMVCModel.FK_Marca_Tipo", "marca");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Marca>("DemoAlquileresMVCModel.FK_Marca_Tipo", "marca", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Modelo_Tipo", "modelo")]
+        public EntityCollection<Modelo> Modelos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Modelo>("DemoAlquileresMVCModel.FK_Modelo_Tipo", "modelo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Modelo>("DemoAlquileresMVCModel.FK_Modelo_Tipo", "modelo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DemoAlquileresMVCModel", "FK_Producto_Tipo", "producto")]
+        public EntityCollection<Producto> Productos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Producto>("DemoAlquileresMVCModel.FK_Producto_Tipo", "producto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Producto>("DemoAlquileresMVCModel.FK_Producto_Tipo", "producto", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion

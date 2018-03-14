@@ -4,17 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DemoAlquileresMVC_VWModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="DemoAlquileresMVC_VWModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="DemoAlquileresMVC_VWModelStoreContainer">
           <EntitySet Name="vw_alquiler_pagado" EntityType="DemoAlquileresMVC_VWModel.Store.vw_alquiler_pagado" store:Type="Views" store:Schema="dbo" store:Name="vw_alquiler_pagado">
             <DefiningQuery>SELECT 
       [vw_alquiler_pagado].[ID] AS [ID], 
-      [vw_alquiler_pagado].[IDCliente] AS [IDCliente], 
       [vw_alquiler_pagado].[Nombre] AS [Nombre], 
       [vw_alquiler_pagado].[Telefono] AS [Telefono], 
       [vw_alquiler_pagado].[Correo] AS [Correo], 
-      [vw_alquiler_pagado].[Marca] AS [Marca], 
-      [vw_alquiler_pagado].[Modelo] AS [Modelo], 
+      [vw_alquiler_pagado].[Producto] AS [Producto], 
       [vw_alquiler_pagado].[FechaDesde] AS [FechaDesde], 
       [vw_alquiler_pagado].[FechaHasta] AS [FechaHasta], 
       [vw_alquiler_pagado].[TiempoHora] AS [TiempoHora], 
@@ -33,8 +31,7 @@
       [vw_alquiler_por_pagar].[Nombre] AS [Nombre], 
       [vw_alquiler_por_pagar].[Telefono] AS [Telefono], 
       [vw_alquiler_por_pagar].[Correo] AS [Correo], 
-      [vw_alquiler_por_pagar].[Marca] AS [Marca], 
-      [vw_alquiler_por_pagar].[Modelo] AS [Modelo], 
+      [vw_alquiler_por_pagar].[Producto] AS [Producto], 
       [vw_alquiler_por_pagar].[FechaDesde] AS [FechaDesde], 
       [vw_alquiler_por_pagar].[FechaHasta] AS [FechaHasta], 
       [vw_alquiler_por_pagar].[TiempoHora] AS [TiempoHora], 
@@ -50,6 +47,7 @@
       [vw_cantidad_alquiler_pagado].[Nombre] AS [Nombre], 
       [vw_cantidad_alquiler_pagado].[Telefono] AS [Telefono], 
       [vw_cantidad_alquiler_pagado].[Correo] AS [Correo], 
+      [vw_cantidad_alquiler_pagado].[Direccion] AS [Direccion], 
       [vw_cantidad_alquiler_pagado].[NumAlquiler] AS [NumAlquiler], 
       [vw_cantidad_alquiler_pagado].[Fecha] AS [Fecha], 
       [vw_cantidad_alquiler_pagado].[MontoExento] AS [MontoExento], 
@@ -64,9 +62,21 @@
       [vw_cantidad_alquiler_por_pagar].[Nombre] AS [Nombre], 
       [vw_cantidad_alquiler_por_pagar].[Telefono] AS [Telefono], 
       [vw_cantidad_alquiler_por_pagar].[Correo] AS [Correo], 
+      [vw_cantidad_alquiler_por_pagar].[Direccion] AS [Direccion], 
       [vw_cantidad_alquiler_por_pagar].[NumAlquiler] AS [NumAlquiler], 
       [vw_cantidad_alquiler_por_pagar].[Estatus] AS [Estatus]
       FROM [dbo].[vw_cantidad_alquiler_por_pagar] AS [vw_cantidad_alquiler_por_pagar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_producto_descripcion" EntityType="DemoAlquileresMVC_VWModel.Store.vw_producto_descripcion" store:Type="Views" store:Schema="dbo" store:Name="vw_producto_descripcion">
+            <DefiningQuery>SELECT 
+      [vw_producto_descripcion].[ID] AS [ID], 
+      [vw_producto_descripcion].[Tipo] AS [Tipo], 
+      [vw_producto_descripcion].[Codigo] AS [Codigo], 
+      [vw_producto_descripcion].[Producto] AS [Producto], 
+      [vw_producto_descripcion].[Marca] AS [Marca], 
+      [vw_producto_descripcion].[Modelo] AS [Modelo], 
+      [vw_producto_descripcion].[Categoria] AS [Categoria]
+      FROM [dbo].[vw_producto_descripcion] AS [vw_producto_descripcion]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
         <!--Se encontraron errores durante la generación:
@@ -75,21 +85,17 @@
         <EntityType Name="vw_alquiler_pagado">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="IDCliente" />
             <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Marca" />
-            <PropertyRef Name="Modelo" />
+            <PropertyRef Name="Producto" />
             <PropertyRef Name="FechaDesde" />
             <PropertyRef Name="FechaHasta" />
             <PropertyRef Name="Estatus" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="IDCliente" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Telefono" Type="varchar" MaxLength="255" />
           <Property Name="Correo" Type="varchar" MaxLength="255" />
-          <Property Name="Marca" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="Modelo" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Producto" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="FechaDesde" Type="datetime" Nullable="false" />
           <Property Name="FechaHasta" Type="datetime" Nullable="false" />
           <Property Name="TiempoHora" Type="varchar" MaxLength="255" />
@@ -108,8 +114,7 @@
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Marca" />
-            <PropertyRef Name="Modelo" />
+            <PropertyRef Name="Producto" />
             <PropertyRef Name="FechaDesde" />
             <PropertyRef Name="FechaHasta" />
             <PropertyRef Name="Estatus" />
@@ -118,8 +123,7 @@
           <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Telefono" Type="varchar" MaxLength="255" />
           <Property Name="Correo" Type="varchar" MaxLength="255" />
-          <Property Name="Marca" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="Modelo" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Producto" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="FechaDesde" Type="datetime" Nullable="false" />
           <Property Name="FechaHasta" Type="datetime" Nullable="false" />
           <Property Name="TiempoHora" Type="varchar" MaxLength="255" />
@@ -142,6 +146,7 @@
           <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Telefono" Type="varchar" MaxLength="255" />
           <Property Name="Correo" Type="varchar" MaxLength="255" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
           <Property Name="NumAlquiler" Type="int" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="MontoExento" Type="float" />
@@ -162,25 +167,44 @@
           <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Telefono" Type="varchar" MaxLength="255" />
           <Property Name="Correo" Type="varchar" MaxLength="255" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
           <Property Name="NumAlquiler" Type="int" />
           <Property Name="Estatus" Type="int" Nullable="false" />
         </EntityType>
-      </Schema></edmx:StorageModels>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'DemoAlquileresMVC.dbo.vw_producto_descripcion' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="vw_producto_descripcion">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="255" />
+          <Property Name="Codigo" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Producto" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Marca" Type="varchar" MaxLength="255" />
+          <Property Name="Modelo" Type="varchar" MaxLength="255" />
+          <Property Name="Categoria" Type="varchar" MaxLength="255" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DemoAlquileresMVC_VWModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="DemoAlquileresMVC_VWEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Alquileres_Por_Pagar_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Alquileres_Por_Pagar_VW" />
-          <EntitySet Name="Cantidad_Alquileres_Por_Pagar_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Por_Pagar_VW" />
-          <EntitySet Name="Alquileres_Pagados_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Alquileres_Pagados_VW" />
+          <EntitySet Name="vw_alquiler_pagado" EntityType="DemoAlquileresMVC_VWModel.vw_alquiler_pagado" />
+          <EntitySet Name="vw_alquiler_por_pagar" EntityType="DemoAlquileresMVC_VWModel.vw_alquiler_por_pagar" />
           <EntitySet Name="Cantidad_Alquileres_Pagados_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Pagados_VW" />
+          <EntitySet Name="Cantidad_Alquileres_Por_Pagar_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Por_Pagar_VW" />
+          <EntitySet Name="vw_producto_descripcion" EntityType="DemoAlquileresMVC_VWModel.vw_producto_descripcion" />
         </EntityContainer>
-        <EntityType Name="Alquileres_Por_Pagar_VW">
+        <EntityType Name="vw_alquiler_pagado">
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Marca" />
-            <PropertyRef Name="Modelo" />
+            <PropertyRef Name="Producto" />
             <PropertyRef Name="FechaDesde" />
             <PropertyRef Name="FechaHasta" />
             <PropertyRef Name="Estatus" />
@@ -189,8 +213,32 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="Telefono" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="Correo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Marca" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Modelo" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="FechaDesde" Type="DateTime" Nullable="false" />
+          <Property Name="FechaHasta" Type="DateTime" Nullable="false" />
+          <Property Name="TiempoHora" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TiempoDia" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TiempoSemana" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PrecioEstimado" Type="Double" />
+          <Property Name="MontoExento" Type="Double" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="MontoTotal" Type="Double" />
+          <Property Name="Estatus" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_alquiler_por_pagar">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="FechaDesde" />
+            <PropertyRef Name="FechaHasta" />
+            <PropertyRef Name="Estatus" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Correo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="FechaDesde" Type="DateTime" Nullable="false" />
           <Property Name="FechaHasta" Type="DateTime" Nullable="false" />
           <Property Name="TiempoHora" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -199,48 +247,6 @@
           <Property Name="PrecioEstimado" Type="Double" />
           <Property Name="Estatus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Cantidad_Alquileres_Por_Pagar_VW">
-          <Key>
-            <PropertyRef Name="IDCliente" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Estatus" />
-          </Key>
-          <Property Type="Int32" Name="IDCliente" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Telefono" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Correo" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="NumAlquiler" />
-          <Property Type="Int32" Name="Estatus" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Alquileres_Pagados_VW">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Marca" />
-            <PropertyRef Name="Modelo" />
-            <PropertyRef Name="FechaDesde" />
-            <PropertyRef Name="FechaHasta" />
-            <PropertyRef Name="Estatus" />
-            <PropertyRef Name="IDCliente" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Telefono" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Correo" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Marca" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Modelo" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="FechaDesde" Nullable="false" />
-          <Property Type="DateTime" Name="FechaHasta" Nullable="false" />
-          <Property Type="String" Name="TiempoHora" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="TiempoDia" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="TiempoSemana" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Double" Name="PrecioEstimado" />
-          <Property Type="Double" Name="MontoExento" />
-          <Property Type="Double" Name="Descuento" />
-          <Property Type="Double" Name="MontoTotal" />
-          <Property Type="Int32" Name="Estatus" Nullable="false" />
-          <Property Type="Int32" Name="IDCliente" Nullable="false" />
-        </EntityType>
         <EntityType Name="Cantidad_Alquileres_Pagados_VW">
           <Key>
             <PropertyRef Name="IDCliente" />
@@ -248,16 +254,45 @@
             <PropertyRef Name="Fecha" />
             <PropertyRef Name="Estatus" />
           </Key>
-          <Property Type="Int32" Name="IDCliente" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Telefono" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Correo" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="NumAlquiler" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" />
-          <Property Type="Double" Name="MontoExento" />
-          <Property Type="Double" Name="Descuento" />
-          <Property Type="Double" Name="MontoTotal" />
-          <Property Type="Int32" Name="Estatus" Nullable="false" />
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Correo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="NumAlquiler" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="MontoExento" Type="Double" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="MontoTotal" Type="Double" />
+          <Property Name="Estatus" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cantidad_Alquileres_Por_Pagar_VW">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Estatus" />
+          </Key>
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Correo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="NumAlquiler" Type="Int32" />
+          <Property Name="Estatus" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_producto_descripcion">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Producto" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Marca" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Modelo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Categoria" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -265,13 +300,29 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DemoAlquileresMVC_VWModelStoreContainer" CdmEntityContainer="DemoAlquileresMVC_VWEntities">
-          <EntitySetMapping Name="Alquileres_Por_Pagar_VW_Set"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.Alquileres_Por_Pagar_VW"><MappingFragment StoreEntitySet="vw_alquiler_por_pagar">
+          <EntitySetMapping Name="vw_alquiler_pagado"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.vw_alquiler_pagado"><MappingFragment StoreEntitySet="vw_alquiler_pagado">
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="Nombre" ColumnName="Nombre" />
             <ScalarProperty Name="Telefono" ColumnName="Telefono" />
             <ScalarProperty Name="Correo" ColumnName="Correo" />
-            <ScalarProperty Name="Marca" ColumnName="Marca" />
-            <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+            <ScalarProperty Name="Producto" ColumnName="Producto" />
+            <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
+            <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
+            <ScalarProperty Name="TiempoHora" ColumnName="TiempoHora" />
+            <ScalarProperty Name="TiempoDia" ColumnName="TiempoDia" />
+            <ScalarProperty Name="TiempoSemana" ColumnName="TiempoSemana" />
+            <ScalarProperty Name="PrecioEstimado" ColumnName="PrecioEstimado" />
+            <ScalarProperty Name="MontoExento" ColumnName="MontoExento" />
+            <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+            <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+            <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="vw_alquiler_por_pagar"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.vw_alquiler_por_pagar"><MappingFragment StoreEntitySet="vw_alquiler_por_pagar">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+            <ScalarProperty Name="Correo" ColumnName="Correo" />
+            <ScalarProperty Name="Producto" ColumnName="Producto" />
             <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
             <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
             <ScalarProperty Name="TiempoHora" ColumnName="TiempoHora" />
@@ -280,57 +331,37 @@
             <ScalarProperty Name="PrecioEstimado" ColumnName="PrecioEstimado" />
             <ScalarProperty Name="Estatus" ColumnName="Estatus" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Cantidad_Alquileres_Por_Pagar_VW_Set">
-            <EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Por_Pagar_VW">
-              <MappingFragment StoreEntitySet="vw_cantidad_alquiler_por_pagar">
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-                <ScalarProperty Name="NumAlquiler" ColumnName="NumAlquiler" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Alquileres_Pagados_VW_Set">
-            <EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.Alquileres_Pagados_VW">
-              <MappingFragment StoreEntitySet="vw_alquiler_pagado">
-                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="MontoExento" ColumnName="MontoExento" />
-                <ScalarProperty Name="PrecioEstimado" ColumnName="PrecioEstimado" />
-                <ScalarProperty Name="TiempoSemana" ColumnName="TiempoSemana" />
-                <ScalarProperty Name="TiempoDia" ColumnName="TiempoDia" />
-                <ScalarProperty Name="TiempoHora" ColumnName="TiempoHora" />
-                <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
-                <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
-                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
-                <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cantidad_Alquileres_Pagados_VW_Set">
-            <EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Pagados_VW">
-              <MappingFragment StoreEntitySet="vw_cantidad_alquiler_pagado">
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="MontoExento" ColumnName="MontoExento" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="NumAlquiler" ColumnName="NumAlquiler" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <EntitySetMapping Name="Cantidad_Alquileres_Pagados_VW_Set"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Pagados_VW"><MappingFragment StoreEntitySet="vw_cantidad_alquiler_pagado">
+            <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+            <ScalarProperty Name="Correo" ColumnName="Correo" />
+            <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+            <ScalarProperty Name="NumAlquiler" ColumnName="NumAlquiler" />
+            <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+            <ScalarProperty Name="MontoExento" ColumnName="MontoExento" />
+            <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+            <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+            <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Cantidad_Alquileres_Por_Pagar_VW_Set"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Por_Pagar_VW"><MappingFragment StoreEntitySet="vw_cantidad_alquiler_por_pagar">
+            <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+            <ScalarProperty Name="Correo" ColumnName="Correo" />
+            <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+            <ScalarProperty Name="NumAlquiler" ColumnName="NumAlquiler" />
+            <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="vw_producto_descripcion"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.vw_producto_descripcion"><MappingFragment StoreEntitySet="vw_producto_descripcion">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+            <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+            <ScalarProperty Name="Producto" ColumnName="Producto" />
+            <ScalarProperty Name="Marca" ColumnName="Marca" />
+            <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+            <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -352,10 +383,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="DemoAlquileresMVC_VW">
-        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Alquileres_Por_Pagar_VW" Width="1.5" PointX="2.75" PointY="0.75" Height="3.0714322916666656" IsExpanded="true" />
-        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Por_Pagar_VW" Width="1.5" PointX="5" PointY="0.75" Height="1.9210009765624996" />
-        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Alquileres_Pagados_VW" Width="1.5" PointX="0.75" PointY="0.75" Height="3.5644742838541656" />
-        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Pagados_VW" Width="1.5" PointX="7.25" PointY="0.75" Height="2.5783902994791656" />
+        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.vw_alquiler_pagado" Width="1.5" PointX="0.75" PointY="0.75" Height="3.4001269531249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.vw_alquiler_por_pagar" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9070849609374996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Pagados_VW" Width="1.5" PointX="4.75" PointY="0.75" Height="2.7427376302083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Por_Pagar_VW" Width="1.5" PointX="8.625" PointY="1.25" Height="2.0853483072916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.vw_producto_descripcion" Width="1.5" PointX="6.75" PointY="1.25" Height="2.0853483072916674" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

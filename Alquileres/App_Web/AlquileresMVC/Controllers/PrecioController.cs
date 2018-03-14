@@ -28,14 +28,14 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var precioDetail = db.PrecioSet.First(p => p.ID == id);
+            AlquileresMVC.Models.Precio precioDetail = db.PrecioSet.First(p => p.ID == id);
             return View(precioDetail);
         }
 
         public ActionResult Create()
         {
-            Precio precio = new Precio();
-            Precio precioToIDAdd = db.PrecioSet.ToList().LastOrDefault();
+            AlquileresMVC.Models.Precio precio = new AlquileresMVC.Models.Precio();
+            AlquileresMVC.Models.Precio precioToIDAdd = db.PrecioSet.ToList().LastOrDefault();
             Int32 _id = precioToIDAdd.ID + 1;
             precio.ID = _id;
             return View(precio);
@@ -44,7 +44,7 @@ namespace AlquileresMVC.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            Precio precioToAdd = new Precio();
+            AlquileresMVC.Models.Precio precioToAdd = new AlquileresMVC.Models.Precio();
 
             string[] arreglo = new string[collection.AllKeys.ToList().Count];
             Int32 i = 0;
@@ -61,6 +61,9 @@ namespace AlquileresMVC.Controllers
             String precioUnitario = arreglo[2];
             Double precioUnit = Double.Parse(precioUnitario);
             precioToAdd.PrecioUnitario = precioUnit;
+            String estatus = arreglo[3];
+            Int32 iEstatus = Int32.Parse(estatus);
+            precioToAdd.Estatus = iEstatus;
 
             TryUpdateModel(precioToAdd, "Precio");
             TryUpdateModel(precioToAdd, "Precio", collection.ToValueProvider());
@@ -107,7 +110,7 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Edit(Int32 id)
         {
-            var precioToUpdate = db.PrecioSet.First(p => p.ID == id);
+            AlquileresMVC.Models.Precio precioToUpdate = db.PrecioSet.First(p => p.ID == id);
             ViewData.Model = precioToUpdate;
             return View();
         }
@@ -115,7 +118,7 @@ namespace AlquileresMVC.Controllers
         [HttpPost]
         public ActionResult Edit(Int32 id, FormCollection form)
         {
-            Precio precioToUpdate = db.PrecioSet.First(p => p.ID == id);
+            AlquileresMVC.Models.Precio precioToUpdate = db.PrecioSet.First(p => p.ID == id);
 
             string[] arreglo = new string[form.AllKeys.ToList().Count];
             Int32 i = 0;
@@ -132,6 +135,9 @@ namespace AlquileresMVC.Controllers
             String precioUnitario = arreglo[2];
             Double precioUnit = Double.Parse(precioUnitario);
             precioToUpdate.PrecioUnitario = precioUnit;
+            String estatus = arreglo[3];
+            Int32 iEstatus = Int32.Parse(estatus);
+            precioToUpdate.Estatus = iEstatus;
 
             TryUpdateModel(precioToUpdate, "Precio");
             TryUpdateModel(precioToUpdate, "Precio", form.ToValueProvider());
@@ -165,7 +171,7 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Delete(int id)
         {
-            var precioToDelete = db.PrecioSet.First(p => p.ID == id);
+            AlquileresMVC.Models.Precio precioToDelete = db.PrecioSet.First(p => p.ID == id);
             ViewData.Model = precioToDelete;
             return View();
         }
@@ -173,7 +179,7 @@ namespace AlquileresMVC.Controllers
         [HttpPost]
         public ActionResult Delete(Int32 id, FormCollection form)
         {
-            var precioToDelete = db.PrecioSet.First(p => p.ID == id);
+            AlquileresMVC.Models.Precio precioToDelete = db.PrecioSet.First(p => p.ID == id);
 
             String _Descripcion = precioToDelete.Descripcion;
 
@@ -263,6 +269,7 @@ namespace AlquileresMVC.Controllers
                                 s.Codigo, 
                                 s.Descripcion, 
                                 s.PrecioUnitario, 
+                                s.Estatus, 
                             }
                         });
             // Send the data to the jQGrid

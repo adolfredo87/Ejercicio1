@@ -16,7 +16,7 @@ namespace AlquileresMVC.Models
         private sealed class MetaData
         {
             [Required, DisplayName("Código Cliente"), StringLength(50)]
-            public String ID { get; set; }
+            public Int32 ID { get; set; }
 
             [Required, DisplayName("Nombre del Cliente"), StringLength(200)]
             public String Nombre { get; set; }
@@ -26,6 +26,12 @@ namespace AlquileresMVC.Models
 
             [DisplayName("Correo del Cliente"), StringLength(200)]
             public String Correo { get; set; }
+
+            [DisplayName("Direccion del Cliente"), StringLength(200)]
+            public String Direccion { get; set; }
+
+            [Required, DisplayName("Estatus")]
+            public int Estatus { get; set; }
 
         }
 

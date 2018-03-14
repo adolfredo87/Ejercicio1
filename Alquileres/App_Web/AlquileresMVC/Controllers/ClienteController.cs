@@ -59,6 +59,10 @@ namespace AlquileresMVC.Controllers
             clienteToAdd.Nombre = arreglo[0];
             clienteToAdd.Telefono = arreglo[1];
             clienteToAdd.Correo = arreglo[2];
+            clienteToAdd.Direccion = arreglo[3];
+            String sEstatus = arreglo[4];
+            Int32 iEstatus = Int32.Parse(sEstatus);
+            clienteToAdd.Estatus = iEstatus;
 
             TryUpdateModel(clienteToAdd, "Cliente");
             TryUpdateModel(clienteToAdd, "Cliente", collection.ToValueProvider());
@@ -128,6 +132,10 @@ namespace AlquileresMVC.Controllers
             clienteToUpdate.Nombre = arreglo[0];
             clienteToUpdate.Telefono = arreglo[1];
             clienteToUpdate.Correo = arreglo[2];
+            clienteToUpdate.Direccion = arreglo[3];
+            String sEstatus = arreglo[4];
+            Int32 iEstatus = Int32.Parse(sEstatus);
+            clienteToUpdate.Estatus = iEstatus;
 
             TryUpdateModel(clienteToUpdate, "Cliente");
             TryUpdateModel(clienteToUpdate, "Cliente", form.ToValueProvider());
@@ -257,6 +265,8 @@ namespace AlquileresMVC.Controllers
                                 s.Nombre, 
                                 s.Telefono, 
                                 s.Correo, 
+                                s.Direccion, 
+                                s.Estatus, 
                             }
                         });
             // Send the data to the jQGrid

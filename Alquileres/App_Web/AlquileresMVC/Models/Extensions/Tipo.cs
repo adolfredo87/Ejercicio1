@@ -9,9 +9,9 @@ using AlquileresMVC.Utilitys;
 
 namespace AlquileresMVC.Models
 {
-    [MetadataType(typeof(CategoriaBicicleta.MetaData))]
-    [DisplayName("Categoria de Bicicleta")]
-    public partial class CategoriaBicicleta
+    [MetadataType(typeof(Tipo.MetaData))]
+    [DisplayName("Tipo del Producto")]
+    public partial class Tipo
     {
         private sealed class MetaData
         {
@@ -21,8 +21,11 @@ namespace AlquileresMVC.Models
             [Required, DisplayName("Codigo"), StringLength(50)]
             public String Codigo { get; set; }
 
-            [Required, DisplayName("Categoria Bicicleta"), StringLength(100)]
-            public String Categoria { get; set; }
+            [Required, DisplayName("Tipo del Producto"), StringLength(100)]
+            public String Descripcion { get; set; }
+
+            [Required, DisplayName("Estatus")]
+            public int Estatus { get; set; }
 
         }
 
@@ -35,7 +38,7 @@ namespace AlquileresMVC.Models
 
         public static SelectList ToSelectList()
         {
-            return new SelectList(new AlquileresMVC.Models.DemoAlquileresMVCEntities().CategoriaBicicletaSet.ToList(), "ID", "Categoria");
+            return new SelectList(new AlquileresMVC.Models.DemoAlquileresMVCEntities().TipoSet.ToList(), "ID", "Descripcion");
         }
 
         #endregion

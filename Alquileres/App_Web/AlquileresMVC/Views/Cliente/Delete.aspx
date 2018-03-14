@@ -16,6 +16,8 @@
 		<%=  Html.LabelDisplayItemFor(model => model.Nombre)%>
 		<%=  Html.LabelDisplayItemFor(model => model.Telefono)%>
         <%=  Html.LabelDisplayItemFor(model => model.Correo)%>
+        <%=  Html.LabelDisplayItemFor(model => model.Direccion)%>
+        <%=  Html.LabelDisplayItemFor(model => model.Estatus)%>
         <%=  Html.EndSectionItemDataRow()%>
 
 		<%=  Html.MessageDeleteWidget()%>

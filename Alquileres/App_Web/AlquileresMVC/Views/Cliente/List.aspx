@@ -32,15 +32,17 @@
 	        var jqTableGrid = mvcLocal.jqGrid.init("Cliente");
 	        //
 	        // Specify the column names
-	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Nombre", "Telefono", "Correo", "Acciones"];
+	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Nombre", "Telefono", "Correo", "Descripcion", "Estatus", "Acciones"];
 	        //
 	        // Configure the columns
 	        jqTableGrid.mvcUI.config.options.colModel =
 				[
-					{ name: "ID", index: "ID", width: 50, align: "left" },
-					{ name: "Nombre", index: "Nombre", width: 100, align: "left" },
-					{ name: "Telefono", index: "Telefono", width: 80, align: "left" },
+					{ name: "ID", index: "ID", width: 25, align: "left" },
+					{ name: "Nombre", index: "Nombre", width: 80, align: "left" },
+					{ name: "Telefono", index: "Telefono", width: 70, align: "left" },
 					{ name: "Correo", index: "Correo", width: 70, align: "left" },
+                    { name: "Descripcion", index: "Descripcion", width: 100, align: "left" },
+                    { name: "Estatus", index: "Estatus", width: 35, align: "left" }, 
 					mvcLocal.jqGrid.columnActions
 				];
 	        //

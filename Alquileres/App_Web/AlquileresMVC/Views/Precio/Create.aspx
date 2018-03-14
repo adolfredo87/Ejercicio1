@@ -16,6 +16,7 @@
         <%= Html.LabelEditorValidationItemFor(model => model.Codigo) %>
         <%= Html.LabelEditorValidationItemFor(model => model.Descripcion) %>
 		<%= Html.LabelEditorValidationItemFor(model => model.PrecioUnitario) %>
+        <%= Html.LabelSpinnerValidationItemFor(model => model.Estatus)%>
 
         <%= Html.EndSectionBody()%>
         <%= Html.BeginBarButtons()%>

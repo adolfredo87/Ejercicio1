@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Cliente>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Producto>" %>
 <%@ Import Namespace="AlquileresMVC.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -10,16 +10,17 @@
 		<%= Html.BeginSection("../../Content/images/hpantalla/bicycle.png", Html.DisplayNameEditFor().ToHtmlString().ToUpper())%>
 		<%= Html.BeginSectionBody()%>
 		<%= Html.ValidationSummaryWidget()%>
-            
-		<%= Html.BeginSectionItemDataRow() %>
+
+        <%= Html.BeginSectionItemDataRow() %>
         <%= Html.LabelDisplayItemFor(model => model.ID)%>
-        <%= Html.LabelEditorValidationItemFor(model => model.Nombre) %>
-		<%= Html.LabelEditorValidationItemFor(model => model.Telefono) %>
-		<%= Html.LabelEditorValidationItemFor(model => model.Correo) %>
-        <%= Html.LabelEditorValidationItemFor(model => model.Direccion) %>
+        <%= Html.LabelEditorValidationItemFor(model => model.Codigo) %>
+        <%= Html.LabelEditorValidationItemFor(model => model.Descripcion) %>
+        <%= Html.DropDownListItemFor(model => model.Marca.ID, Model.Marca.ToEntitySelectList())%>
+        <%= Html.DropDownListItemFor(model => model.Modelo.ID, Model.Modelo.ToEntitySelectList())%>
+        <%= Html.DropDownListItemFor(model => model.Categoria.ID, Model.Categoria.ToEntitySelectList())%>
         <%= Html.LabelSpinnerValidationItemFor(model => model.Estatus)%>
         <%= Html.EndSectionItemDataRow()%>
-
+            
         <%= Html.EndSectionBody()%>
         <%= Html.BeginBarButtons()%>
         <%= Html.BarButtonsEdit()%>

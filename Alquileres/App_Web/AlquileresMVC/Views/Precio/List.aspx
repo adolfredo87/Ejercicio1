@@ -32,7 +32,7 @@
 	        var jqTableGrid = mvcLocal.jqGrid.init("Precio");
 	        //
 	        // Specify the column names
-	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Codigo", "Descripcion",	"Precio Unitario", "Acciones"];
+	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Codigo", "Descripcion", "Precio Unitario", "Estatus", "Acciones"];
 	        //
 	        // Configure the columns
 	        jqTableGrid.mvcUI.config.options.colModel =
@@ -41,6 +41,7 @@
 					{ name: "Codigo", index: "Codigo", width: 50, align: "left" },
 					{ name: "Descripcion", index: "Descripcion", width: 180, align: "left" },
 					{ name: "PrecioUnitario", index: "PrecioUnitario", width: 70, align: "left" },
+                    { name: "Estatus", index: "Estatus", width: 50, align: "left" }, 
 					mvcLocal.jqGrid.columnActions
 				];
 	        //

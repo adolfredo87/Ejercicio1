@@ -12,8 +12,8 @@
         <%= Html.MenuItemLink("../../Content/images/hbotons/customers.png", " Clientes", "List", "Cliente")%>
         <%= Html.MenuItemLink("../../Content/images/hbotons/special_offer.png", " Descuentos", "List", "Descuento")%> 
         <%= Html.MenuItemLink("../../Content/images/hbotons/price_tag.png", " Precios", "List", "Precio")%> 
-        <%= Html.MenuItemLink("../../Content/images/hbotons/bicycle.png", " Bicicletas", "List", "Bicicleta")%>
-        <%= Html.MenuItemLink("../../Content/images/hbotons/category.png", " Categoria Bicicleta", "List", "CategoriaBicicleta")%>
+        <%= Html.MenuItemLink("../../Content/images/hbotons/bicycle.png", " Bicicletas", "List", "Producto")%>
+        <%= Html.MenuItemLink("../../Content/images/hbotons/category.png", " Categoria Bicicleta", "List", "Categoria")%>
     <%= Html.EndMenuItem()%>
     
     <%= Html.BeginMenuItem("Ayuda")%>

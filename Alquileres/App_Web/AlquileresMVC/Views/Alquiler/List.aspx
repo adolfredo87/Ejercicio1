@@ -32,7 +32,7 @@
 	        var jqTableGrid = mvcLocal.jqGrid.init("Alquiler");
 	        //
 	        // Especifica los nombre de las columnas
-	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Cliente", "Bicicleta", "Hora", "Dia", "Semana", 
+	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Cliente", "Producto", "Hora", "Dia", "Semana", 
                                                         "Precio", "Estatus", "Acciones"];
 	        //
 	        // configura las columnas
@@ -40,7 +40,7 @@
 				[
 					{ name: "ID", index: "ID", width: 30, align: "left" },
                     { name: "Cliente", index: "Cliente", width: 100, align: "left" },
-					{ name: "Bicicleta", index: "Bicicleta", width: 100, align: "left" },
+					{ name: "Producto", index: "Producto", width: 100, align: "left" },
                     { name: "TiempoHora", index: "TiempoHora", width: 80, align: "left" },
                     { name: "TiempoDia", index: "TiempoDia", width: 80, align: "left" },
 					{ name: "TiempoSemana", index: "TiempoSemana", width: 50, align: "left" },

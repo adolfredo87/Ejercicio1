@@ -124,6 +124,8 @@ CREATE TABLE [dbo].[cliente](
 	[Nombre] [varchar](255) NOT NULL,
 	[Telefono] [varchar](255) NULL,
 	[Correo] [varchar](255) NULL,
+	[Direccion] [varchar](255) NULL,
+	[Estatus] [int] NOT NULL DEFAULT (1),
 PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -143,7 +145,7 @@ CREATE TABLE [dbo].[descuento](
 	[Codigo] [varchar](255) NULL,
 	[Descripcion] [varchar](255) NULL,
 	[PorcentajeDescuento] [float] NULL,
-	[Estatus] [int] NULL DEFAULT (0),
+	[Estatus] [int] NULL DEFAULT (1),
 PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -163,6 +165,7 @@ CREATE TABLE [dbo].[precio](
 	[Codigo] [varchar](255) NULL,
 	[Descripcion] [varchar](255) NULL,
 	[PrecioUnitario] [float] NULL,
+	[Estatus] [int] NOT NULL DEFAULT (1),
 PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -170,17 +173,18 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[categoriaBici]    Script Date: 10/25/2016 15:51:36 ******/
+/****** Object:  Table [dbo].[marca]    Script Date: 10/25/2016 15:51:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[categoriaBici](
+CREATE TABLE [dbo].[tipo](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[Codigo] [varchar](255) NULL,
-	[Categoria] [varchar](255) NULL,
+	[Descripcion] [varchar](255) NULL,
+	[Estatus] [int] NOT NULL DEFAULT (1),
 PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -188,19 +192,89 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[bicicleta]    Script Date: 10/25/2016 15:51:36 ******/
+/****** Object:  Table [dbo].[marca]    Script Date: 10/25/2016 15:51:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[bicicleta](
+CREATE TABLE [dbo].[marca](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Marca] [varchar](255) NOT NULL,
-	[Modelo] [varchar](255) NOT NULL,
-	[IDCategoriaBici] [int] NOT NULL,
-	CONSTRAINT [FK_Bicileta_CategoriaBici] FOREIGN KEY([IDCategoriaBici]) REFERENCES [dbo].[categoriaBici] ([ID]),
+	[Codigo] [varchar](255) NULL,
+	[Descripcion] [varchar](255) NULL,
+	[Estatus] [int] NOT NULL DEFAULT (1),
+	[IDTipo] [int] NOT NULL,
+	CONSTRAINT [FK_Marca_Tipo] FOREIGN KEY([IDTipo]) REFERENCES [dbo].[tipo] ([ID]),
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [dbo].[modelo]    Script Date: 10/25/2016 15:51:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[modelo](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Codigo] [varchar](255) NULL,
+	[Descripcion] [varchar](255) NULL,
+	[Estatus] [int] NOT NULL DEFAULT (1),
+	[IDTipo] [int] NOT NULL,
+	CONSTRAINT [FK_Modelo_Tipo] FOREIGN KEY([IDTipo]) REFERENCES [dbo].[tipo] ([ID]),
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [dbo].[categoria]    Script Date: 10/25/2016 15:51:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[categoria](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Codigo] [varchar](255) NULL,
+	[Descripcion] [varchar](255) NULL,
+	[Estatus] [int] NOT NULL DEFAULT (1),
+	[IDTipo] [int] NOT NULL,
+	CONSTRAINT [FK_Categoria_Tipo] FOREIGN KEY([IDTipo]) REFERENCES [dbo].[tipo] ([ID]),
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [dbo].[producto]    Script Date: 10/25/2016 15:51:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[producto](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[IDTipo] [int] NOT NULL,
+	[Codigo] [varchar](255) NOT NULL,
+	[Descripcion] [varchar](255) NOT NULL,
+	[Estatus] [int] NOT NULL DEFAULT (1),
+	[IDMarca] [int] NOT NULL,
+	[IDModelo] [int] NOT NULL,
+	[IDCategoria] [int] NOT NULL,
+	CONSTRAINT [FK_Producto_Tipo] FOREIGN KEY([IDTipo]) REFERENCES [dbo].[tipo] ([ID]),
+	CONSTRAINT [FK_Producto_Marca] FOREIGN KEY([IDMarca]) REFERENCES [dbo].[marca] ([ID]),
+	CONSTRAINT [FK_Producto_Modelo] FOREIGN KEY([IDModelo]) REFERENCES [dbo].[modelo] ([ID]),
+	CONSTRAINT [FK_Producto_Categoria] FOREIGN KEY([IDCategoria]) REFERENCES [dbo].[categoria] ([ID]),
 PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -216,7 +290,7 @@ GO
 CREATE TABLE [dbo].[alquiler](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[IDCliente] [int] NOT NULL,
-	[IDBicileta] [int] NOT NULL,
+	[IDProducto] [int] NOT NULL,
 	[FechaDesde] [datetime] NOT NULL,
 	[FechaHasta] [datetime] NOT NULL,
 	[TiempoHora] [varchar](255) NULL,
@@ -225,7 +299,7 @@ CREATE TABLE [dbo].[alquiler](
 	[PrecioEstimado] [float] NULL,
 	[Estatus] [int] NOT NULL DEFAULT (0),
 	CONSTRAINT [FK_Alquiler_Cliente] FOREIGN KEY([IDCliente]) REFERENCES [dbo].[cliente] ([ID]),
-	CONSTRAINT [FK_Alquiler_Bicileta] FOREIGN KEY([IDBicileta]) REFERENCES [dbo].[bicicleta] ([ID]),
+	CONSTRAINT [FK_Alquiler_Producto] FOREIGN KEY([IDProducto]) REFERENCES [dbo].[producto] ([ID]),
 PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -280,13 +354,30 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+CREATE VIEW [dbo].[vw_producto_descripcion]
+AS
+SELECT     dbo.producto.ID, dbo.tipo.Descripcion AS Tipo, dbo.producto.Codigo, dbo.producto.Descripcion AS Producto, dbo.marca.Descripcion AS Marca, 
+                      dbo.modelo.Descripcion AS Modelo, dbo.categoria.Descripcion AS Categoria
+FROM         dbo.producto INNER JOIN
+                      dbo.categoria ON dbo.producto.IDCategoria = dbo.categoria.ID INNER JOIN
+                      dbo.marca ON dbo.producto.IDMarca = dbo.marca.ID INNER JOIN
+                      dbo.modelo ON dbo.producto.IDModelo = dbo.modelo.ID INNER JOIN
+                      dbo.tipo ON dbo.producto.IDTipo = dbo.tipo.ID AND dbo.categoria.IDTipo = dbo.tipo.ID AND dbo.marca.IDTipo = dbo.tipo.ID AND 
+                      dbo.modelo.IDTipo = dbo.tipo.ID
+GO
+
+/****** Object:  View [dbo].[vw_cantidad_alquiler_por_pagar]    Script Date: 03/04/2018 20:03:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vw_cantidad_alquiler_por_pagar]
 AS
-SELECT     dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, COUNT(*) AS NumAlquiler, 1 AS Estatus
+SELECT     dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.cliente.Direccion, COUNT(*) AS NumAlquiler, 1 AS Estatus
 FROM         dbo.alquiler INNER JOIN
                       dbo.cliente ON dbo.alquiler.IDCliente = dbo.cliente.ID
 WHERE     (dbo.alquiler.Estatus = 1)
-GROUP BY dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo
+GROUP BY dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.cliente.Direccion
 HAVING      (COUNT(dbo.alquiler.IDCliente) >= 1)
 GO
 
@@ -297,13 +388,13 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW [dbo].[vw_cantidad_alquiler_pagado]
 AS
-SELECT     dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, COUNT(*) AS NumAlquiler, dbo.pagoCab.Fecha, 
+SELECT     dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.cliente.Direccion, COUNT(*) AS NumAlquiler, dbo.pagoCab.Fecha, 
                       dbo.pagoCab.MontoExento, dbo.pagoCab.Descuento, dbo.pagoCab.MontoTotal, dbo.pagoCab.Estatus
 FROM         dbo.alquiler INNER JOIN
                       dbo.cliente ON dbo.alquiler.IDCliente = dbo.cliente.ID INNER JOIN
                       dbo.pagoCab ON dbo.cliente.ID = dbo.pagoCab.IDCliente
 WHERE     (dbo.alquiler.Estatus = 2)
-GROUP BY dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.pagoCab.Fecha, dbo.pagoCab.MontoExento, 
+GROUP BY dbo.alquiler.IDCliente, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.cliente.Direccion, dbo.pagoCab.Fecha, dbo.pagoCab.MontoExento, 
                       dbo.pagoCab.Descuento, dbo.pagoCab.MontoTotal, dbo.pagoCab.Estatus
 HAVING      (COUNT(dbo.alquiler.IDCliente) >= 1)
 GO
@@ -315,12 +406,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW [dbo].[vw_alquiler_por_pagar]
 AS
-SELECT     dbo.alquiler.ID, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.bicicleta.Marca, dbo.bicicleta.Modelo, dbo.alquiler.FechaDesde, 
+SELECT     dbo.alquiler.ID, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.producto.Descripcion AS [Producto], dbo.alquiler.FechaDesde, 
                       dbo.alquiler.FechaHasta, dbo.alquiler.TiempoHora, dbo.alquiler.TiempoDia, dbo.alquiler.TiempoSemana, dbo.alquiler.PrecioEstimado, 
                       dbo.alquiler.Estatus
 FROM         dbo.alquiler INNER JOIN
                       dbo.cliente ON dbo.alquiler.IDCliente = dbo.cliente.ID INNER JOIN
-                      dbo.bicicleta ON dbo.alquiler.IDBicileta = dbo.bicicleta.ID
+                      dbo.producto ON dbo.alquiler.IDProducto = dbo.producto.ID
 WHERE     (dbo.alquiler.Estatus = 1)
 GO
 
@@ -331,11 +422,11 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW [dbo].[vw_alquiler_pagado]
 AS
-SELECT     dbo.alquiler.ID, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.bicicleta.Marca, dbo.bicicleta.Modelo, dbo.alquiler.FechaDesde, 
+SELECT     dbo.alquiler.ID, dbo.cliente.Nombre, dbo.cliente.Telefono, dbo.cliente.Correo, dbo.producto.Descripcion AS [Producto], dbo.alquiler.FechaDesde, 
                       dbo.alquiler.FechaHasta, dbo.alquiler.TiempoHora, dbo.alquiler.TiempoDia, dbo.alquiler.TiempoSemana, dbo.alquiler.PrecioEstimado, 
                       dbo.pagoCab.MontoExento, dbo.pagoCab.Descuento, dbo.pagoCab.MontoTotal, dbo.alquiler.Estatus
 FROM         dbo.alquiler INNER JOIN
-                      dbo.bicicleta ON dbo.alquiler.IDBicileta = dbo.bicicleta.ID INNER JOIN
+                      dbo.producto ON dbo.alquiler.IDProducto = dbo.producto.ID INNER JOIN
                       dbo.cliente ON dbo.alquiler.IDCliente = dbo.cliente.ID INNER JOIN
                       dbo.pagoCab ON dbo.cliente.ID = dbo.pagoCab.IDCliente
 WHERE     (dbo.alquiler.Estatus = 2)
@@ -350,8 +441,8 @@ SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIEL
 GO
 CREATE PROCEDURE [dbo].[USP_INCCLIENTE]
 ( 
-  @VNOMBRE AS VARCHAR(100), @VTELEFONO AS VARCHAR(50), @VCORREO AS VARCHAR(200)
- )
+  @VNOMBRE AS VARCHAR(100), @VTELEFONO AS VARCHAR(50), @VCORREO AS VARCHAR(200), @VDIRECCION AS VARCHAR(200), @IESTATUS AS INT = 1
+)
 AS
 
 SET NOCOUNT ON
@@ -381,9 +472,9 @@ BEGIN TRY
       BEGIN TRAN
       
         INSERT INTO [DemoAlquileresMVC].[dbo].[cliente]
-          (Nombre, Telefono, Correo)
+          (Nombre, Telefono, Correo, Direccion, Estatus)
         VALUES
-          (@VNOMBRE, @VTELEFONO, @VCORREO)
+          (@VNOMBRE, @VTELEFONO, @VCORREO, @VDIRECCION, @IESTATUS)
       
       COMMIT TRAN
     
@@ -417,7 +508,7 @@ SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIEL
 GO
 CREATE PROCEDURE [dbo].[USP_MODCLIENTE]
 ( 
-  @ICLIENTE AS INT, @VNOMBRE AS VARCHAR(100), @VTELEFONO AS VARCHAR(50), @VCORREO AS VARCHAR(200)
+  @ICLIENTE AS INT, @VNOMBRE AS VARCHAR(100), @VTELEFONO AS VARCHAR(50), @VCORREO AS VARCHAR(200), @VDIRECCION AS VARCHAR(200), @IESTATUS AS INT
 )
 AS
 
@@ -435,7 +526,9 @@ BEGIN TRY
       UPDATE A1
       SET A1.Nombre = @VNOMBRE,
           A1.Telefono = @VTELEFONO,
-          A1.Correo = @VCORREO
+          A1.Correo = @VCORREO, 
+          A1.Direccion = @VDIRECCION, 
+          A1.Estatus = @IESTATUS
       FROM [DemoAlquileresMVC].[dbo].[cliente] A1
       WHERE A1.ID = @ICLIENTE
     
@@ -471,7 +564,7 @@ SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIEL
 GO
 CREATE PROCEDURE [dbo].[USP_ELICLIENTE]
 ( 
-  @ICLIENTE AS INT, @VNOMBRE AS VARCHAR(100), @VTELEFONO AS VARCHAR(50), @VCORREO AS VARCHAR(200)
+  @ICLIENTE AS INT, @VNOMBRE AS VARCHAR(100), @VTELEFONO AS VARCHAR(50), @VCORREO AS VARCHAR(200), @VDIRECCION AS VARCHAR(200), @IESTATUS AS INT = 1
 )
 AS
 
@@ -657,7 +750,7 @@ SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIEL
 GO
 CREATE PROCEDURE [dbo].[USP_ELIDESCUENTO]
 ( 
-  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @FPORCENTAJEDESCUENTO AS FLOAT, @IESTATUS AS INT
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @FPORCENTAJEDESCUENTO AS FLOAT, @IESTATUS AS INT = 1
 )
 AS
 
@@ -721,7 +814,7 @@ SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIEL
 GO
 CREATE PROCEDURE [dbo].[USP_INCPRECIO]
 (           
-  @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @FPRECIO AS FLOAT
+  @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @FPRECIO AS FLOAT, @IESTATUS AS INT = 1
 )
 AS          
           
@@ -752,9 +845,9 @@ BEGIN TRY
       BEGIN TRAN
       
         INSERT INTO [DemoAlquileresMVC].[dbo].[precio]
-          (Codigo, Descripcion, PrecioUnitario)
+          (Codigo, Descripcion, PrecioUnitario, Estatus)
         VALUES
-          (@VCODIGO, @VDESCRIPCION, @FPRECIO)
+          (@VCODIGO, @VDESCRIPCION, @FPRECIO, @IESTATUS)
       
       COMMIT TRAN
     
@@ -788,7 +881,7 @@ SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIEL
 GO
 CREATE PROCEDURE [dbo].[USP_MODPRECIO]
 ( 
-  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @FPRECIO AS FLOAT
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @FPRECIO AS FLOAT, @IESTATUS AS INT = 1
 )
 AS
 
@@ -806,7 +899,8 @@ BEGIN TRY
       UPDATE A1
       SET	A1.Codigo = @VCODIGO,
 			A1.Descripcion = @VDESCRIPCION,
-			A1.PrecioUnitario = @FPRECIO
+			A1.PrecioUnitario = @FPRECIO, 
+			A1.Estatus = @IESTATUS 
       FROM [DemoAlquileresMVC].[dbo].[precio] A1
       WHERE A1.ID = @IID
       
@@ -842,7 +936,7 @@ SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIEL
 GO
 CREATE PROCEDURE [dbo].[USP_ELIPRECIO]
 ( 
-  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @FPRECIO AS FLOAT
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @FPRECIO AS FLOAT, @IESTATUS AS INT = 1
 )
 AS
 
@@ -897,16 +991,16 @@ ERROR:
   RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_INCCATEGORIABICI]    Script Date: 02/23/2018 17:20:56 ******/
+/****** Object:  StoredProcedure [dbo].[USP_INCMARCA]    Script Date: 02/23/2018 17:20:56 ******/
 SET QUOTED_IDENTIFIER ON
 GO
 SET NUMERIC_ROUNDABORT OFF;
 GO
 SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
 GO
-CREATE PROCEDURE [dbo].[USP_INCCATEGORIABICI]
+CREATE PROCEDURE [dbo].[USP_INCTIPO]
 (           
-  @VCODIGO AS VARCHAR(200), @VCATEGORIA AS VARCHAR(200)
+  @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @IESTATUS AS INT = 1
 )
 AS          
           
@@ -919,12 +1013,12 @@ BEGIN TRY
           
   IF EXISTS (          
               SELECT *          
-              FROM [DemoAlquileresMVC].[dbo].[categoriaBici] WITH (NOLOCK)          
+              FROM [DemoAlquileresMVC].[dbo].[tipo] WITH (NOLOCK)          
               WHERE [Codigo] = @VCODIGO        
             )          
     BEGIN          
             
-      SET @ERRORMESSAGE = 'El codigo de la categoria de la bicicleta que esta intentando registrar ya se encuentra en uso'          
+      SET @ERRORMESSAGE = 'El codigo del tipo del producto que esta intentando registrar ya se encuentra en uso'          
       SET @ERRORSEVERITY = 16         
       SET @ERRORSTATE = 1             
       GOTO ERROR              
@@ -936,10 +1030,10 @@ BEGIN TRY
     
       BEGIN TRAN
       
-        INSERT INTO [DemoAlquileresMVC].[dbo].[categoriaBici]
-          (Codigo, Categoria)
+        INSERT INTO [DemoAlquileresMVC].[dbo].[tipo]
+          (Codigo, Descripcion, Estatus)
         VALUES
-          (@VCODIGO, @VCATEGORIA)
+          (@VCODIGO, @VDESCRIPCION, @IESTATUS)
       
       COMMIT TRAN
     
@@ -964,16 +1058,16 @@ ERROR:
   RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_MODCATEGORIABICI]    Script Date: 02/23/2018 16:20:47 ******/
+/****** Object:  StoredProcedure [dbo].[USP_MODMARCA]    Script Date: 02/23/2018 16:20:47 ******/
 SET QUOTED_IDENTIFIER ON
 GO
 SET NUMERIC_ROUNDABORT OFF;
 GO
 SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
 GO
-CREATE PROCEDURE [dbo].[USP_MODCATEGORIABICI]
+CREATE PROCEDURE [dbo].[USP_MODTIPO]
 ( 
-  @IID AS INT, @VCODIGO AS VARCHAR(200), @VCATEGORIA AS VARCHAR(200)
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @IESTATUS AS INT = 1
 )
 AS
 
@@ -990,8 +1084,9 @@ BEGIN TRY
       
       UPDATE A1
       SET	A1.Codigo = @VCODIGO,
-			A1.Categoria = @VCATEGORIA
-      FROM [DemoAlquileresMVC].[dbo].[categoriaBici] A1
+			A1.Descripcion = @VDESCRIPCION, 
+			A1.Estatus = @IESTATUS 
+      FROM [DemoAlquileresMVC].[dbo].[tipo] A1
       WHERE A1.ID = @IID
       
       COMMIT TRAN
@@ -1017,16 +1112,16 @@ ERROR:
   RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_ELICATEGORIABICI]    Script Date: 03/03/2018 01:56:59 ******/
+/****** Object:  StoredProcedure [dbo].[USP_ELIMARCA]    Script Date: 03/03/2018 01:56:59 ******/
 SET QUOTED_IDENTIFIER ON
 GO
 SET NUMERIC_ROUNDABORT OFF;
 GO
 SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
 GO
-CREATE PROCEDURE [dbo].[USP_ELICATEGORIABICI]
+CREATE PROCEDURE [dbo].[USP_ELITIPO]
 ( 
-  @IID AS INT, @VCODIGO AS VARCHAR(200), @VCATEGORIA AS VARCHAR(200)
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @IESTATUS AS INT = 1
 )
 AS
 
@@ -1039,12 +1134,12 @@ BEGIN TRY
           
   IF EXISTS (          
               SELECT *          
-              FROM [DemoAlquileresMVC].[dbo].[bicicleta] WITH (NOLOCK)          
-              WHERE [IDCategoriaBici] = @IID        
+              FROM [DemoAlquileresMVC].[dbo].[producto] WITH (NOLOCK)          
+              WHERE [IDMarca] = @IID        
             )          
-    BEGIN          
+    BEGIN
             
-      SET @ERRORMESSAGE = 'El categoria de bicicleta que esta intentando eliminar ya se encuentra en uso en otra tabla.'          
+      SET @ERRORMESSAGE = 'El tipo del producto que esta intentando eliminar ya se encuentra en uso en otra tabla.'          
       SET @ERRORSEVERITY = 16         
       SET @ERRORSTATE = 1             
       GOTO ERROR              
@@ -1056,7 +1151,7 @@ BEGIN TRY
     
       BEGIN TRAN
       
-        DELETE FROM [DemoAlquileresMVC].[dbo].[categoriaBici] WHERE [ID] = @IID  
+        DELETE FROM [DemoAlquileresMVC].[dbo].[tipo] WHERE [ID] = @IID  
       
       COMMIT TRAN
     
@@ -1081,17 +1176,17 @@ ERROR:
   RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_INCBICICLETA]    Script Date: 02/23/2018 17:20:56 ******/
+/****** Object:  StoredProcedure [dbo].[USP_INCMARCA]    Script Date: 02/23/2018 17:20:56 ******/
 SET QUOTED_IDENTIFIER ON
 GO
 SET NUMERIC_ROUNDABORT OFF;
 GO
 SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
 GO
-CREATE PROCEDURE [dbo].[USP_INCBICICLETA]
+CREATE PROCEDURE [dbo].[USP_INCMARCA]
 (           
-  @VMARCA AS VARCHAR(200), @VMODELO AS VARCHAR(200), @ICATEGORIA AS INT
-)          
+  @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @ITIPO AS INT, @IESTATUS AS INT = 1
+)
 AS          
           
 SET NOCOUNT ON                  
@@ -1101,14 +1196,36 @@ DECLARE @ERRORSTATE INT
           
 BEGIN TRY          
           
+  IF EXISTS (          
+              SELECT *          
+              FROM [DemoAlquileresMVC].[dbo].[marca] WITH (NOLOCK)          
+              WHERE [Codigo] = @VCODIGO        
+            )          
+    BEGIN          
+            
+      SET @ERRORMESSAGE = 'El codigo de la marca del producto que esta intentando registrar ya se encuentra en uso'          
+      SET @ERRORSEVERITY = 16         
+      SET @ERRORSTATE = 1             
+      GOTO ERROR              
+              
+    END
+  ELSE
+  
     BEGIN
     
       BEGIN TRAN
       
-        INSERT INTO [DemoAlquileresMVC].[dbo].[bicicleta]
-          (Marca, Modelo, IDCategoriaBici)
+		DECLARE @INUMERO INT
+		SET @INUMERO = (SELECT TOP 1 [ID] FROM [DemoAlquileresMVC].[dbo].[tipo] ORDER BY [ID] DESC)
+		IF (@ITIPO = 0)
+		BEGIN
+			SET @ITIPO = @INUMERO
+		END 
+		        
+        INSERT INTO [DemoAlquileresMVC].[dbo].[marca]
+          (Codigo, Descripcion, IDTipo, Estatus)
         VALUES
-          (@VMARCA, @VMODELO, @ICATEGORIA)
+          (@VCODIGO, @VDESCRIPCION, @ITIPO, @IESTATUS)
       
       COMMIT TRAN
     
@@ -1133,16 +1250,16 @@ ERROR:
   RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_MODBICICLETA]    Script Date: 02/23/2018 16:20:47 ******/
+/****** Object:  StoredProcedure [dbo].[USP_MODMARCA]    Script Date: 02/23/2018 16:20:47 ******/
 SET QUOTED_IDENTIFIER ON
 GO
 SET NUMERIC_ROUNDABORT OFF;
 GO
 SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
 GO
-CREATE PROCEDURE [dbo].[USP_MODBICICLETA]
+CREATE PROCEDURE [dbo].[USP_MODMARCA]
 ( 
-  @IID AS INT, @VMARCA AS VARCHAR(200), @VMODELO AS VARCHAR(200), @ICATEGORIA AS INT
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @ITIPO AS INT, @IESTATUS AS INT = 1
 )
 AS
 
@@ -1157,11 +1274,19 @@ BEGIN TRY
     
       BEGIN TRAN
       
+      DECLARE @INUMERO INT
+      SET @INUMERO = (SELECT TOP 1 [ID] FROM [DemoAlquileresMVC].[dbo].[tipo] ORDER BY [ID] DESC)
+      IF (@ITIPO = 0)
+      BEGIN
+		  SET @ITIPO = @INUMERO      
+      END
+      
       UPDATE A1
-      SET A1.Marca = @VMARCA,
-          A1.Modelo = @VMODELO,
-          A1.IDCategoriaBici = @ICATEGORIA
-      FROM [DemoAlquileresMVC].[dbo].[bicicleta] A1
+      SET	A1.Codigo = @VCODIGO,
+			A1.Descripcion = @VDESCRIPCION, 
+			A1.IDTipo = @ITIPO, 
+			A1.Estatus = @IESTATUS 
+      FROM [DemoAlquileresMVC].[dbo].[marca] A1
       WHERE A1.ID = @IID
       
       COMMIT TRAN
@@ -1187,16 +1312,604 @@ ERROR:
   RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_ELIBICICLETA]    Script Date: 03/03/2018 01:56:59 ******/
+/****** Object:  StoredProcedure [dbo].[USP_ELIMARCA]    Script Date: 03/03/2018 01:56:59 ******/
 SET QUOTED_IDENTIFIER ON
 GO
 SET NUMERIC_ROUNDABORT OFF;
 GO
 SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
 GO
-CREATE PROCEDURE [dbo].[USP_ELIBICICLETA]
+CREATE PROCEDURE [dbo].[USP_ELIMARCA]
 ( 
-  @IID AS INT, @VMARCA AS VARCHAR(200), @VMODELO AS VARCHAR(200), @ICATEGORIA AS INT
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @ITIPO AS INT, @IESTATUS AS INT = 1
+)
+AS
+
+SET NOCOUNT ON
+DECLARE @ERRORMESSAGE NVARCHAR(4000)  
+DECLARE @ERRORSEVERITY INT  
+DECLARE @ERRORSTATE INT  
+
+BEGIN TRY          
+          
+  IF EXISTS (          
+              SELECT *          
+              FROM [DemoAlquileresMVC].[dbo].[producto] WITH (NOLOCK)          
+              WHERE [IDMarca] = @IID        
+            )          
+    BEGIN
+            
+      SET @ERRORMESSAGE = 'La marca del producto que esta intentando eliminar ya se encuentra en uso en otra tabla.'          
+      SET @ERRORSEVERITY = 16         
+      SET @ERRORSTATE = 1             
+      GOTO ERROR              
+              
+    END
+  ELSE
+  
+    BEGIN
+    
+      BEGIN TRAN
+      
+        DELETE FROM [DemoAlquileresMVC].[dbo].[marca] WHERE [ID] = @IID  
+      
+      COMMIT TRAN
+    
+    END
+    
+END TRY          
+          
+BEGIN CATCH          
+              
+  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()          
+  SET @ERRORSEVERITY = ERROR_SEVERITY()            
+  SET @ERRORSTATE = ERROR_STATE()        
+  GOTO ERROR          
+          
+END CATCH          
+          
+SET NOCOUNT OFF          
+          
+RETURN        
+ERROR:        
+  IF XACT_STATE() <> 0 ROLLBACK TRAN        
+  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+GO
+
+/****** Object:  StoredProcedure [dbo].[USP_INCMODELO]    Script Date: 02/23/2018 17:20:56 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+SET NUMERIC_ROUNDABORT OFF;
+GO
+SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
+GO
+CREATE PROCEDURE [dbo].[USP_INCMODELO]
+(           
+  @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @ITIPO AS INT, @IESTATUS AS INT = 1
+)
+AS          
+          
+SET NOCOUNT ON                  
+DECLARE @ERRORMESSAGE NVARCHAR(4000)          
+DECLARE @ERRORSEVERITY INT          
+DECLARE @ERRORSTATE INT
+
+BEGIN TRY          
+          
+  IF EXISTS (          
+              SELECT *          
+              FROM [DemoAlquileresMVC].[dbo].[modelo] WITH (NOLOCK)          
+              WHERE [Codigo] = @VCODIGO        
+            )          
+    BEGIN          
+            
+      SET @ERRORMESSAGE = 'El codigo del modelo del producto que esta intentando registrar ya se encuentra en uso'          
+      SET @ERRORSEVERITY = 16         
+      SET @ERRORSTATE = 1             
+      GOTO ERROR              
+              
+    END
+  ELSE
+  
+    BEGIN
+    
+      BEGIN TRAN
+      
+        DECLARE @INUMERO INT
+		SET @INUMERO = (SELECT TOP 1 [ID] FROM [DemoAlquileresMVC].[dbo].[tipo] ORDER BY [ID] DESC)
+		IF (@ITIPO = 0)
+			BEGIN
+				SET @ITIPO = @INUMERO
+			END
+		        
+        INSERT INTO [DemoAlquileresMVC].[dbo].[modelo]
+          (Codigo, Descripcion, IDTipo, Estatus)
+        VALUES
+          (@VCODIGO, @VDESCRIPCION, @ITIPO, @IESTATUS)
+      
+      COMMIT TRAN
+    
+    END
+    
+END TRY          
+          
+BEGIN CATCH          
+              
+  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()          
+  SET @ERRORSEVERITY = ERROR_SEVERITY()            
+  SET @ERRORSTATE = ERROR_STATE()        
+  GOTO ERROR          
+          
+END CATCH          
+          
+SET NOCOUNT OFF          
+          
+RETURN        
+ERROR:        
+  IF XACT_STATE() <> 0 ROLLBACK TRAN        
+  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+GO
+
+/****** Object:  StoredProcedure [dbo].[USP_MODMODELO]    Script Date: 02/23/2018 16:20:47 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+SET NUMERIC_ROUNDABORT OFF;
+GO
+SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
+GO
+CREATE PROCEDURE [dbo].[USP_MODMODELO]
+( 
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @ITIPO AS INT, @IESTATUS AS INT = 1
+)
+AS
+
+SET NOCOUNT ON
+DECLARE @ERRORMESSAGE NVARCHAR(4000)  
+DECLARE @ERRORSEVERITY INT  
+DECLARE @ERRORSTATE INT  
+
+BEGIN TRY
+
+    BEGIN
+    
+      BEGIN TRAN
+      
+      DECLARE @INUMERO INT
+      SET @INUMERO = (SELECT TOP 1 [ID] FROM [DemoAlquileresMVC].[dbo].[tipo] ORDER BY [ID] DESC)
+      IF (@ITIPO = 0)
+      BEGIN
+		  SET @ITIPO = @INUMERO      
+      END      
+      
+      UPDATE A1
+      SET	A1.Codigo = @VCODIGO,
+			A1.Descripcion = @VDESCRIPCION, 
+			A1.IDTipo = @ITIPO, 
+			A1.Estatus = @IESTATUS 
+      FROM [DemoAlquileresMVC].[dbo].[modelo] A1
+      WHERE A1.ID = @IID
+      
+      COMMIT TRAN
+      
+    END
+
+END TRY
+
+BEGIN CATCH
+
+  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()
+  SET @ERRORSEVERITY = ERROR_SEVERITY()  
+  SET @ERRORSTATE = ERROR_STATE()  
+  GOTO ERROR
+  
+END CATCH
+
+SET NOCOUNT OFF
+
+RETURN
+ERROR:
+  IF XACT_STATE() <> 0 ROLLBACK TRAN
+  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+GO
+
+/****** Object:  StoredProcedure [dbo].[USP_ELIMODELO]    Script Date: 03/03/2018 01:56:59 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+SET NUMERIC_ROUNDABORT OFF;
+GO
+SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
+GO
+CREATE PROCEDURE [dbo].[USP_ELIMODELO]
+( 
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @ITIPO AS INT, @IESTATUS AS INT = 1
+)
+AS
+
+SET NOCOUNT ON
+DECLARE @ERRORMESSAGE NVARCHAR(4000)  
+DECLARE @ERRORSEVERITY INT  
+DECLARE @ERRORSTATE INT  
+
+BEGIN TRY          
+          
+  IF EXISTS (          
+              SELECT *          
+              FROM [DemoAlquileresMVC].[dbo].[producto] WITH (NOLOCK)          
+              WHERE [IDModelo] = @IID        
+            )          
+    BEGIN
+            
+      SET @ERRORMESSAGE = 'El modelo del producto que esta intentando eliminar ya se encuentra en uso en otra tabla.'          
+      SET @ERRORSEVERITY = 16         
+      SET @ERRORSTATE = 1             
+      GOTO ERROR              
+              
+    END
+  ELSE
+  
+    BEGIN
+    
+      BEGIN TRAN
+      
+        DELETE FROM [DemoAlquileresMVC].[dbo].[modelo] WHERE [ID] = @IID  
+      
+      COMMIT TRAN
+    
+    END
+    
+END TRY          
+          
+BEGIN CATCH          
+              
+  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()          
+  SET @ERRORSEVERITY = ERROR_SEVERITY()            
+  SET @ERRORSTATE = ERROR_STATE()        
+  GOTO ERROR          
+          
+END CATCH          
+          
+SET NOCOUNT OFF          
+          
+RETURN        
+ERROR:        
+  IF XACT_STATE() <> 0 ROLLBACK TRAN        
+  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+GO
+
+/****** Object:  StoredProcedure [dbo].[USP_INCCATEGORIA]    Script Date: 02/23/2018 17:20:56 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+SET NUMERIC_ROUNDABORT OFF;
+GO
+SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
+GO
+CREATE PROCEDURE [dbo].[USP_INCCATEGORIA]
+(           
+  @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @ITIPO AS INT, @IESTATUS AS INT = 1
+)
+AS          
+          
+SET NOCOUNT ON                  
+DECLARE @ERRORMESSAGE NVARCHAR(4000)          
+DECLARE @ERRORSEVERITY INT          
+DECLARE @ERRORSTATE INT      
+          
+BEGIN TRY          
+          
+  IF EXISTS (          
+              SELECT *          
+              FROM [DemoAlquileresMVC].[dbo].[categoria] WITH (NOLOCK)          
+              WHERE [Codigo] = @VCODIGO        
+            )          
+    BEGIN          
+            
+      SET @ERRORMESSAGE = 'El codigo de la categoria del producto que esta intentando registrar ya se encuentra en uso'          
+      SET @ERRORSEVERITY = 16         
+      SET @ERRORSTATE = 1             
+      GOTO ERROR              
+              
+    END
+  ELSE
+  
+    BEGIN
+    
+      BEGIN TRAN
+      
+        DECLARE @INUMERO INT
+		SET @INUMERO = (SELECT TOP 1 [ID] FROM [DemoAlquileresMVC].[dbo].[tipo] ORDER BY [ID] DESC)
+		IF (@ITIPO = 0)
+			BEGIN
+				SET @ITIPO = @INUMERO
+			END        
+        
+        INSERT INTO [DemoAlquileresMVC].[dbo].[categoria]
+          (Codigo, Descripcion, IDTipo, Estatus)
+        VALUES
+          (@VCODIGO, @VDESCRIPCION, @ITIPO, @IESTATUS)
+      
+      COMMIT TRAN
+    
+    END
+    
+END TRY          
+          
+BEGIN CATCH          
+              
+  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()          
+  SET @ERRORSEVERITY = ERROR_SEVERITY()            
+  SET @ERRORSTATE = ERROR_STATE()        
+  GOTO ERROR          
+          
+END CATCH          
+          
+SET NOCOUNT OFF          
+          
+RETURN        
+ERROR:        
+  IF XACT_STATE() <> 0 ROLLBACK TRAN        
+  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+GO
+
+/****** Object:  StoredProcedure [dbo].[USP_MODCATEGORIA]    Script Date: 02/23/2018 16:20:47 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+SET NUMERIC_ROUNDABORT OFF;
+GO
+SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
+GO
+CREATE PROCEDURE [dbo].[USP_MODCATEGORIA]
+( 
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @ITIPO AS INT, @IESTATUS AS INT = 1
+)
+AS
+
+SET NOCOUNT ON
+DECLARE @ERRORMESSAGE NVARCHAR(4000)  
+DECLARE @ERRORSEVERITY INT  
+DECLARE @ERRORSTATE INT  
+
+BEGIN TRY
+
+    BEGIN
+    
+      BEGIN TRAN
+      
+      DECLARE @INUMERO INT
+      SET @INUMERO = (SELECT TOP 1 [ID] FROM [DemoAlquileresMVC].[dbo].[tipo] ORDER BY [ID] DESC)
+      IF (@ITIPO = 0)
+      BEGIN
+		  SET @ITIPO = @INUMERO      
+      END      
+      
+      UPDATE A1
+      SET	A1.Codigo = @VCODIGO,
+			A1.Descripcion = @VDESCRIPCION, 
+			A1.IDTipo = @ITIPO, 
+			A1.Estatus = @IESTATUS 
+      FROM [DemoAlquileresMVC].[dbo].[categoria] A1
+      WHERE A1.ID = @IID
+      
+      COMMIT TRAN
+      
+    END
+
+END TRY
+
+BEGIN CATCH
+
+  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()
+  SET @ERRORSEVERITY = ERROR_SEVERITY()  
+  SET @ERRORSTATE = ERROR_STATE()  
+  GOTO ERROR
+  
+END CATCH
+
+SET NOCOUNT OFF
+
+RETURN
+ERROR:
+  IF XACT_STATE() <> 0 ROLLBACK TRAN
+  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+GO
+
+/****** Object:  StoredProcedure [dbo].[USP_ELICATEGORIA]    Script Date: 03/03/2018 01:56:59 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+SET NUMERIC_ROUNDABORT OFF;
+GO
+SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
+GO
+CREATE PROCEDURE [dbo].[USP_ELICATEGORIA]
+( 
+  @IID AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @ITIPO AS INT, @IESTATUS AS INT = 1
+)
+AS
+
+SET NOCOUNT ON
+DECLARE @ERRORMESSAGE NVARCHAR(4000)  
+DECLARE @ERRORSEVERITY INT  
+DECLARE @ERRORSTATE INT  
+
+BEGIN TRY          
+          
+  IF EXISTS (          
+              SELECT *          
+              FROM [DemoAlquileresMVC].[dbo].[producto] WITH (NOLOCK)          
+              WHERE [IDCategoria] = @IID        
+            )          
+    BEGIN          
+            
+      SET @ERRORMESSAGE = 'El categoria del producto que esta intentando eliminar ya se encuentra en uso en otra tabla.'          
+      SET @ERRORSEVERITY = 16         
+      SET @ERRORSTATE = 1             
+      GOTO ERROR              
+              
+    END
+  ELSE
+  
+    BEGIN
+    
+      BEGIN TRAN
+      
+        DELETE FROM [DemoAlquileresMVC].[dbo].[categoria] WHERE [ID] = @IID  
+      
+      COMMIT TRAN
+    
+    END
+    
+END TRY          
+          
+BEGIN CATCH          
+              
+  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()          
+  SET @ERRORSEVERITY = ERROR_SEVERITY()            
+  SET @ERRORSTATE = ERROR_STATE()        
+  GOTO ERROR          
+          
+END CATCH          
+          
+SET NOCOUNT OFF          
+          
+RETURN        
+ERROR:        
+  IF XACT_STATE() <> 0 ROLLBACK TRAN        
+  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+GO
+
+/****** Object:  StoredProcedure [dbo].[USP_INCPRODUCTO]    Script Date: 02/23/2018 17:20:56 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+SET NUMERIC_ROUNDABORT OFF;
+GO
+SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
+GO
+CREATE PROCEDURE [dbo].[USP_INCPRODUCTO]
+(           
+  @ITIPO AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @IMARCA AS INT, @IMODELO AS INT, @ICATEGORIA AS INT, @IESTATUS AS INT = 1
+)          
+AS          
+          
+SET NOCOUNT ON                  
+DECLARE @ERRORMESSAGE NVARCHAR(4000)          
+DECLARE @ERRORSEVERITY INT          
+DECLARE @ERRORSTATE INT      
+          
+BEGIN TRY          
+          
+    BEGIN
+    
+      BEGIN TRAN
+      
+        DECLARE @INUMERO INT
+		SET @INUMERO = (SELECT TOP 1 [ID] FROM [DemoAlquileresMVC].[dbo].[tipo] ORDER BY [ID] DESC)
+		IF (@ITIPO = 0)
+			BEGIN
+				SET @ITIPO = @INUMERO
+			END        
+        
+        INSERT INTO [DemoAlquileresMVC].[dbo].[producto]
+          (IDTipo, Codigo, Descripcion, IDMarca, IDModelo, IDCategoria, Estatus)
+        VALUES
+          (@ITIPO, @VCODIGO, @VDESCRIPCION, @IMARCA, @IMODELO, @ICATEGORIA, @IESTATUS)
+      
+      COMMIT TRAN
+    
+    END
+    
+END TRY          
+          
+BEGIN CATCH          
+              
+  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()          
+  SET @ERRORSEVERITY = ERROR_SEVERITY()            
+  SET @ERRORSTATE = ERROR_STATE()        
+  GOTO ERROR          
+          
+END CATCH          
+          
+SET NOCOUNT OFF          
+          
+RETURN        
+ERROR:        
+  IF XACT_STATE() <> 0 ROLLBACK TRAN        
+  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+GO
+
+/****** Object:  StoredProcedure [dbo].[USP_MODPRODUCTO]    Script Date: 02/23/2018 16:20:47 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+SET NUMERIC_ROUNDABORT OFF;
+GO
+SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
+GO
+CREATE PROCEDURE [dbo].[USP_MODPRODUCTO]
+( 
+  @IID AS INT, @ITIPO AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @IMARCA AS INT, @IMODELO AS INT, @ICATEGORIA AS INT, @IESTATUS AS INT = 1
+)
+AS
+
+SET NOCOUNT ON
+DECLARE @ERRORMESSAGE NVARCHAR(4000)  
+DECLARE @ERRORSEVERITY INT  
+DECLARE @ERRORSTATE INT  
+
+BEGIN TRY
+
+    BEGIN
+    
+      BEGIN TRAN
+      
+      DECLARE @INUMERO INT
+      SET @INUMERO = (SELECT TOP 1 [ID] FROM [DemoAlquileresMVC].[dbo].[tipo] ORDER BY [ID] DESC)
+      IF (@ITIPO = 0)
+      BEGIN
+		  SET @ITIPO = @INUMERO      
+      END  
+      
+      UPDATE A1
+      SET	A1.IDTipo = @ITIPO, 
+			A1.Codigo = @VCODIGO,
+			A1.Descripcion = @VDESCRIPCION, 
+			A1.IDMarca = @IMARCA, 
+			A1.IDModelo = @IMODELO, 
+			A1.IDCategoria = @ICATEGORIA, 
+			A1.Estatus = @IESTATUS 
+      FROM [DemoAlquileresMVC].[dbo].[producto] A1
+      WHERE A1.ID = @IID
+      
+      COMMIT TRAN
+      
+    END
+
+END TRY
+
+BEGIN CATCH
+
+  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()
+  SET @ERRORSEVERITY = ERROR_SEVERITY()  
+  SET @ERRORSTATE = ERROR_STATE()  
+  GOTO ERROR
+  
+END CATCH
+
+SET NOCOUNT OFF
+
+RETURN
+ERROR:
+  IF XACT_STATE() <> 0 ROLLBACK TRAN
+  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+GO
+
+/****** Object:  StoredProcedure [dbo].[USP_ELIPRODUCTO]    Script Date: 03/03/2018 01:56:59 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+SET NUMERIC_ROUNDABORT OFF;
+GO
+SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
+GO
+CREATE PROCEDURE [dbo].[USP_ELIPRODUCTO]
+( 
+  @IID AS INT, @ITIPO AS INT, @VCODIGO AS VARCHAR(200), @VDESCRIPCION AS VARCHAR(200), @IMARCA AS INT, @IMODELO AS INT, @ICATEGORIA AS INT, @IESTATUS AS INT = 1
 )
 AS
 
@@ -1210,11 +1923,11 @@ BEGIN TRY
   IF EXISTS (          
               SELECT *          
               FROM [DemoAlquileresMVC].[dbo].[alquiler] WITH (NOLOCK)          
-              WHERE [IDBicileta] = @IID        
+              WHERE [IDProducto] = @IID        
             )          
     BEGIN          
             
-      SET @ERRORMESSAGE = 'El categoria de bicicleta que esta intentando eliminar ya se encuentra en uso en otra tabla.'          
+      SET @ERRORMESSAGE = 'El producto que esta intentando eliminar ya se encuentra en uso en otra tabla.'          
       SET @ERRORSEVERITY = 16         
       SET @ERRORSTATE = 1             
       GOTO ERROR              
@@ -1226,7 +1939,7 @@ BEGIN TRY
     
       BEGIN TRAN
       
-        DELETE FROM [DemoAlquileresMVC].[dbo].[bicicleta] WHERE [ID] = @IID  
+        DELETE FROM [DemoAlquileresMVC].[dbo].[producto] WHERE [ID] = @IID  
       
       COMMIT TRAN
     
@@ -1260,7 +1973,7 @@ SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIEL
 GO
 CREATE PROCEDURE [dbo].[USP_INCALQUILER] 
 (   
-  @ICLIENTE AS INT, @IBICICLETA AS INT, @DFECHADESDE AS DATETIME, 
+  @ICLIENTE AS INT, @IPRODUCTO AS INT, @DFECHADESDE AS DATETIME, 
   @DFECHAHASTA AS DATETIME, @VTIEMPOHOR AS VARCHAR(100)=NULL, @VTIEMPODIA AS VARCHAR(100)=NULL, 
   @VTIEMPOSEM AS VARCHAR(100)=NULL, @IESTATUS INT = 0
 )
@@ -1344,9 +2057,9 @@ BEGIN TRY
 		
 		--SE INCLUYE EL ALQUILER
 		INSERT INTO [DemoAlquileresMVC].[dbo].[alquiler]
-          (IDCliente, IDBicileta, FechaDesde, FechaHasta, TiempoHora, TiempoDia, TiempoSemana, PrecioEstimado, Estatus)
+          (IDCliente, IDProducto, FechaDesde, FechaHasta, TiempoHora, TiempoDia, TiempoSemana, PrecioEstimado, Estatus)
         VALUES  
-          (@ICLIENTE, @IBICICLETA, @DFECHADESDE, @DFECHAHASTA, @VTIEMPOHOR, @VTIEMPODIA, @VTIEMPOSEM, @NPRECIO, @IESTATUS) 
+          (@ICLIENTE, @IPRODUCTO, @DFECHADESDE, @DFECHAHASTA, @VTIEMPOHOR, @VTIEMPODIA, @VTIEMPOSEM, @NPRECIO, @IESTATUS) 
         
       COMMIT TRAN
     
@@ -1380,7 +2093,7 @@ SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIEL
 GO
 CREATE PROCEDURE [dbo].[USP_MODALQUILER]
 (   
-  @IID AS INT, @ICLIENTE AS INT, @IBICICLETA AS INT, @DFECHADESDE AS DATETIME, 
+  @IID AS INT, @ICLIENTE AS INT, @IPRODUCTO AS INT, @DFECHADESDE AS DATETIME, 
   @DFECHAHASTA AS DATETIME, @VTIEMPOHOR AS VARCHAR(100)=NULL, @VTIEMPODIA AS VARCHAR(100)=NULL, 
   @VTIEMPOSEM AS VARCHAR(100)=NULL, @IESTATUS INT = 1
 )
@@ -1465,7 +2178,7 @@ BEGIN TRY
 		--SE ACTUALIZA EL ALQUILER
         UPDATE A1
 		SET	A1.IDCliente = @ICLIENTE,
-			A1.IDBicileta = @IBICICLETA,
+			A1.IDProducto = @IPRODUCTO,
 			A1.FechaDesde = @DFECHADESDE,
 			A1.FechaHasta = @DFECHAHASTA,
 			A1.TiempoHora = @VTIEMPOHOR,
@@ -1682,7 +2395,7 @@ BEGIN TRY
 		
 		--CREA XML PARA INSERTAR EL PAGO DETALLE
 		DECLARE @XML_ALQUILERES AS XML = NULL		
-		SET @XML_ALQUILERES = (SELECT @IID AS IDPagoCab, ALQUILER.ID AS IDAlquiler, ALQUILER.IDCliente, ALQUILER.IDBicileta, 
+		SET @XML_ALQUILERES = (SELECT @IID AS IDPagoCab, ALQUILER.ID AS IDAlquiler, ALQUILER.IDCliente, ALQUILER.IDProducto, 
 				ALQUILER.FechaDesde, ALQUILER.FechaHasta, ALQUILER.TiempoHora, ALQUILER.TiempoDia, ALQUILER.TiempoSemana, 
 				CAST((ALQUILER.PrecioEstimado * 1.00) AS NVARCHAR(30)) AS PrecioUnitario, 
 				CAST(((@NDESDET * ALQUILER.PrecioEstimado) * 1.00) AS NVARCHAR(30)) AS Descuento, 
@@ -1792,7 +2505,7 @@ BEGIN TRY
 		
 		--CREA XML PARA INSERTAR EL PAGO DETALLE
 		DECLARE @XML_ALQUILERES AS XML = NULL		
-		SET @XML_ALQUILERES = (SELECT @IID AS IDPagoCab, ALQUILER.ID AS IDAlquiler, ALQUILER.IDCliente, ALQUILER.IDBicileta, 
+		SET @XML_ALQUILERES = (SELECT @IID AS IDPagoCab, ALQUILER.ID AS IDAlquiler, ALQUILER.IDCliente, ALQUILER.IDProducto, 
 				ALQUILER.FechaDesde, ALQUILER.FechaHasta, ALQUILER.TiempoHora, ALQUILER.TiempoDia, ALQUILER.TiempoSemana, 
 				CAST((ALQUILER.PrecioEstimado * 1.00) AS NVARCHAR(30)) AS PrecioUnitario, 
 				CAST(((@NDESDET * ALQUILER.PrecioEstimado) * 1.00) AS NVARCHAR(30)) AS Descuento, 
@@ -1893,146 +2606,18 @@ ERROR:
   RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_INCPAGODET]    Script Date: 02/27/2018 14:07:00 ******/
-SET QUOTED_IDENTIFIER ON
-GO
-SET NUMERIC_ROUNDABORT OFF;
-GO
-SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
-GO
-CREATE PROCEDURE [dbo].[USP_INCPAGODET] 
-(
-  @IPAGO AS INT, @IALQUILER AS INT, @FPRECIOUNIT AS FLOAT=0.00, 
-  @FPRECIODESC AS FLOAT=NULL, @FPRECIOTOTAL AS FLOAT=NULL
-)
-AS
-
-SET NOCOUNT ON  
-DECLARE @ERRORMESSAGE NVARCHAR(4000)  
-DECLARE @ERRORSEVERITY INT  
-DECLARE @ERRORSTATE INT 
-DECLARE @NDESDET NUMERIC(19,2)
-
-BEGIN TRY
-  
-    BEGIN  
-      
-      BEGIN TRAN
-		
-		SET @NDESDET = (SELECT TOP 1 [PorcentajeDescuento] FROM [DemoAlquileresMVC].[dbo].[descuento] WHERE [Descripcion] LIKE '%Linea%') * 1.00
-		
-		SET @FPRECIODESC = @NDESDET * @FPRECIOUNIT
-		SET @FPRECIOTOTAL = @FPRECIOUNIT - @FPRECIODESC
-		
-		INSERT INTO [DemoAlquileresMVC].[dbo].[pagoDet]
-          (IDPagoCab, IDAlquiler, PrecioUnitario, Descuento, PrecioTotal)
-        VALUES
-          (@IPAGO, @IALQUILER, @FPRECIOUNIT, @FPRECIODESC, @FPRECIOTOTAL) 
-                   
-      COMMIT TRAN
-    
-    END
-
-END TRY
-
-BEGIN CATCH
-    
-  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()
-  SET @ERRORSEVERITY = ERROR_SEVERITY()  
-  SET @ERRORSTATE = ERROR_STATE()  
-  GOTO ERROR  
-
-END CATCH
-
-SET NOCOUNT OFF
-
-RETURN
-ERROR:
-  IF XACT_STATE() <> 0 ROLLBACK TRAN
-  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
+INSERT INTO [DemoAlquileresMVC].[dbo].[cliente] ([Nombre],[Telefono],[Correo], [Direccion],[Estatus])
+VALUES	('Tyrion Lannister','0234-2313098','tyrion@gmail.com', 'Los Cortijos', 1), 
+		('Arya Stark','0424-5308590','aryagot@hotmail.com', 'Sabana Grande', 1), 
+		('Jon Snow','0254-8004554','jonsnow@gmail.com', 'Urb. Altamira', 1),
+		('Jaime Lannister','0409-8902368','jaime@gmail.com', 'Plaza Venezuela', 1),
+		('Sansa Stark','090-2368450','sansagot@gmail.com', 'Plaza Bolivar', 1)
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_MODPAGODET]    Script Date: 02/23/2018 17:50:05 ******/
-SET QUOTED_IDENTIFIER ON
-GO
-SET NUMERIC_ROUNDABORT OFF;
-GO
-SET QUOTED_IDENTIFIER, ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT ON;
-GO
-CREATE PROCEDURE [dbo].[USP_MODPAGODET] 
-(   
-  @IID AS INT, @IPAGO AS INT, @IALQUILER AS INT, @FPRECIOUNIT AS FLOAT=0.00, 
-  @FPRECIODESC AS FLOAT=NULL, @FPRECIOTOTAL AS FLOAT=NULL
-)
-AS
-
-SET NOCOUNT ON  
-DECLARE @ERRORMESSAGE NVARCHAR(4000)  
-DECLARE @ERRORSEVERITY INT  
-DECLARE @ERRORSTATE INT 
-DECLARE @NDESDET NUMERIC(19,2)
-
-BEGIN TRY
-  
-    BEGIN  
-      
-      BEGIN TRAN
-		
-		SET @NDESDET = (SELECT TOP 1 [PorcentajeDescuento] FROM [DemoAlquileresMVC].[dbo].[descuento] WHERE [Descripcion] LIKE '%Linea%') * 1.00
-		
-		SET @FPRECIODESC = @NDESDET * @FPRECIOUNIT
-		SET @FPRECIOTOTAL = @FPRECIOUNIT - @FPRECIODESC
-        
-        UPDATE A1
-		SET	A1.IDPagoCab = @IPAGO,
-			A1.IDAlquiler = @IALQUILER,
-			A1.PrecioUnitario = @FPRECIOUNIT,
-			A1.Descuento = @FPRECIODESC,
-			A1.PrecioTotal = @FPRECIOTOTAL
-		FROM [DemoAlquileresMVC].[dbo].[pagoDet] A1
-		WHERE A1.ID = @IID
-        
-      COMMIT TRAN
-    
-    END
-
-END TRY
-
-BEGIN CATCH
-    
-  SET @ERRORMESSAGE = 'ERROR ' + CAST(ERROR_NUMBER() AS VARCHAR(10)) + '. LINEA ' + CAST(ERROR_LINE() AS VARCHAR(10)) + '. ' + ERROR_MESSAGE()
-  SET @ERRORSEVERITY = ERROR_SEVERITY()  
-  SET @ERRORSTATE = ERROR_STATE()  
-  GOTO ERROR  
-
-END CATCH
-
-SET NOCOUNT OFF
-
-RETURN
-ERROR:
-  IF XACT_STATE() <> 0 ROLLBACK TRAN
-  RAISERROR (@ERRORMESSAGE, @ERRORSEVERITY, @ERRORSTATE)
-GO
-
-INSERT INTO [DemoAlquileresMVC].[dbo].[cliente] ([Nombre],[Telefono],[Correo])
-VALUES	('Tyrion Lannister','0234-2313098','tyrion@gmail.com'), 
-		('Arya Stark','0424-5308590','aryagot@hotmail.com'), 
-		('Jon Snow','0254-8004554','jonsnow@gmail.com'),
-		('Jaime Lannister','0409-8902368','jaime@gmail.com'),
-		('Sansa Stark','090-2368450','sansagot@gmail.com')
-GO
-
-INSERT INTO [DemoAlquileresMVC].[dbo].[categoriaBici] ([Codigo],[Categoria])
-VALUES	('CAT1', 'Montañera'), 
-		('CAT2', 'Pista'), 
-		('CAT3', 'Paseo')
-GO
-
-INSERT INTO [DemoAlquileresMVC].[dbo].[precio] ([Codigo],[Descripcion],[PrecioUnitario])
-VALUES	('PRE1', 'Por Hora', 5.00), 
-		('PRE2', 'Por Dia', 20.00), 
-		('PRE3', 'Por Semana', 60.00)
+INSERT INTO [DemoAlquileresMVC].[dbo].[precio] ([Codigo],[Descripcion],[PrecioUnitario],[Estatus])
+VALUES	('PRE1', 'Por Hora', 5.00, 1), 
+		('PRE2', 'Por Dia', 20.00, 1), 
+		('PRE3', 'Por Semana', 60.00, 1)
 GO
 
 INSERT INTO [DemoAlquileresMVC].[dbo].[descuento] ([Codigo],[Descripcion],[PorcentajeDescuento],[Estatus])
@@ -2040,10 +2625,31 @@ VALUES	('DEC1', 'Por Cabecera', 0.30, 1),
 		('DEC2', 'Por Linea', 0.00, 1)
 GO
 
-INSERT INTO [DemoAlquileresMVC].[dbo].[bicicleta] ([Marca],[Modelo],[IDCategoriaBici])
-VALUES	('Bicileta Shimano MOT Rin 26', 'Rin 26', 1), ('Bicileta Greco PIS Rin 20', 'Rin 20', 2), ('Bicileta Greco PAS Rin 20', 'Rin 20', 3), 
-		('Bicileta Royal MOT Rin 26', 'Rin 26', 1), ('Bicileta Royal PIS Rin 26', 'Rin 26', 2), ('Bicileta Shimano PAS Rin 26', 'Rin 26', 3), 
-		('Bicileta Greco MOT Rin 26', 'Rin 26', 1), ('Bicileta Shimano PIS Rin 26', 'Rin 26', 2), ('Bicileta Royal PAS Rin 20', 'Rin 20', 3)
+INSERT INTO [DemoAlquileresMVC].[dbo].[tipo] ([Codigo],[Descripcion],[Estatus])
+VALUES	('TIP1', 'Bicicleta', 1) 
+GO
+
+INSERT INTO [DemoAlquileresMVC].[dbo].[marca] ([Codigo],[Descripcion],[Estatus],[IDTipo])
+VALUES	('MAC1', 'Shimano', 1, 1), 
+		('MAC2', 'Royal', 1, 1), 
+		('MAC3', 'Greco', 1, 1)
+GO
+
+INSERT INTO [DemoAlquileresMVC].[dbo].[modelo] ([Codigo],[Descripcion],[Estatus],[IDTipo])
+VALUES	('MOD1', 'Rin 16', 1, 1), 
+		('MOD2', 'Rin 20', 1, 1), 
+		('MOD3', 'Rin 26', 1, 1)
+GO
+
+INSERT INTO [DemoAlquileresMVC].[dbo].[categoria] ([Codigo],[Descripcion],[Estatus],[IDTipo])
+VALUES	('CAT1', 'Montañera', 1, 1), 
+		('CAT2', 'Pista', 1, 1), 
+		('CAT3', 'Paseo', 1, 1)
+GO
+
+INSERT INTO [DemoAlquileresMVC].[dbo].[producto] ([IDTipo],[Codigo],[Descripcion],[IDMarca],[IDModelo],[IDCategoria],[Estatus])
+VALUES	(1, 'BIC1', 'Shimano Ult 360', 1, 3, 1, 1), (1, 'BIC2', 'Royal T45', 2, 2, 2, 1), (1, 'BIC3', 'Greco Up20', 3, 1, 3, 1), 
+		(1, 'BIC4', 'Shimano P20', 1, 2, 1, 1), (1, 'BIC5', 'Royal V20', 2, 2, 2, 1), (1, 'BIC6', 'Greco M16', 3, 1, 3, 1)
 GO
 
 DECLARE @DFECHADESDE AS DATETIME, @DFECHAHASTA AS DATETIME

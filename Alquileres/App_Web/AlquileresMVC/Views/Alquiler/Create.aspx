@@ -15,7 +15,7 @@
 		<%= Html.BeginSectionItemDataRow() %>
         <%= Html.LabelDisplayItemFor(model => model.ID)%>
         <%= Html.DropDownListItemFor(model => model.Cliente.ID, Model.Cliente.ToEntitySelectList())%>
-        <%= Html.DropDownListItemFor(model => model.Bicicleta.ID, Model.Bicicleta.ToEntitySelectList())%>
+        <%= Html.DropDownListItemFor(model => model.Producto.ID, Model.Producto.ToEntitySelectList())%>
 		<%= Html.LabelEditorValidationItemFor(model => model.FechaDesde) %>
         <%= Html.LabelEditorValidationItemFor(model => model.FechaHasta) %>
         <%= Html.LabelDisplayItemFor(model => model.Estatus)%>

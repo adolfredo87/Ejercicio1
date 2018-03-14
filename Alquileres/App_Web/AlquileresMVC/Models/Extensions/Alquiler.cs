@@ -21,9 +21,9 @@ namespace AlquileresMVC.Models
             [Required, DisplayName("Cliente")]
             public Cliente Cliente { get; set; }
 
-            [Required, DisplayName("Bicicleta")]
-            public Bicicleta Bicicleta { get; set; }
-            
+            [Required, DisplayName("Producto")]
+            public Producto Producto { get; set; }
+
             [Required, DisplayName("Desde")]
             public DateTime FechaDesde { get; set; }
 
@@ -64,9 +64,9 @@ namespace AlquileresMVC.Models
             return Utility.Entity<Cliente>.LoadReference(this.ClienteReference);
         }
 
-        public Bicicleta BicicletaLoad()
+        public Producto ProductoLoad()
         {
-            return Utility.Entity<Bicicleta>.LoadReference(this.BicicletaReference);
+            return Utility.Entity<Producto>.LoadReference(this.ProductoReference);
         }
 
         public List<Int32> ToSelectListEstatus()

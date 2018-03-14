@@ -15,6 +15,7 @@
 		<%=  Html.LabelDisplayItemFor(model => model.Codigo)%>
 		<%=  Html.LabelDisplayItemFor(model => model.Descripcion)%>
 		<%=  Html.LabelDisplayItemFor(model => model.PrecioUnitario)%>
+        <%=  Html.LabelDisplayItemFor(model => model.Estatus)%>
 
 		<%=  Html.MessageDeleteWidget()%>
 		<%=  Html.EndSectionBody()%>

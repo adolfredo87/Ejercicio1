@@ -9,26 +9,26 @@ using AlquileresMVC.Utilitys;
 
 namespace AlquileresMVC.Models
 {
-    [MetadataType(typeof(Precio.MetaData))]
-    [DisplayName("Precios")]
-    public partial class Precio
+    [MetadataType(typeof(Marca.MetaData))]
+    [DisplayName("Marca del Producto")]
+    public partial class Marca
     {
         private sealed class MetaData
         {
             [Required, DisplayName("ID"), StringLength(50)]
             public int ID { get; set; }
 
-            [Required, DisplayName("Codigo del Precio"), StringLength(50)]
+            [Required, DisplayName("Codigo"), StringLength(50)]
             public String Codigo { get; set; }
 
-            [Required, DisplayName("Descripcion del Precio"), StringLength(100)]
+            [Required, DisplayName("Marca del Producto"), StringLength(100)]
             public String Descripcion { get; set; }
-
-            [Required, DisplayName("Precio Unitario")]
-            public Double PrecioUnitario { get; set; }
 
             [Required, DisplayName("Estatus")]
             public int Estatus { get; set; }
+
+            [Required, DisplayName("Tipo del Producto")]
+            public Tipo Tipo { get; set; }
 
         }
 
@@ -41,7 +41,12 @@ namespace AlquileresMVC.Models
 
         public static SelectList ToSelectList()
         {
-            return new SelectList(new AlquileresMVC.Models.DemoAlquileresMVCEntities().PrecioSet.ToList(), "ID", "Codigo", "Descripcion");
+            return new SelectList(new AlquileresMVC.Models.DemoAlquileresMVCEntities().MarcaSet.ToList(), "ID", "Descripcion");
+        }
+
+        public Tipo TipoLoad()
+        {
+            return Utility.Entity<Tipo>.LoadReference(this.TipoReference);
         }
 
         #endregion

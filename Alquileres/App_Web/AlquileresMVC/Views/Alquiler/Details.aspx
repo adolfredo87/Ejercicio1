@@ -12,7 +12,7 @@
 		
         <%=  Html.BeginSectionItemDataRow() %>
         <%=  Html.LabelDisplayItemFor(model => model.ID)%>
-        <%=  Html.LabelDisplayItemFor(model => model.Bicicleta.Marca)%>
+        <%=  Html.LabelDisplayItemFor(model => model.Producto.Descripcion)%>
         <%=  Html.LabelDisplayItemFor(model => model.Cliente.Nombre)%>
 		<%=  Html.LabelDisplayItemFor(model => model.FechaDesde)%>
         <%=  Html.LabelDisplayItemFor(model => model.FechaHasta)%>

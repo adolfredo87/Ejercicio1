@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.CategoriaBicicleta>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Producto>" %>
 <%@ Import Namespace="AlquileresMVC.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -6,23 +6,29 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <% using (Html.BeginForm()) { %>
-		<%= Html.BeginSection("../../Content/images/hpantalla/bicycle.png", Html.DisplayNameEditFor().ToHtmlString().ToUpper())%>
+
+    <% using (Html.BeginForm()) {%>
+		<%= Html.BeginSection("./../Content/images/hpantalla/bicycle.png", Html.DisplayNameCreateFor().ToHtmlString().ToUpper())%>
 		<%= Html.BeginSectionBody()%>
 		<%= Html.ValidationSummaryWidget()%>
             
 		<%= Html.BeginSectionItemDataRow() %>
         <%= Html.LabelDisplayItemFor(model => model.ID)%>
-        <%= Html.LabelEditorValidationItemFor(model => model.Codigo)%>
-		<%= Html.LabelEditorValidationItemFor(model => model.Categoria) %>
+        <%= Html.LabelEditorValidationItemFor(model => model.Codigo) %>
+        <%= Html.LabelEditorValidationItemFor(model => model.Descripcion) %>
+        <%= Html.DropDownListItemFor(model => model.Marca.ID, Model.Marca.ToEntitySelectList())%>
+        <%= Html.DropDownListItemFor(model => model.Modelo.ID, Model.Modelo.ToEntitySelectList())%>
+        <%= Html.DropDownListItemFor(model => model.Categoria.ID, Model.Categoria.ToEntitySelectList())%>
+        <%= Html.LabelSpinnerValidationItemFor(model => model.Estatus)%>
         <%= Html.EndSectionItemDataRow()%>
 
         <%= Html.EndSectionBody()%>
         <%= Html.BeginBarButtons()%>
-        <%= Html.BarButtonsEdit()%>
+        <%= Html.BarButtonsCreate()%>
         <%= Html.EndBarButtons()%>
         <%= Html.EndSection()%>
     <% } %>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
@@ -34,6 +40,6 @@
 	    });
         //]]>
     </script>
-
+	
 </asp:Content>
 

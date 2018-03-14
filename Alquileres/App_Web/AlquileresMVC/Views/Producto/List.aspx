@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Bicicleta>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Producto>" %>
 <%@ Import Namespace="AlquileresMVC.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -10,11 +10,11 @@
    <% using (Html.BeginForm()){%>
         <%= Html.BeginSection("./../Content/images/hpantalla/bicycle.png", Html.DisplayNameFor().ToHtmlString().ToUpper())%>
         <%= Html.BeginSectionBody(true)%>        
-        <%= Html.GridJQuery("Bicicleta")%>  
+        <%= Html.GridJQuery("Producto")%>  
         <%= Html.EndSectionBody()%> 
         <%= Html.BeginBarButtons()%>
         <%= Html.ActionLinkCreate()%>
-        <%= Html.ActionLinkPrintGrid("Bicicleta")%>
+        <%= Html.ActionLinkPrintGrid("Producto")%>
         <%= Html.ActionLinkHome()%>
         <%= Html.EndBarButtons()%>
         <%= Html.EndSection()%>
@@ -29,18 +29,20 @@
 	    // 
 	    // Procedimientos para Configuracion del grid
 	    $(function () {
-	        var jqTableGrid = mvcLocal.jqGrid.init("Bicicleta");
+	        var jqTableGrid = mvcLocal.jqGrid.init("Producto");
 	        //
 	        // Specify the column names
-	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Marca", "Modelo", "Categoria", "Acciones"];
+	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Codigo", "Descripcion", "Marca", "Modelo", "Categoria", "Acciones"];
 	        //
 	        // Configure the columns
 	        jqTableGrid.mvcUI.config.options.colModel =
 				[
 					{ name: "ID", index: "ID", width: 50, align: "left" },
-                    { name: "Marca", index: "Marca", width: 100, align: "left" },
-					{ name: "Modelo", index: "Modelo", width: 100, align: "left" },
-					{ name: "CategoriaBici", index: "CategoriaBici", width: 100, align: "left" },
+                    { name: "Codigo", index: "Codigo", width: 50, align: "left" },
+					{ name: "Descripcion", index: "Descripcion", width: 140, align: "left" },
+                    { name: "Marca", index: "Marca", width: 50, align: "left" },
+					{ name: "Modelo", index: "Modelo", width: 50, align: "left" },
+					{ name: "Categoria", index: "Categoria", width: 50, align: "left" },
 					mvcLocal.jqGrid.columnActions
 				];
 

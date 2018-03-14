@@ -13,10 +13,10 @@
 
         <%= Html.BeginSectionItemDataRow() %>
         <%=  Html.LabelDisplayItemFor(model => model.ID)%>
-        <%=  Html.LabelDisplayItemFor(model => model.Bicicleta.Marca)%>
-        <%=  Html.LabelDisplayItemFor(model => model.Cliente.Nombre)%>
-		<%=  Html.LabelDisplayItemFor(model => model.FechaDesde)%>
-        <%=  Html.LabelDisplayItemFor(model => model.FechaHasta)%>
+        <%=  Html.DropDownListItemFor(model => model.Cliente.ID, Model.Cliente.ToEntitySelectList())%>
+        <%=  Html.DropDownListItemFor(model => model.Producto.ID, Model.Producto.ToEntitySelectList())%>
+		<%=  Html.LabelEditorValidationItemFor(model => model.FechaDesde) %>
+        <%=  Html.LabelEditorValidationItemFor(model => model.FechaHasta) %>
         <%=  Html.LabelDisplayItemFor(model => model.TiempoHora)%>
         <%=  Html.LabelDisplayItemFor(model => model.TiempoDia)%>
         <%=  Html.LabelDisplayItemFor(model => model.TiempoSemana)%>

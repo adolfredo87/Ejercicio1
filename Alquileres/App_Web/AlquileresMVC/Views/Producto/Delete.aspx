@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Bicicleta>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Producto>" %>
 <%@ Import Namespace="AlquileresMVC.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -13,9 +13,11 @@
 		
         <%= Html.BeginSectionItemDataRow() %>
 		<%= Html.LabelDisplayItemFor(model => model.ID)%>
-        <%= Html.LabelDisplayItemFor(model => model.Marca)%>
-        <%= Html.LabelDisplayItemFor(model => model.Modelo)%>
-		<%= Html.LabelDisplayItemFor(model => model.CategoriaBici.Categoria)%>
+        <%= Html.LabelDisplayItemFor(model => model.Codigo)%>
+        <%= Html.LabelDisplayItemFor(model => model.Descripcion)%>
+        <%= Html.LabelDisplayItemFor(model => model.Marca.Descripcion)%>
+        <%= Html.LabelDisplayItemFor(model => model.Modelo.Descripcion)%>
+		<%= Html.LabelDisplayItemFor(model => model.Categoria.Descripcion)%>
         <%= Html.EndSectionItemDataRow()%>
 
 		<%= Html.MessageDeleteWidget()%>

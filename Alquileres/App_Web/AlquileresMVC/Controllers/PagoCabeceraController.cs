@@ -193,7 +193,7 @@ namespace AlquileresMVC.Controllers
                             cell = new object[] { 
                                 s.ID, 
                                 s.ClienteLoad().Nombre, 
-                                s.BicicletaLoad().Marca,
+                                s.ProductoLoad().Descripcion,
                                 s.TiempoHora, 
                                 s.TiempoDia, 
                                 s.TiempoSemana, 

@@ -28,25 +28,35 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            Alquiler alquilerDetail = db.AlquilerSet.First(a => a.ID == id);
+            AlquileresMVC.Models.Alquiler alquilerDetail = db.AlquilerSet.First(a => a.ID == id);
 
             alquilerDetail.ClienteLoad();
-            alquilerDetail.BicicletaLoad();
-            alquilerDetail.Bicicleta.CategoriaBicicletaLoad();
+            alquilerDetail.ProductoLoad();
+            alquilerDetail.Producto.TipoLoad();
+            alquilerDetail.Producto.MarcaLoad();
+            alquilerDetail.Producto.ModeloLoad();
+            alquilerDetail.Producto.CategoriaLoad();
             
             return View(alquilerDetail);
         }
 
         public ActionResult Create()
         {
-            Alquiler alquiler = new Alquiler();
+            AlquileresMVC.Models.Alquiler alquiler = new AlquileresMVC.Models.Alquiler();
 
             alquiler.Cliente = new Cliente();
             alquiler.Cliente.ToEntitySelectList();
-            alquiler.Bicicleta = new Bicicleta();
-            alquiler.Bicicleta.CategoriaBici = new CategoriaBicicleta();
-            alquiler.Bicicleta.CategoriaBici.ToEntitySelectList();
-            alquiler.Bicicleta.ToEntitySelectList();
+            alquiler.Producto = new Producto();
+            alquiler.Producto.ToEntitySelectList();
+            alquiler.Producto.Tipo = new Tipo();
+            alquiler.Producto.Tipo.ToEntitySelectList();
+            alquiler.Producto.Marca = new Marca();
+            alquiler.Producto.Marca.ToEntitySelectList();
+            alquiler.Producto.Modelo = new Modelo();
+            alquiler.Producto.Modelo.ToEntitySelectList();
+            alquiler.Producto.Categoria = new Categoria();
+            alquiler.Producto.Categoria.ToEntitySelectList();
+            alquiler.Producto.ToEntitySelectList();
 
             Alquiler alquilerToIDAdd = db.AlquilerSet.ToList().LastOrDefault();
             Int32 _id = alquilerToIDAdd.ID + 1;
@@ -62,7 +72,7 @@ namespace AlquileresMVC.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            Alquiler alquilerToAdd = new Alquiler();
+            AlquileresMVC.Models.Alquiler alquilerToAdd = new AlquileresMVC.Models.Alquiler();
 
             string[] arreglo = new string[collection.AllKeys.ToList().Count];
             Int32 i = 0;
@@ -76,15 +86,15 @@ namespace AlquileresMVC.Controllers
 
             String _sIDCliente = arreglo[0];
             Int32 iIDCliente = Int32.Parse(_sIDCliente);
-            String _sIDBicileta = arreglo[1];
-            Int32 iIDBicileta = Int32.Parse(_sIDBicileta);
+            String _sIDProducto = arreglo[1];
+            Int32 iIDProducto = Int32.Parse(_sIDProducto);
             String _sFechaDesde = arreglo[2];
             DateTime dFechaDesde = DateTime.Parse(_sFechaDesde);
             String _sFechaHasta = arreglo[3];
             DateTime dFechaHasta = DateTime.Parse(_sFechaHasta);
             Int32 iEstatus = 0;
             alquilerToAdd.IDCliente = iIDCliente;
-            alquilerToAdd.IDBicileta = iIDBicileta;
+            alquilerToAdd.IDProducto = iIDProducto;
             alquilerToAdd.FechaDesde = dFechaDesde;
             alquilerToAdd.FechaHasta = dFechaHasta;
             alquilerToAdd.Estatus = iEstatus;
@@ -97,9 +107,9 @@ namespace AlquileresMVC.Controllers
                 alquilerToAdd.Cliente = db.ClienteSet.FirstOrDefault(c => c.ID == iIDCliente);
             }
 
-            if (!String.IsNullOrEmpty(_sIDBicileta))
+            if (!String.IsNullOrEmpty(_sIDProducto))
             {
-                alquilerToAdd.Bicicleta = db.BicicletaSet.FirstOrDefault(c => c.ID == iIDBicileta);
+                alquilerToAdd.Producto = db.ProductoSet.FirstOrDefault(c => c.ID == iIDProducto);
             }
 
             if (alquilerToAdd.Cliente == null)
@@ -107,9 +117,9 @@ namespace AlquileresMVC.Controllers
                 ModelState.AddModelError("IDCliente", String.Format("El número de ID {0} no está registrado en la base de datos.", _sIDCliente));
             }
 
-            if (alquilerToAdd.Bicicleta == null)
+            if (alquilerToAdd.Producto == null)
             {
-                ModelState.AddModelError("IDBicicleta", String.Format("El número de ID {0} no está registrado en la base de datos.", _sIDBicileta));
+                ModelState.AddModelError("IDProducto", String.Format("El número de ID {0} no está registrado en la base de datos.", _sIDProducto));
             }
 
             //valido claves primaria
@@ -154,11 +164,14 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Edit(Int32 id)
         {
-            Alquiler alquilerToUpdate = db.AlquilerSet.First(a => a.ID == id);
+            AlquileresMVC.Models.Alquiler alquilerToUpdate = db.AlquilerSet.First(a => a.ID == id);
 
             alquilerToUpdate.ClienteLoad();
-            alquilerToUpdate.BicicletaLoad();
-            alquilerToUpdate.Bicicleta.CategoriaBicicletaLoad();
+            alquilerToUpdate.ProductoLoad();
+            alquilerToUpdate.Producto.TipoLoad();
+            alquilerToUpdate.Producto.MarcaLoad();
+            alquilerToUpdate.Producto.ModeloLoad();
+            alquilerToUpdate.Producto.CategoriaLoad();
             alquilerToUpdate.Estatus = 1;
 
             return View(alquilerToUpdate);
@@ -167,31 +180,44 @@ namespace AlquileresMVC.Controllers
         [HttpPost]
         public ActionResult Edit(Int32 id, FormCollection form)
         {
-            Alquiler alquilerToUpdate = db.AlquilerSet.First(a => a.ID == id);
+            AlquileresMVC.Models.Alquiler alquilerToUpdate = db.AlquilerSet.First(a => a.ID == id);
 
-            Int32 iIDCliente = alquilerToUpdate.IDCliente;
-            String _sIDCliente = iIDCliente.ToString();
-            Int32 iIDBicileta = alquilerToUpdate.IDBicileta;
-            String _sIDBicileta = iIDBicileta.ToString();
-            DateTime dFechaDesde = alquilerToUpdate.FechaDesde;
-            DateTime dFechaHasta = alquilerToUpdate.FechaHasta;
+            string[] arreglo = new string[form.AllKeys.ToList().Count];
+            Int32 i = 0;
+
+            foreach (var key in form.AllKeys)
+            {
+                var value = form[key];
+                arreglo[i] = value;
+                i++;
+            }
+
+            String _sIDCliente = arreglo[0];
+            Int32 iIDCliente = Int32.Parse(_sIDCliente);
+            String _sIDProducto = arreglo[1];
+            Int32 iIDProducto = Int32.Parse(_sIDProducto);
+            String _sFechaDesde = arreglo[2];
+            DateTime dFechaDesde = DateTime.Parse(_sFechaDesde);
+            String _sFechaHasta = arreglo[3];
+            DateTime dFechaHasta = DateTime.Parse(_sFechaHasta);
             Int32 iEstatus = 1;
             alquilerToUpdate.IDCliente = iIDCliente;
-            alquilerToUpdate.IDBicileta = iIDBicileta;
+            alquilerToUpdate.IDProducto = iIDProducto;
             alquilerToUpdate.FechaDesde = dFechaDesde;
             alquilerToUpdate.FechaHasta = dFechaHasta;
             alquilerToUpdate.Estatus = iEstatus;
 
             TryUpdateModel(alquilerToUpdate, "Alquiler");
+            TryUpdateModel(alquilerToUpdate, "Alquiler", form.ToValueProvider());
 
             if (!String.IsNullOrEmpty(_sIDCliente))
             {
                 alquilerToUpdate.Cliente = db.ClienteSet.FirstOrDefault(c => c.ID == iIDCliente);
             }
 
-            if (!String.IsNullOrEmpty(_sIDBicileta))
+            if (!String.IsNullOrEmpty(_sIDProducto))
             {
-                alquilerToUpdate.Bicicleta = db.BicicletaSet.FirstOrDefault(c => c.ID == iIDBicileta);
+                alquilerToUpdate.Producto = db.ProductoSet.FirstOrDefault(c => c.ID == iIDProducto);
             }
 
             if (alquilerToUpdate.Cliente == null)
@@ -199,9 +225,9 @@ namespace AlquileresMVC.Controllers
                 ModelState.AddModelError("IDCliente", String.Format("El número de ID {0} no está registrado en la base de datos.", _sIDCliente));
             }
 
-            if (alquilerToUpdate.Bicicleta == null)
+            if (alquilerToUpdate.Producto == null)
             {
-                ModelState.AddModelError("IDBicicleta", String.Format("El número de ID {0} no está registrado en la base de datos.", _sIDBicileta));
+                ModelState.AddModelError("IDProducto", String.Format("El número de ID {0} no está registrado en la base de datos.", _sIDProducto));
             }
 
             // Si el modelo es valido, guardo en la BD
@@ -292,7 +318,7 @@ namespace AlquileresMVC.Controllers
                             cell = new object[] { 
                                 s.ID, 
                                 s.ClienteLoad().Nombre, 
-                                s.BicicletaLoad().Marca,
+                                s.ProductoLoad().Descripcion,
                                 s.TiempoHora, 
                                 s.TiempoDia, 
                                 s.TiempoSemana, 

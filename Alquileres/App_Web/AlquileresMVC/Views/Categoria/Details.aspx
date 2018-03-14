@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Bicicleta>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Categoria>" %>
 <%@ Import Namespace="AlquileresMVC.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -9,13 +9,13 @@
 	<% using (Html.BeginForm()){%>       
 		<%=  Html.BeginSection("../../Content/images/hpantalla/bicycle.png", Html.DisplayNameDetailsFor().ToHtmlString().ToUpper())%>
 		<%=  Html.BeginSectionBody()%>
-		
-        <%= Html.BeginSectionItemDataRow() %>
-		<%= Html.LabelDisplayItemFor(model => model.ID)%>
-        <%= Html.LabelDisplayItemFor(model => model.Marca)%>
-        <%= Html.LabelDisplayItemFor(model => model.Modelo)%>
-        <%= Html.LabelDisplayItemFor(model => model.CategoriaBici.Categoria)%>
-        <%= Html.EndSectionItemDataRow()%>
+
+        <%=  Html.BeginSectionItemDataRow() %>
+        <%=  Html.LabelDisplayItemFor(model => model.ID)%>
+        <%=  Html.LabelDisplayItemFor(model => model.Codigo)%>
+		<%=  Html.LabelDisplayItemFor(model => model.Descripcion)%>
+        <%=  Html.LabelDisplayItemFor(model => model.Estatus)%>
+        <%=  Html.EndSectionItemDataRow()%>
 
 		<%=  Html.EndSectionBody()%>
 		<%=  Html.BeginBarButtons()%>
