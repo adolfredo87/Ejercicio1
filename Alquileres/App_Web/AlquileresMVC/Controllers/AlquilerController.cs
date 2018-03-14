@@ -58,7 +58,7 @@ namespace AlquileresMVC.Controllers
             alquiler.Producto.Categoria.ToEntitySelectList();
             alquiler.Producto.ToEntitySelectList();
 
-            Alquiler alquilerToIDAdd = db.AlquilerSet.ToList().LastOrDefault();
+            AlquileresMVC.Models.Alquiler alquilerToIDAdd = db.AlquilerSet.ToList().LastOrDefault();
             Int32 _id = alquilerToIDAdd.ID + 1;
             alquiler.ID = _id;
 
@@ -142,7 +142,7 @@ namespace AlquileresMVC.Controllers
                         dbTransaction.Commit();
                         /// Si la transaccion es exitosa nos redirigimos a la pagina de detalles como 
                         /// cofirmación de que la operacion resulto exitosa
-                        Alquiler _entidadToIDAdd = db.AlquilerSet.ToList().LastOrDefault();
+                        AlquileresMVC.Models.Alquiler _entidadToIDAdd = db.AlquilerSet.ToList().LastOrDefault();
                         Int32 _id = _entidadToIDAdd.ID;
                         _entidadToIDAdd.ID = _id;
                         return RedirectToAction("Details/" + _entidadToIDAdd.ID);
@@ -240,9 +240,9 @@ namespace AlquileresMVC.Controllers
                     // Guardar y confirmar.
                     db.SaveChanges();
                     dbTransaction.Commit();
-                    /// Si la transaccion es exitosa nos redirigimos a la pagina de List como 
+                    /// Si la transaccion es exitosa nos redirigimos a la pagina de detalles como 
                     /// cofirmación de que la operacion resulto exitosa
-                    return RedirectToAction("List");
+                    return RedirectToAction("Details/" + alquilerToUpdate.ID);
                 }
                 catch (Exception ex)
                 {

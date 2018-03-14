@@ -74,6 +74,8 @@
   <ItemGroup>
     <Compile Include="Controllers\AlquilerController.cs" />
     <Compile Include="Controllers\AlquilerPagoController.cs" />
+    <Compile Include="Controllers\MarcaController.cs" />
+    <Compile Include="Controllers\ModeloController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PagoCabeceraController.cs" />
     <Compile Include="Controllers\PrecioController.cs" />
+    <Compile Include="Controllers\TipoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2266,6 +2269,18 @@
     <Content Include="Views\Alquiler\Edit.aspx" />
     <Content Include="Views\Alquiler\Index.aspx" />
     <Content Include="Views\Alquiler\List.aspx" />
+    <Content Include="Views\Marca\Create.aspx" />
+    <Content Include="Views\Marca\Delete.aspx" />
+    <Content Include="Views\Marca\Details.aspx" />
+    <Content Include="Views\Marca\Edit.aspx" />
+    <Content Include="Views\Marca\Index.aspx" />
+    <Content Include="Views\Marca\List.aspx" />
+    <Content Include="Views\Modelo\Create.aspx" />
+    <Content Include="Views\Modelo\Delete.aspx" />
+    <Content Include="Views\Modelo\Details.aspx" />
+    <Content Include="Views\Modelo\Edit.aspx" />
+    <Content Include="Views\Modelo\Index.aspx" />
+    <Content Include="Views\Modelo\List.aspx" />
     <Content Include="Views\Producto\Create.aspx" />
     <Content Include="Views\Producto\Delete.aspx" />
     <Content Include="Views\Producto\Details.aspx" />
@@ -2301,6 +2316,12 @@
     <Content Include="Views\Precio\Index.aspx" />
     <Content Include="Views\Precio\List.aspx" />
     <Content Include="Views\Shared\Menu.ascx" />
+    <Content Include="Views\Tipo\Create.aspx" />
+    <Content Include="Views\Tipo\Delete.aspx" />
+    <Content Include="Views\Tipo\Details.aspx" />
+    <Content Include="Views\Tipo\Edit.aspx" />
+    <Content Include="Views\Tipo\Index.aspx" />
+    <Content Include="Views\Tipo\List.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.4.1.js" />

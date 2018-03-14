@@ -28,14 +28,14 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var clienteDetail = db.ClienteSet.First(c => c.ID == id);
+            AlquileresMVC.Models.Cliente clienteDetail = db.ClienteSet.First(c => c.ID == id);
             return View(clienteDetail);
         }
 
         public ActionResult Create()
         {
-            Cliente cliente = new Cliente();
-            Cliente clienteToIDAdd = db.ClienteSet.ToList().LastOrDefault();
+            AlquileresMVC.Models.Cliente cliente = new Cliente();
+            AlquileresMVC.Models.Cliente clienteToIDAdd = db.ClienteSet.ToList().LastOrDefault();
             Int32 _id = clienteToIDAdd.ID + 1;
             cliente.ID = _id;
             return View(cliente);
@@ -44,7 +44,7 @@ namespace AlquileresMVC.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            Cliente clienteToAdd = new Cliente();
+            AlquileresMVC.Models.Cliente clienteToAdd = new AlquileresMVC.Models.Cliente();
 
             string[] arreglo = new string[collection.AllKeys.ToList().Count];
             Int32 i = 0;
@@ -88,7 +88,7 @@ namespace AlquileresMVC.Controllers
                         dbTransaction.Commit();
                         /// Si la transaccion es exitosa nos redirigimos a la pagina de detalles como 
                         /// cofirmación de que la operacion resulto exitosa
-                        Cliente _entidadToIDAdd = db.ClienteSet.ToList().LastOrDefault();
+                        AlquileresMVC.Models.Cliente _entidadToIDAdd = db.ClienteSet.ToList().LastOrDefault();
                         Int32 _id = _entidadToIDAdd.ID;
                         _entidadToIDAdd.ID = _id;
                         return RedirectToAction("Details/" + _entidadToIDAdd.ID);
@@ -109,7 +109,7 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Edit(Int32 id)
         {
-            var clienteToUpdate = db.ClienteSet.First(c => c.ID == id);
+            AlquileresMVC.Models.Cliente clienteToUpdate = db.ClienteSet.First(c => c.ID == id);
             ViewData.Model = clienteToUpdate;
             return View();
         }
@@ -117,7 +117,7 @@ namespace AlquileresMVC.Controllers
         [HttpPost]
         public ActionResult Edit(Int32 id, FormCollection form)
         {
-            Cliente clienteToUpdate = db.ClienteSet.First(c => c.ID == id);
+            AlquileresMVC.Models.Cliente clienteToUpdate = db.ClienteSet.First(c => c.ID == id);
             
             string[] arreglo = new string[form.AllKeys.ToList().Count];
             Int32 i = 0;
@@ -169,7 +169,7 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Delete(int id)
         {
-            var clienteToDelete = db.ClienteSet.First(c => c.ID == id);
+            AlquileresMVC.Models.Cliente clienteToDelete = db.ClienteSet.First(c => c.ID == id);
             ViewData.Model = clienteToDelete;
             return View();
         }
@@ -177,7 +177,7 @@ namespace AlquileresMVC.Controllers
         [HttpPost]
         public ActionResult Delete(Int32 id, FormCollection form)
         {
-            var clienteToDelete = db.ClienteSet.First(c => c.ID == id);
+            AlquileresMVC.Models.Cliente clienteToDelete = db.ClienteSet.First(c => c.ID == id);
 
             //valido cliente tiene alquiler
             if (db.AlquilerSet.FirstOrDefault(a => a.IDCliente == id) != null)

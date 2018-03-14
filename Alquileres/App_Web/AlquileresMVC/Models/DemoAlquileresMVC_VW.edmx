@@ -194,13 +194,13 @@
     <edmx:ConceptualModels>
       <Schema Namespace="DemoAlquileresMVC_VWModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="DemoAlquileresMVC_VWEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="vw_alquiler_pagado" EntityType="DemoAlquileresMVC_VWModel.vw_alquiler_pagado" />
-          <EntitySet Name="vw_alquiler_por_pagar" EntityType="DemoAlquileresMVC_VWModel.vw_alquiler_por_pagar" />
+          <EntitySet Name="Alquiler_Pagado_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Alquiler_Pagado_VW" />
+          <EntitySet Name="Alquiler_Por_Pagar_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Alquiler_Por_Pagar_VW" />
           <EntitySet Name="Cantidad_Alquileres_Pagados_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Pagados_VW" />
           <EntitySet Name="Cantidad_Alquileres_Por_Pagar_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Por_Pagar_VW" />
-          <EntitySet Name="vw_producto_descripcion" EntityType="DemoAlquileresMVC_VWModel.vw_producto_descripcion" />
+          <EntitySet Name="Producto_Descripcion_VW_Set" EntityType="DemoAlquileresMVC_VWModel.Producto_Descripcion_VW" />
         </EntityContainer>
-        <EntityType Name="vw_alquiler_pagado">
+        <EntityType Name="Alquiler_Pagado_VW">
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="Nombre" />
@@ -225,7 +225,7 @@
           <Property Name="MontoTotal" Type="Double" />
           <Property Name="Estatus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="vw_alquiler_por_pagar">
+        <EntityType Name="Alquiler_Por_Pagar_VW">
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="Nombre" />
@@ -280,7 +280,7 @@
           <Property Name="NumAlquiler" Type="Int32" />
           <Property Name="Estatus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="vw_producto_descripcion">
+        <EntityType Name="Producto_Descripcion_VW">
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="Codigo" />
@@ -300,7 +300,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DemoAlquileresMVC_VWModelStoreContainer" CdmEntityContainer="DemoAlquileresMVC_VWEntities">
-          <EntitySetMapping Name="vw_alquiler_pagado"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.vw_alquiler_pagado"><MappingFragment StoreEntitySet="vw_alquiler_pagado">
+          <EntitySetMapping Name="Alquiler_Pagado_VW_Set"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.Alquiler_Pagado_VW"><MappingFragment StoreEntitySet="vw_alquiler_pagado">
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="Nombre" ColumnName="Nombre" />
             <ScalarProperty Name="Telefono" ColumnName="Telefono" />
@@ -317,7 +317,7 @@
             <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
             <ScalarProperty Name="Estatus" ColumnName="Estatus" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="vw_alquiler_por_pagar"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.vw_alquiler_por_pagar"><MappingFragment StoreEntitySet="vw_alquiler_por_pagar">
+          <EntitySetMapping Name="Alquiler_Por_Pagar_VW_Set"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.Alquiler_Por_Pagar_VW"><MappingFragment StoreEntitySet="vw_alquiler_por_pagar">
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="Nombre" ColumnName="Nombre" />
             <ScalarProperty Name="Telefono" ColumnName="Telefono" />
@@ -353,7 +353,7 @@
             <ScalarProperty Name="NumAlquiler" ColumnName="NumAlquiler" />
             <ScalarProperty Name="Estatus" ColumnName="Estatus" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="vw_producto_descripcion"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.vw_producto_descripcion"><MappingFragment StoreEntitySet="vw_producto_descripcion">
+          <EntitySetMapping Name="Producto_Descripcion_VW_Set"><EntityTypeMapping TypeName="DemoAlquileresMVC_VWModel.Producto_Descripcion_VW"><MappingFragment StoreEntitySet="vw_producto_descripcion">
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="Tipo" ColumnName="Tipo" />
             <ScalarProperty Name="Codigo" ColumnName="Codigo" />
@@ -383,11 +383,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="DemoAlquileresMVC_VW">
-        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.vw_alquiler_pagado" Width="1.5" PointX="0.75" PointY="0.75" Height="3.4001269531249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.vw_alquiler_por_pagar" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9070849609374996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Alquiler_Pagado_VW" Width="1.5" PointX="0.75" PointY="0.75" Height="3.4001269531249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Alquiler_Por_Pagar_VW" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9070849609374996" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Pagados_VW" Width="1.5" PointX="4.75" PointY="0.75" Height="2.7427376302083335" IsExpanded="true" />
         <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Cantidad_Alquileres_Por_Pagar_VW" Width="1.5" PointX="8.625" PointY="1.25" Height="2.0853483072916656" IsExpanded="true" />
-        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.vw_producto_descripcion" Width="1.5" PointX="6.75" PointY="1.25" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoAlquileresMVC_VWModel.Producto_Descripcion_VW" Width="1.5" PointX="6.75" PointY="1.25" Height="2.0853483072916674" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Cliente>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AlquileresMVC.Models.Marca>" %>
 <%@ Import Namespace="AlquileresMVC.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -10,11 +10,11 @@
    <% using (Html.BeginForm()){%>
         <%= Html.BeginSection("./../Content/images/hpantalla/bicycle.png", Html.DisplayNameFor().ToHtmlString().ToUpper())%>
         <%= Html.BeginSectionBody(true)%>        
-        <%= Html.GridJQuery("Cliente")%>  
+        <%= Html.GridJQuery("Marca")%>  
         <%= Html.EndSectionBody()%> 
         <%= Html.BeginBarButtons()%>
         <%= Html.ActionLinkCreate()%>
-        <%= Html.ActionLinkPrintGrid("Cliente")%>
+        <%= Html.ActionLinkPrintGrid("Marca")%>
         <%= Html.ActionLinkHome()%>      
         <%= Html.EndBarButtons()%>
         <%= Html.EndSection()%>
@@ -29,22 +29,22 @@
 	    // 
 	    // Procedimientos para Configuracion del grid
 	    $(function () {
-	        var jqTableGrid = mvcLocal.jqGrid.init("Cliente");
+	        var jqTableGrid = mvcLocal.jqGrid.init("Marca");
 	        //
 	        // Specify the column names
-	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Nombre", "Telefono", "Correo", "Direccion", "Estatus", "Acciones"];
+	        jqTableGrid.mvcUI.config.options.colNames = ["ID", "Codigo", "Descripcion", "Estatus", "Acciones"];
 	        //
 	        // Configure the columns
 	        jqTableGrid.mvcUI.config.options.colModel =
 				[
-					{ name: "ID", index: "ID", width: 25, align: "left" },
-					{ name: "Nombre", index: "Nombre", width: 80, align: "left" },
-					{ name: "Telefono", index: "Telefono", width: 70, align: "left" },
-					{ name: "Correo", index: "Correo", width: 70, align: "left" },
-                    { name: "Direccion", index: "Direccion", width: 100, align: "left" },
-                    { name: "Estatus", index: "Estatus", width: 35, align: "left" }, 
+					{ name: "ID", index: "ID", width: 50, align: "left" },
+					{ name: "Codigo", index: "Codigo", width: 50, align: "left" },
+					{ name: "Descripcion", index: "Descripcion", width: 180, align: "left" },
+                    { name: "Estatus", index: "Estatus", width: 50, align: "left" },
 					mvcLocal.jqGrid.columnActions
 				];
+
+	        jqTableGrid.mvcUI.config.searchOptions.sopt = ['cn', 'eq', 'ne'];
 	        //
 	        // Default sorting
 	        jqTableGrid.mvcUI.config.options.sortname = "ID";

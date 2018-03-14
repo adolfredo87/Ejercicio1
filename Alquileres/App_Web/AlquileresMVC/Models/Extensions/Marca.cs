@@ -10,7 +10,7 @@ using AlquileresMVC.Utilitys;
 namespace AlquileresMVC.Models
 {
     [MetadataType(typeof(Marca.MetaData))]
-    [DisplayName("Marca del Producto")]
+    [DisplayName("Marca")]
     public partial class Marca
     {
         private sealed class MetaData
