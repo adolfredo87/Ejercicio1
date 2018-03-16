@@ -13,6 +13,8 @@
 		<%=  Html.BeginSectionItemDataRow() %>
 		<%=  Html.LabelDisplayItemFor(model => model.IDCliente)%>
 		<%=  Html.LabelDisplayItemFor(model => model.Fecha)%>
+        <%=  Html.LabelDisplayItemFor(model => model.MontoExento)%>
+        <%=  Html.LabelDisplayItemFor(model => model.Descuento)%>
         <%=  Html.LabelDisplayItemFor(model => model.MontoTotal)%>
         <%=  Html.LabelDisplayItemFor(model => model.Estatus)%>
         <%=  Html.EndSectionItemDataRow()%>

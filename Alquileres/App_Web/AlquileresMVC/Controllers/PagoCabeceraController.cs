@@ -29,15 +29,30 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            Cliente cliente = db.ClienteSet.First(c => c.ID == id);
-            var listAlquiler = db.AlquilerSet.Where(c => c.IDCliente == id);
+            AlquileresMVC.Models.Cliente cliente = db.ClienteSet.First(c => c.ID == id); Int32 _iIDCliente = cliente.ID;
+            List<AlquileresMVC.Models.Alquiler> listAlquiler = db.AlquilerSet.Where(a => a.IDCliente == _iIDCliente && a.Estatus == 1).ToList();
             Double _dMontoEstimado = 0; _dMontoEstimado = (from e in listAlquiler select e.PrecioEstimado).Sum().Value;
+            AlquileresMVC.Models.Cantidad_Alquileres_Por_Pagar_VW clienteAlq = dbVW.Cantidad_Alquileres_Por_Pagar_VW_Set.First(c => c.IDCliente == _iIDCliente);
+            AlquileresMVC.Models.Descuento descuento = db.DescuentoSet.First(d => d.Codigo == "DEC1");
+            Double _dPorcentajeDescuento = 0; _dPorcentajeDescuento = descuento.PorcentajeDescuento ?? 0;
+            Double _dDescuento = _dPorcentajeDescuento * _dMontoEstimado;
+            Double _dMontoTotal = _dMontoEstimado - _dDescuento;
             PagoCabecera pagoCabeceraDetail = db.PagoCabeceraSet.ToList().LastOrDefault();
             Int32 _iID = pagoCabeceraDetail.ID; _iID = _iID + 1;
-            Int32 _iIDCliente = cliente.ID;
             DateTime _dFecha = DateTime.Now;
+            if (clienteAlq.NumAlquiler >= 3 && clienteAlq.NumAlquiler <= 5)
+            {
+                pagoCabeceraDetail.MontoExento = _dMontoEstimado;
+                pagoCabeceraDetail.Descuento = _dDescuento;
+                pagoCabeceraDetail.MontoTotal = _dMontoTotal;
+            }
+            else
+            {
+                pagoCabeceraDetail.MontoExento = _dMontoEstimado;
+                pagoCabeceraDetail.Descuento = 0;
+                pagoCabeceraDetail.MontoTotal = _dMontoEstimado;
+            }
             pagoCabeceraDetail.IDCliente = _iIDCliente;
-            pagoCabeceraDetail.MontoTotal = _dMontoEstimado;
             pagoCabeceraDetail.Fecha = _dFecha;
             pagoCabeceraDetail.ClienteLoad();
             return View(pagoCabeceraDetail);
@@ -45,15 +60,30 @@ namespace AlquileresMVC.Controllers
 
         public ActionResult Edit(Int32 id)
         {
-            Cliente cliente = db.ClienteSet.First(c => c.ID == id);
-            var listAlquiler = db.AlquilerSet.Where(c => c.IDCliente == id);
+            AlquileresMVC.Models.Cliente cliente = db.ClienteSet.First(c => c.ID == id); Int32 _iIDCliente = cliente.ID;
+            List<AlquileresMVC.Models.Alquiler> listAlquiler = db.AlquilerSet.Where(a => a.IDCliente == _iIDCliente && a.Estatus == 1).ToList();
             Double _dMontoEstimado = 0; _dMontoEstimado = (from e in listAlquiler select e.PrecioEstimado).Sum().Value;
+            AlquileresMVC.Models.Cantidad_Alquileres_Por_Pagar_VW clienteAlq = dbVW.Cantidad_Alquileres_Por_Pagar_VW_Set.First(c => c.IDCliente == _iIDCliente);
+            AlquileresMVC.Models.Descuento descuento = db.DescuentoSet.First(d => d.Codigo == "DEC1");
+            Double _dPorcentajeDescuento = 0; _dPorcentajeDescuento = descuento.PorcentajeDescuento ?? 0;
+            Double _dDescuento = _dPorcentajeDescuento * _dMontoEstimado;
+            Double _dMontoTotal = _dMontoEstimado - _dDescuento;
             PagoCabecera pagoCabeceraToUpdate = db.PagoCabeceraSet.ToList().LastOrDefault();
             Int32 _iID = pagoCabeceraToUpdate.ID; _iID = _iID + 1;
-            Int32 _iIDCliente = cliente.ID;
             DateTime _dFecha = DateTime.Now;
+            if (clienteAlq.NumAlquiler >= 3 && clienteAlq.NumAlquiler <= 5)
+            {
+                pagoCabeceraToUpdate.MontoExento = _dMontoEstimado;
+                pagoCabeceraToUpdate.Descuento = _dDescuento;
+                pagoCabeceraToUpdate.MontoTotal = _dMontoTotal;
+            }
+            else
+            {
+                pagoCabeceraToUpdate.MontoExento = _dMontoEstimado;
+                pagoCabeceraToUpdate.Descuento = 0;
+                pagoCabeceraToUpdate.MontoTotal = _dMontoEstimado;
+            }
             pagoCabeceraToUpdate.IDCliente = _iIDCliente;
-            pagoCabeceraToUpdate.MontoTotal = _dMontoEstimado;
             pagoCabeceraToUpdate.Fecha = _dFecha;
             pagoCabeceraToUpdate.ClienteLoad();
             return View(pagoCabeceraToUpdate);
@@ -62,17 +92,32 @@ namespace AlquileresMVC.Controllers
         [HttpPost]
         public ActionResult Edit(Int32 id, FormCollection form)
         {
-            Cliente cliente = db.ClienteSet.First(c => c.ID == id);
-            PagoCabecera pagoCabeceraToUpdate = new PagoCabecera();
-
-            var listAlquiler = db.AlquilerSet.Where(c => c.IDCliente == id);
+            AlquileresMVC.Models.Cliente cliente = db.ClienteSet.First(c => c.ID == id); Int32 _iIDCliente = cliente.ID;
+            List<AlquileresMVC.Models.Alquiler> listAlquiler = db.AlquilerSet.Where(a => a.IDCliente == _iIDCliente && a.Estatus == 1).ToList();
             Double _dMontoEstimado = 0; _dMontoEstimado = (from e in listAlquiler select e.PrecioEstimado).Sum().Value;
-
-            Int32 _iIDCliente = cliente.ID;
+            AlquileresMVC.Models.Cantidad_Alquileres_Por_Pagar_VW clienteAlq = dbVW.Cantidad_Alquileres_Por_Pagar_VW_Set.First(c => c.IDCliente == _iIDCliente);
+            AlquileresMVC.Models.Descuento descuento = db.DescuentoSet.First(d => d.Codigo == "DEC1");
+            Double _dPorcentajeDescuento = 0; _dPorcentajeDescuento = descuento.PorcentajeDescuento ?? 0;
+            Double _dDescuento = _dPorcentajeDescuento * _dMontoEstimado;
+            Double _dMontoTotal = _dMontoEstimado - _dDescuento;
+            PagoCabecera pagoCabeceraToUpdate = db.PagoCabeceraSet.ToList().LastOrDefault();
+            Int32 _iID = pagoCabeceraToUpdate.ID; _iID = _iID + 1;
             DateTime _dFecha = DateTime.Now;
+            if (clienteAlq.NumAlquiler >= 3 && clienteAlq.NumAlquiler <= 5)
+            {
+                pagoCabeceraToUpdate.MontoExento = _dMontoEstimado;
+                pagoCabeceraToUpdate.Descuento = _dDescuento;
+                pagoCabeceraToUpdate.MontoTotal = _dMontoTotal;
+            }
+            else
+            {
+                pagoCabeceraToUpdate.MontoExento = _dMontoEstimado;
+                pagoCabeceraToUpdate.Descuento = 0;
+                pagoCabeceraToUpdate.MontoTotal = _dMontoEstimado;
+            }
             pagoCabeceraToUpdate.IDCliente = _iIDCliente;
-            pagoCabeceraToUpdate.MontoTotal = _dMontoEstimado;
             pagoCabeceraToUpdate.Fecha = _dFecha;
+            pagoCabeceraToUpdate.ClienteLoad();
             Int32 iEstatus = 1;
             pagoCabeceraToUpdate.Estatus = iEstatus;
 
